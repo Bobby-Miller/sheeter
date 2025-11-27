@@ -1,0 +1,2110 @@
+﻿(*********************************************
+
+  Import-Export
+  Version   := RSLogix 5000 v31.02
+  Owner     := EWS, 
+  Exported  := Mon Nov 24 12:54:18 2025
+
+  Note:  File encoded in UTF-8.  Only edit file in a program 
+         which supports UTF-8 (like Notepad, not Wordpad).
+
+**********************************************)
+IE_VER := 2.22;
+
+CONTROLLER SCS (ProcessorType := "5069-L310ER",
+                Major := 31,
+                RedundancyEnabled := 0,
+                KeepTestEditsOnSwitchOver := 0,
+                SecurityCode := 0,
+                ChangesToDetect := 16#ffff_ffff_ffff_ffff,
+                SFCExecutionControl := "CurrentActive",
+                SFCRestartPosition := "MostRecent",
+                SFCLastScan := "DontScan",
+                SerialNumber := 16#0000_0000,
+                MatchProjectToController := No,
+                CanUseRPIFromProducer := No,
+                InhibitAutomaticFirmwareUpdate := 0,
+                PassThroughConfiguration := EnabledWithAppend,
+                DownloadProjectDocumentationAndExtendedProperties := Yes,
+                ReportMinorOverflow := 0,
+                EtherNetIPMode := "A1/A2: Dual-IP")
+	DATATYPE BHI_UDT (FamilyType := NoFamily)
+		DINT CN[4];
+		DINT SRS;
+		DINT REV;
+		DINT FT;
+	END_DATATYPE
+
+	DATATYPE EII_UDT (FamilyType := NoFamily)
+		DINT PFN;
+		DINT EC;
+		DINT ZZZZZZZZZZEII_UDT0 (Hidden := 1);
+		BIT UIX ZZZZZZZZZZEII_UDT0 : 0;
+		BIT UIE ZZZZZZZZZZEII_UDT0 : 1;
+		BIT UIL ZZZZZZZZZZEII_UDT0 : 2;
+		BIT UIP ZZZZZZZZZZEII_UDT0 : 3;
+		BIT EIE ZZZZZZZZZZEII_UDT0 : 4;
+		BIT AS ZZZZZZZZZZEII_UDT0 : 5;
+		BIT ED ZZZZZZZZZZEII_UDT0 : 6;
+		BIT ES ZZZZZZZZZZEII_UDT0 : 14;
+		DINT IS;
+	END_DATATYPE
+
+	DATATYPE HSC_UDT (FamilyType := NoFamily)
+		DINT PFN;
+		DINT ER;
+		DINT ZZZZZZZZZZHSC_UDT0 (Hidden := 1);
+		BIT UIX ZZZZZZZZZZHSC_UDT0 : 0;
+		BIT UIE ZZZZZZZZZZHSC_UDT0 : 1;
+		BIT UIL ZZZZZZZZZZHSC_UDT0 : 2;
+		BIT UIP ZZZZZZZZZZHSC_UDT0 : 3;
+		BIT FE ZZZZZZZZZZHSC_UDT0 : 4;
+		BIT AS ZZZZZZZZZZHSC_UDT0 : 5;
+		BIT ED ZZZZZZZZZZHSC_UDT0 : 6;
+		BIT CE ZZZZZZZZZZHSC_UDT0 : 11;
+		BIT SP ZZZZZZZZZZHSC_UDT0 : 15;
+		DINT ZZZZZZZZZZHSC_UDT1 (Hidden := 1);
+		BIT LPM ZZZZZZZZZZHSC_UDT1 : 0;
+		BIT HPM ZZZZZZZZZZHSC_UDT1 : 1;
+		BIT UFM ZZZZZZZZZZHSC_UDT1 : 2;
+		BIT OFM ZZZZZZZZZZHSC_UDT1 : 3;
+		BIT LPI ZZZZZZZZZZHSC_UDT1 : 4;
+		BIT HPI ZZZZZZZZZZHSC_UDT1 : 5;
+		BIT UFI ZZZZZZZZZZHSC_UDT1 : 6;
+		BIT OFI ZZZZZZZZZZHSC_UDT1 : 7;
+		BIT LPR ZZZZZZZZZZHSC_UDT1 : 8;
+		BIT HPR ZZZZZZZZZZHSC_UDT1 : 9;
+		BIT DIR ZZZZZZZZZZHSC_UDT1 : 10;
+		BIT UF ZZZZZZZZZZHSC_UDT1 : 11;
+		BIT OF ZZZZZZZZZZHSC_UDT1 : 12;
+		BIT MD ZZZZZZZZZZHSC_UDT1 : 13;
+		BIT CD ZZZZZZZZZZHSC_UDT1 : 14;
+		BIT CU ZZZZZZZZZZHSC_UDT1 : 15;
+		DINT MOD;
+		DINT ACC;
+		DINT HIP;
+		DINT LOP;
+		DINT OVF;
+		DINT UNF;
+		DINT OMB;
+		DINT HPO;
+		DINT LPO;
+	END_DATATYPE
+
+	DATATYPE MMI_UDT (FamilyType := NoFamily)
+		DINT CN[4];
+		DINT SRS;
+		DINT REV;
+		DINT FT;
+		DINT ZZZZZZZZZZMMI_UDT0 (Hidden := 1);
+		BIT MP ZZZZZZZZZZMMI_UDT0 : 0;
+		BIT WP ZZZZZZZZZZMMI_UDT0 : 1;
+		BIT FO ZZZZZZZZZZMMI_UDT0 : 8;
+		BIT LPC ZZZZZZZZZZMMI_UDT0 : 9;
+		BIT LE ZZZZZZZZZZMMI_UDT0 : 10;
+		BIT LA ZZZZZZZZZZMMI_UDT0 : 11;
+		BIT MB ZZZZZZZZZZMMI_UDT0 : 12;
+	END_DATATYPE
+
+	DATATYPE PTOX_UDT (FamilyType := NoFamily)
+		DINT OUT;
+		DINT ZZZZZZZZZZPTOX_UDT0 (Hidden := 1);
+		BIT DN ZZZZZZZZZZPTOX_UDT0 : 0;
+		BIT DS ZZZZZZZZZZPTOX_UDT0 : 1;
+		BIT RS ZZZZZZZZZZPTOX_UDT0 : 2;
+		BIT AS ZZZZZZZZZZPTOX_UDT0 : 3;
+		BIT RP ZZZZZZZZZZPTOX_UDT0 : 4;
+		BIT CS ZZZZZZZZZZPTOX_UDT0 : 5;
+		BIT IS ZZZZZZZZZZPTOX_UDT0 : 6;
+		BIT ED ZZZZZZZZZZPTOX_UDT0 : 7;
+		BIT NS ZZZZZZZZZZPTOX_UDT0 : 8;
+		BIT JPS ZZZZZZZZZZPTOX_UDT0 : 9;
+		BIT JCS ZZZZZZZZZZPTOX_UDT0 : 10;
+		BIT ADI ZZZZZZZZZZPTOX_UDT0 : 11;
+		BIT JP ZZZZZZZZZZPTOX_UDT0 : 12;
+		BIT JC ZZZZZZZZZZPTOX_UDT0 : 13;
+		BIT EH ZZZZZZZZZZPTOX_UDT0 : 14;
+		BIT EN ZZZZZZZZZZPTOX_UDT0 : 15;
+		DINT ER;
+		DINT OF;
+		DINT OFS;
+		DINT JF;
+		DINT TOP;
+		DINT OPP;
+		DINT ADP;
+	END_DATATYPE
+
+	DATATYPE PWMX_UDT (FamilyType := NoFamily)
+		DINT OUT;
+		DINT ZZZZZZZZZZPWMX_UDT0 (Hidden := 1);
+		BIT DS ZZZZZZZZZZPWMX_UDT0 : 1;
+		BIT RS ZZZZZZZZZZPWMX_UDT0 : 2;
+		BIT AS ZZZZZZZZZZPWMX_UDT0 : 3;
+		BIT PP ZZZZZZZZZZPWMX_UDT0 : 5;
+		BIT IS ZZZZZZZZZZPWMX_UDT0 : 6;
+		BIT ED ZZZZZZZZZZPWMX_UDT0 : 7;
+		BIT NS ZZZZZZZZZZPWMX_UDT0 : 8;
+		BIT EH ZZZZZZZZZZPWMX_UDT0 : 14;
+		BIT EN ZZZZZZZZZZPWMX_UDT0 : 15;
+		DINT ER;
+		DINT OF;
+		DINT OFS;
+		DINT DC;
+		DINT DCS;
+		DINT ORC;
+	END_DATATYPE
+
+	DATATYPE RTC_UDT (FamilyType := NoFamily)
+		DINT YR;
+		DINT MON;
+		DINT DAY;
+		DINT HR;
+		DINT MIN;
+		DINT SEC;
+		DINT DOW;
+		DINT ZZZZZZZZZZRTC_UDT0 (Hidden := 1);
+		BIT DS ZZZZZZZZZZRTC_UDT0 : 0;
+		BIT BL ZZZZZZZZZZRTC_UDT0 : 2;
+	END_DATATYPE
+
+	DATATYPE SLOT00_UDT (FamilyType := NoFamily)
+		DINT I[8];
+		DINT O[6];
+	END_DATATYPE
+
+	DATATYPE STI_UDT (FamilyType := NoFamily)
+		DINT PFN;
+		DINT EC;
+		DINT ZZZZZZZZZZSTI_UDT0 (Hidden := 1);
+		BIT UIX ZZZZZZZZZZSTI_UDT0 : 0;
+		BIT UIE ZZZZZZZZZZSTI_UDT0 : 1;
+		BIT UIL ZZZZZZZZZZSTI_UDT0 : 2;
+		BIT UIP ZZZZZZZZZZSTI_UDT0 : 3;
+		BIT TIE ZZZZZZZZZZSTI_UDT0 : 4;
+		BIT AS ZZZZZZZZZZSTI_UDT0 : 5;
+		BIT ED ZZZZZZZZZZSTI_UDT0 : 6;
+		DINT SPM;
+	END_DATATYPE
+
+	MODULE Local (Parent := "Local",
+	              ParentModPortId := 1,
+	              CatalogNumber := "5069-L310ER",
+	              Vendor := 1,
+	              ProductType := 14,
+	              ProductCode := 216,
+	              Major := 31,
+	              Minor := 11,
+	              PortLabel := "RxBACKPLANE",
+	              ChassisSize := 9,
+	              Slot := 0,
+	              Mode := 2#0000_0000_0000_0001,
+	              CompatibleModule := 0,
+	              KeyMask := 2#0000_0000_0000_0000)
+	END_MODULE
+
+	MODULE ENETBRIDGE_1769 (Parent := "Local",
+	                        ParentModPortId := 4,
+	                        CatalogNumber := "1769-AENTR",
+	                        Vendor := 1,
+	                        ProductType := 12,
+	                        ProductCode := 298,
+	                        Major := 1,
+	                        Minor := 1,
+	                        PortLabel := "A2",
+	                        ChassisSize := 2,
+	                        Slot := 0,
+	                        NodeAddress := "192.168.1.5",
+	                        Mode := 2#0000_0000_0000_0000,
+	                        CompatibleModule := 1,
+	                        KeyMask := 2#0000_0000_0001_1111)
+			ExtendedProp := [[[___<public><ConfigID>100</ConfigID><CatNum>1769-AENTR</CatNum></public>___]]]
+	END_MODULE
+
+	MODULE MigratedIO_SLOT1 (Parent := "ENETBRIDGE_1769",
+	                         ParentModPortId := 1,
+	                         CatalogNumber := "1769-OW16/A",
+	                         Vendor := 1,
+	                         ProductType := 7,
+	                         ProductCode := 85,
+	                         Major := 1,
+	                         Minor := 1,
+	                         PortLabel := "RxBACKPLANE",
+	                         Slot := 1,
+	                         CommMethod := 536870913,
+	                         Mode := 2#0000_0000_0000_0001,
+	                         CompatibleModule := 1,
+	                         KeyMask := 2#0000_0000_0001_1111)
+			ExtendedProp := [[[___<public><ConfigID>150</ConfigID><CatNum>1769-OW16</CatNum></public>___]]]
+			ConfigData  := [18,102,1,0,0,0,0,0];
+			CONNECTION Output (Rate := 20000,
+			                   EventID := 0,
+			                   Unicast := Yes)
+					InputData (Description := "*** Generated by Migration Tool: Data and descriptions were not carried over to the migrated I/O module.  Please manually move data and descriptions to the desired tag. *** ") := [0,0];
+					OutputData (Description := "*** Generated by Migration Tool: Data and descriptions were not carried over to the migrated I/O module.  Please manually move data and descriptions to the desired tag. *** ") := [0];
+			END_CONNECTION
+
+	END_MODULE
+
+	TAG
+		B13 : DINT[14] (COMMENT[0].0 := "STATION - GRIPPER W NOT OPEN",
+		            COMMENT[0].1 := "STATION - GRIPPER X NOT OPEN",
+		            COMMENT[0].8 := "STATION - SERVO DRIVES RESET TGGL",
+		            COMMENT[3].0 := "AUTO - BEGIN CYCLE",
+		            COMMENT[3].1 := "AUTO - UPDATE CURRENT PLY COUNT",
+		            COMMENT[3].2 := "AUTO - UPDATE CURRENT PLY TYPE & LENGTH",
+		            COMMENT[3].3 := "AUTO - MOVE PRINT & TABLE TO CURRENT SIDE",
+		            COMMENT[3].4 := "AUTO - MOVE GRIPPER LENGTH",
+		            COMMENT[3].5 := "AUTO - MOVING GRIPPER LENGTH",
+		            COMMENT[3].6 := "AUTO - INDEX PRINT AXIS",
+		            COMMENT[3].7 := "AUTO - INDEXING PRINT AXIS",
+		            COMMENT[3].8 := "AUTO - PRINT AXIS INDEXED",
+		            COMMENT[3].9 := "AUTO - INDEXING PRINT AXIS",
+		            COMMENT[3].10 := "AUTO - MOVE CURRENT SIDE AXIS TO PICK & MATERIAL CLEAR",
+		            COMMENT[3].11 := "AUTO - MOVING CURRENT SIDE AXIS TO PICK",
+		            COMMENT[3].12 := "AUTO - MOVING CURRENT MATERIAL CLEAR",
+		            COMMENT[3].13 := "AUTO - OPEN CURRENT SIDE GRIPPER",
+		            COMMENT[3].14 := "AUTO - MOVE CURRENT MATERIAL TO GRIP",
+		            COMMENT[3].15 := "AUTO - MOVING CURRENT MATERIAL TO GRIP",
+		            COMMENT[4].0 := "AUTO - CLOSE CURRENT SIDE GRIPPER",
+		            COMMENT[4].1 := "AUTO - MOVE CURRENT MATERIAL TO CUT",
+		            COMMENT[4].2 := "AUTO - MOVING CURRENT MATERIAL TO CUT",
+		            COMMENT[4].3 := "AUTO - MOVING CURRENT SIDE AXIS TO CUT",
+		            COMMENT[4].4 := "AUTO - TURN ON SHEAR",
+		            COMMENT[4].5 := "AUTO - TURN OFF SHEAR",
+		            COMMENT[4].6 := "AUTO - MOVE CURRENT SIDE TO PLACE & MATERIAL CLEAR",
+		            COMMENT[4].7 := "AUTO - MOVING CURRENT SIDE AXIS TO PLACE",
+		            COMMENT[4].8 := "AUTO - MOVING CURRENT MATERIAL CLEAR",
+		            COMMENT[4].9 := "AUTO - OPEN CURRENT SIDE GRIPPER",
+		            COMMENT[4].10 := "AUTO - CLOSE CURRENT SIDE GRIPPER",
+		            COMMENT[4].11 := "AUTO - MOVE CURRENT MATERIAL & SIDE BACK",
+		            COMMENT[4].12 := "AUTO - MOVING CURRENT MATERIAL BACK",
+		            COMMENT[4].13 := "AUTO - MOVING CURRENT SIDE AXIS BACK",
+		            COMMENT[4].14 := "AUTO - CHECK IF DONE",
+		            COMMENT[4].15 := "AUTO - CHARGE NOT DONE",
+		            COMMENT[5].0 := "AUTO - CHARGE DONE",
+		            COMMENT[5].1 := "AUTO - MOVE TABLE TO X",
+		            COMMENT[5].8 := "AUTO - MOVE CURRENT SIDE AXIS TO CUT",
+		            COMMENT[5].15 := "AUTO - CYCLE COMPLETE",
+		            COMMENT[8] := "STATION FAULTS",
+		            COMMENT[8].0 := "STATION - MATERIAL W MOTION FLT",
+		            COMMENT[8].1 := "STATION - MATERIAL X MOTION FLT",
+		            COMMENT[8].2 := "STATION - SIDE W AXIS MOTION FLT",
+		            COMMENT[8].3 := "STATION - SIDE X AXIS MOTION FLT",
+		            COMMENT[8].4 := "STATION - PRINT AXIS MOTION FLT",
+		            COMMENT[8].5 := "STATION - PRINT SIDE NOT @ W FLT",
+		            COMMENT[8].6 := "STATION - PRINT SIDE NOT @ X FLT",
+		            COMMENT[8].7 := "STATION - TABLE SIDE NOT @ W FLT",
+		            COMMENT[8].8 := "STATION - TABLE SIDE NOT @ X FLT",
+		            COMMENT[8].9 := "STATION - GRIPPER W NOT OPENED @ PICK FLT",
+		            COMMENT[8].10 := "STATION - GRIPPER W NOT OPENED @ PLACE FLT",
+		            COMMENT[8].11 := "STATION - GRIPPER X NOT OPENED @ PICK FLT",
+		            COMMENT[8].12 := "STATION - GRIPPER X NOT OPENED @ PLACE FLT",
+		            COMMENT[8].14 := "STATION - SIDE W AXIS NOT @ PLACE FLT",
+		            COMMENT[9] := "STATION FAULTS",
+		            COMMENT[9].0 := "STATION - SIDE X AXIS NOT @ PLACE FLT",
+		            COMMENT[10] := "PLYS NOT DONE BITS",
+		            COMMENT[10].0 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].1 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].2 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].3 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].4 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].5 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].6 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].7 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].8 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].9 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].10 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].11 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].12 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].13 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].14 := "AUTO - PLYS NOT DONE",
+		            COMMENT[10].15 := "AUTO - PLYS NOT DONE",
+		            COMMENT[11] := "PLYS NOT DONE BITS",
+		            COMMENT[11].0 := "AUTO - PLYS NOT DONE",
+		            COMMENT[11].1 := "AUTO - PLYS NOT DONE",
+		            COMMENT[11].2 := "AUTO - PLYS NOT DONE",
+		            COMMENT[12] := "PLYS DONE BITS",
+		            COMMENT[12].0 := "AUTO - PLYS DONE",
+		            COMMENT[12].1 := "AUTO - PLYS DONE",
+		            COMMENT[12].2 := "AUTO - PLYS DONE",
+		            COMMENT[12].3 := "AUTO - PLYS DONE",
+		            COMMENT[12].4 := "AUTO - PLYS DONE",
+		            COMMENT[12].5 := "AUTO - PLYS DONE",
+		            COMMENT[12].6 := "AUTO - PLYS DONE",
+		            COMMENT[12].7 := "AUTO - PLYS DONE",
+		            COMMENT[12].8 := "AUTO - PLYS DONE",
+		            COMMENT[12].9 := "AUTO - PLYS DONE",
+		            COMMENT[12].10 := "AUTO - PLYS DONE",
+		            COMMENT[12].11 := "AUTO - PLYS DONE",
+		            COMMENT[12].12 := "AUTO - PLYS DONE",
+		            COMMENT[12].13 := "AUTO - PLYS DONE",
+		            COMMENT[12].14 := "AUTO - PLYS DONE",
+		            COMMENT[12].15 := "AUTO - PLYS DONE",
+		            COMMENT[13] := "PLYS DONE BITS",
+		            COMMENT[13].0 := "AUTO - PLYS DONE",
+		            COMMENT[13].1 := "AUTO - PLYS DONE",
+		            COMMENT[13].2 := "AUTO - PLYS DONE",
+		            COMMENT[13].3 := "AUTO - PLYS DONE",
+		            RADIX := Binary) := [3,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		B3 : DINT[48] (COMMENT[0].0 := "always off",
+		            COMMENT[0].1 := "always on",
+		            COMMENT[0].2 := "TEMP REMOVAL I:0/0 PRINT AXIS ALARM, CHANGED INPUT TO MATERIAL LOAD LC CLEAR",
+		            COMMENT[0].3 := "KARENS DEBUG",
+		            COMMENT[0].12 := "AUTO - CLOSE CURRENT GRIPPER TD OS",
+		            COMMENT[0].13 := "AUTO - UPDATE CURRENT PLY COUNT OS",
+		            COMMENT[0].14 := "AUTO - UPDATE CURRENT PLY COUNT OS",
+		            COMMENT[0].15 := "AUTO - UPDATE CURRENT PLY COUNT OS",
+		            COMMENT[1].0 := "SYSTEM - START PB OS",
+		            COMMENT[1].1 := "AUTO - CHARGE COMPLETE OS",
+		            COMMENT[1].2 := "SYSTEM - FAULT RESET BTTN OS",
+		            COMMENT[1].3 := "SYSTEM - DRY RUN BTTN OS",
+		            COMMENT[1].4 := "SYSTEM - MANUAL SELECTED OS",
+		            COMMENT[1].5 := "AUTO - UPDATE CURRENT PLY TYPE & LENGTH OS",
+		            COMMENT[1].6 := "AUTO - MOVE PRINT & TABLE TO CURRENT SIDE OS",
+		            COMMENT[1].7 := "AUTO - MOVE GRIPPER LENGTH OS",
+		            COMMENT[1].8 := "SYSTEM - PINCH ROLL W OS",
+		            COMMENT[1].9 := "SYSTEM - PINCH ROLL X OS",
+		            COMMENT[1].10 := "SYSTEM - SHEAR ON OS",
+		            COMMENT[1].11 := "AUTO - MOVE CURRENT MATERIAL & SIDE TO CUT TD OS",
+		            COMMENT[1].12 := "AUTO - OPEN CURRENT SIDE GRIPPER OS",
+		            COMMENT[1].13 := "AUTO - UPDATE CURRENT PLY TYPE & LENGTH OS",
+		            COMMENT[1].14 := "SYSTEM - FAULT PRESENT OS",
+		            COMMENT[1].15 := "SYSTEM - BEGIN AUTO CYCLE OS",
+		            COMMENT[2].0 := "SYSTEM - START PB PLS",
+		            COMMENT[2].2 := "SYSTEM - FAULT RESET BTTN PLS",
+		            COMMENT[2].3 := "SYSTEM - DRY RUN BTTN PLS",
+		            COMMENT[2].8 := "SYSTEM - PINCH ROLL W PLS",
+		            COMMENT[2].9 := "SYSTEM - PINCH ROLL X PLS",
+		            COMMENT[2].15 := "SYSTEM - 1 SEC PLS",
+		            COMMENT[3].0 := "SYSTEM - FAULT PRESENT",
+		            COMMENT[3].1 := "SYSTEM - STATION FAULT PRESENT",
+		            COMMENT[3].3 := "SYSTEM - AUTO SELECTED",
+		            COMMENT[3].4 := "SYSTEM - AUTO ENABLED",
+		            COMMENT[3].5 := "SYSTEM - MACHINE INITIALIZED",
+		            COMMENT[3].7 := "SYSTEM - MACHINE STARTED",
+		            COMMENT[3].8 := "SYSTEM - MACHINE STOPPED",
+		            COMMENT[3].9 := "AUTO - CHARGE COMPLETE",
+		            COMMENT[3].10 := "SYSTEM - DRY RUN ENABLED",
+		            COMMENT[3].11 := "SYSTEM - MANUAL SELECTED",
+		            COMMENT[3].12 := "SYSTEM - MANUAL ENABLED",
+		            COMMENT[3].13 := "SYSTEM - STEP MODE ON",
+		            COMMENT[3].14 := "SYSTEM - ENABLE FAULT RECOVERY",
+		            COMMENT[3].15 := "SYSTEM - START TIMERS",
+		            COMMENT[4].0 := "PLY MATERIAL W SELECTED",
+		            COMMENT[4].1 := "PLY MATERIAL X SELECTED",
+		            COMMENT[4].2 := "NEXT PLY MATERIAL W SELECTED",
+		            COMMENT[4].3 := "NEXT PLY MATERIAL X SELECTED",
+		            COMMENT[4].4 := "SYSTEM - FAULT RECOVERY WINDOW",
+		            COMMENT[4].7 := "SYSTEM - MATERIAL MOVE DONE",
+		            COMMENT[4].8 := "SYSTEM - PINCH ROLL W TGGL",
+		            COMMENT[4].9 := "SYSTEM - PINCH ROLL X TGGL",
+		            COMMENT[4].10 := "SYSTEM - TURN ON SHEAR",
+		            COMMENT[4].11 := "SYSTEM - TURN OFF SHEAR",
+		            COMMENT[4].12 := "SYSTEM - MOVE MATERIAL CLEAR",
+		            COMMENT[4].13 := "SYSTEM - MOVING MATERIAL CLEAR",
+		            COMMENT[4].14 := "SYSTEM - MOVE MATERIAL BACK",
+		            COMMENT[4].15 := "SYSTEM - MOVING MATERIAL BACK",
+		            COMMENT[5].0 := "INITIALIZE - BEGIN CYCLE",
+		            COMMENT[5].1 := "INITIALIZE - CLOSE GRIPPERS",
+		            COMMENT[5].2 := "INITIALIZE - MOVE PRINT & TABLE TO W",
+		            COMMENT[5].3 := "INITIALIZE - HOME PRINT AXIS",
+		            COMMENT[5].4 := "INITIALIZE - HOMING PRINT AXIS",
+		            COMMENT[5].5 := "INITIALIZE - HOME SIDE W & X AXIS",
+		            COMMENT[5].6 := "INITIALIZE - JOG SIDE W AXIS TO HOME",
+		            COMMENT[5].7 := "INITIALIZE - JOGGING SIDE W AXIS TO HOME",
+		            COMMENT[5].8 := "INITIALIZE - SIDE W AXIS @ HOME",
+		            COMMENT[5].9 := "INITIALIZE - JOG SIDE W AXIS OFF HOME",
+		            COMMENT[5].10 := "INITIALIZE - JOGGING SIDE W AXIS OFF HOME",
+		            COMMENT[5].11 := "INITIALIZE - SIDE W AXIS OFF HOME",
+		            COMMENT[5].12 := "INITIALIZE - JOG SIDE X AXIS TO HOME",
+		            COMMENT[5].13 := "INITIALIZE - JOGGING SIDE X AXIS TO HOME",
+		            COMMENT[5].14 := "INITIALIZE - SIDE X AXIS @ HOME",
+		            COMMENT[5].15 := "INITIALIZE - JOG SIDE X AXIS OFF HOME",
+		            COMMENT[6].0 := "INITIALIZE - JOGGING SIDE X AXIS OFF HOME",
+		            COMMENT[6].1 := "INITIALIZE - SIDE X AXIS OFF HOME",
+		            COMMENT[6].14 := "INITIALIZE - MOVING MATERIAL BACK",
+		            COMMENT[6].15 := "INITIALIZE - CYCLE COMPLETE",
+		            COMMENT[7].0 := "INITIALIZE - FAULT RECOVERY START",
+		            COMMENT[7].1 := "INITIALIZE - TURN ON SHEAR",
+		            COMMENT[7].2 := "INITIALIZE - TURN OFF SHEAR",
+		            COMMENT[7].3 := "INITIALIZE - JOG CURRENT SIDE TO PLACE",
+		            COMMENT[7].4 := "INITIALIZE - JOGGING CURRENT SIDE TO PLACE",
+		            COMMENT[7].5 := "INITIALIZE - JOG CURRENT SIDE @ PLACE",
+		            COMMENT[7].6 := "INITIALIZE - JOG CURRENT SIDE OFF PLACE",
+		            COMMENT[7].7 := "INITIALIZE - JOGGING CURRENT SIDE OFF PLACE",
+		            COMMENT[7].8 := "INITIALIZE - CURRENT SIDE OFF PLACE",
+		            COMMENT[7].9 := "INITIALIZE - MOVE CURRENT SIDE TO GRIPPER",
+		            COMMENT[7].10 := "INITIALIZE - MOVING CURRENT SIDE TO GRIPPER",
+		            COMMENT[7].11 := "INITIALIZE - OPEN CURRENT SIDE GRIPPER",
+		            COMMENT[7].12 := "INITIALIZE - CLOSE CURRENT SIDE GRIPPER",
+		            COMMENT[7].13 := "INITIALIZE - MOVE MATERIAL CLEAR",
+		            COMMENT[7].14 := "INITIALIZE - MOVING MATERIAL CLEAR",
+		            COMMENT[7].15 := "INITIALIZE - MOVE MATERIAL BACK",
+		            COMMENT[10].0 := "SYSTEM - MATERIAL W DRIVE ENABLED",
+		            COMMENT[10].1 := "SYSTEM - MATERIAL W DRIVE FAULT",
+		            COMMENT[10].2 := "SYSTEM - MATERIAL W MOTION COMPLETE",
+		            COMMENT[10].3 := "SYSTEM - MATERIAL X DRIVE ENABLED",
+		            COMMENT[10].4 := "SYSTEM - MATERIAL X DRIVE FAULT",
+		            COMMENT[10].5 := "SYSTEM - MATERIAL X MOTION COMPLETE",
+		            COMMENT[10].15 := "SYSTEM - 1/2 SEC FLASHER",
+		            COMMENT[11] := "SYSTEM FAULTS",
+		            COMMENT[11].0 := "SYSTEM - E-STOP ACTIVATED FLT",
+		            COMMENT[11].2 := "SYSTEM - LIGHT CURTAIN NOT CLEAR FLT",
+		            COMMENT[11].3 := "SYSTEM - MATERIAL W DRIVE FLT",
+		            COMMENT[11].4 := "SYSTEM - MATERIAL W DRIVE NOT ENABLED FLT",
+		            COMMENT[11].5 := "SYSTEM - MATERIAL X DRIVE FLT",
+		            COMMENT[11].6 := "SYSTEM - MATERIAL X DRIVE NOT ENABLED FLT",
+		            COMMENT[11].7 := "SYSTEM - PRINT AXIS DRIVE ALARM FLT",
+		            COMMENT[11].8 := "SYSTEM - SIDE W AXIS DRIVE ALARM FLT",
+		            COMMENT[11].9 := "SYSTEM - SIDE X AXIS DRIVE ALARM FLT",
+		            COMMENT[12] := "STATION FAULTS",
+		            COMMENT[12].0 := "SYSTEM - STATION FAULT PRESENT",
+		            COMMENT[14].0 := "AXIS1: COMMUNICATION TO DRIVE LOST",
+		            COMMENT[14].1 := "AXIS2: COMMUNICATION TO DRIVE LOST",
+		            COMMENT[14].2 := "AXIS1: FAULT",
+		            COMMENT[14].3 := "AXIS2: FAULT",
+		            COMMENT[15].0 := "HMI - YES BTTN",
+		            COMMENT[15].1 := "HMI - NO BTTN",
+		            COMMENT[16].0 := "HMI - RESET DATA BTTN",
+		            COMMENT[16].1 := "HMI - INITIALIZE BTTN",
+		            COMMENT[16].2 := "HMI - FAULT RESET BTTN",
+		            COMMENT[16].3 := "HMI - DRY RUN BTTN",
+		            COMMENT[16].4 := "HMI - CYCLE START BTTN",
+		            COMMENT[16].5 := "HMI - CYCLE STOP BTTN",
+		            COMMENT[16].6 := "HMI - ABORT CYCLE BTTN",
+		            COMMENT[16].7 := "HMI - CONTINUE CYCLE BTTN",
+		            COMMENT[16].8 := "HMI - PINCH ROLL W BTTN",
+		            COMMENT[16].9 := "HMI - PINCH ROLL X BTTN",
+		            COMMENT[16].10 := "HMI - SHEAR ON BTTN",
+		            COMMENT[16].11 := "HMI - RESTART CYCLE BTTN",
+		            COMMENT[16].12 := "HMI - RETRY PLY BTTN",
+		            COMMENT[16].13 := "HMI - SKIP PLY BTTN",
+		            COMMENT[16].14 := "HMI - RESET BLADE COUNT BTTN",
+		            COMMENT[17].0 := "HMI - DISPLAY FAULT MESSAGE",
+		            COMMENT[17].1 := "HMI - DISPLAY PLY MESSAGE",
+		            COMMENT[17].2 := "HMI - DISPLAY REDO MESSAGE",
+		            COMMENT[17].3 := "HMI - SETUP CONTINUE BTTN",
+		            COMMENT[17].4 := "HMI - MANUAL CONTINUE BTTN",
+		            COMMENT[18].0 := "MANUAL - INDEX W IN MOTION",
+		            COMMENT[18].1 := "MANUAL - INDEX X IN MOTION",
+		            COMMENT[18].2 := "MANUAL - PRINT AXIS IN MOTION",
+		            COMMENT[18].3 := "MANUAL - PRINT AXIS IN MOTION",
+		            COMMENT[18].4 := "MANUAL - PRINT AXIS IN MOTION",
+		            COMMENT[18].5 := "MANUAL - PRINT AXIS IN MOTION",
+		            COMMENT[18].6 := "MANUAL - SIDE W AXIS TO PICK IN MOTION",
+		            COMMENT[18].7 := "MANUAL - SIDE W AXIS TO CUT IN MOTION",
+		            COMMENT[18].8 := "MANUAL - SIDE W AXIS TO PLACE IN MOTION",
+		            COMMENT[18].9 := "MANUAL - SIDE W AXIS RETRACT IN MOTION",
+		            COMMENT[18].10 := "MANUAL - SIDE X AXIS TO PICK IN MOTION",
+		            COMMENT[18].11 := "MANUAL - SIDE X AXIS TO CUT IN MOTION",
+		            COMMENT[18].12 := "MANUAL - SIDE X AXIS TO PLACE IN MOTION",
+		            COMMENT[18].13 := "MANUAL - SIDE X AXIS RETRACT IN MOTION",
+		            COMMENT[19].0 := "MANUAL - JOGGING SIDE W AXIS TO HOME",
+		            COMMENT[19].1 := "MANUAL - SIDE W AXIS @ HOME",
+		            COMMENT[19].2 := "MANUAL - JOG SIDE W AXIS OFF HOME",
+		            COMMENT[19].3 := "MANUAL - JOGGING SIDE W AXIS OFF HOME",
+		            COMMENT[19].4 := "MANUAL - SIDE W AXIS OFF HOME",
+		            COMMENT[19].5 := "MANUAL - JOGGING SIDE X AXIS TO HOME",
+		            COMMENT[19].6 := "MANUAL - SIDE X AXIS @ HOME",
+		            COMMENT[19].7 := "MANUAL - JOG SIDE X AXIS OFF HOME",
+		            COMMENT[19].8 := "MANUAL - JOGGING SIDE X AXIS OFF HOME",
+		            COMMENT[19].9 := "MANUAL - SIDE X AXIS OFF HOME",
+		            COMMENT[19].10 := "MANUAL - TURN OFF SHEAR",
+		            COMMENT[19].11 := "MANUAL - MOVE MATERIAL CLEAR",
+		            COMMENT[19].12 := "MANUAL - MOVING MATERIAL CLEAR",
+		            COMMENT[19].13 := "MANUAL - MOVE MATERIAL BACK",
+		            COMMENT[19].14 := "MANUAL - MOVING MATERIAL BACK",
+		            COMMENT[20].0 := "MANUAL - STEP CYCLE STOP",
+		            COMMENT[20].1 := "HMI - MAIN CONTACTOR BTTN",
+		            COMMENT[20].2 := "HMI - BLUE INDICATOR BTTN",
+		            COMMENT[20].3 := "HMI - YELLOW INDICATOR BTTN",
+		            COMMENT[20].4 := "HMI - RED INDICATOR BTTN",
+		            COMMENT[20].5 := "HMI - GREEN INDICATOR BTTN",
+		            COMMENT[20].6 := "HMI - SHEAR BTTN",
+		            COMMENT[20].7 := "HMI - DISABLE W DRIVE BTTN",
+		            COMMENT[20].8 := "HMI - INDEX W BTTN",
+		            COMMENT[20].9 := "HMI - RESET W DRIVE BTTN",
+		            COMMENT[20].10 := "HMI - DISABLE X DRIVE BTTN",
+		            COMMENT[20].11 := "HMI - INDEX X BTTN",
+		            COMMENT[20].12 := "HMI - RESET X DRIVE BTTN",
+		            COMMENT[20].13 := "HMI - PINCH ROLL W BTTN",
+		            COMMENT[20].14 := "HMI - PINCH ROLL X BTTN",
+		            COMMENT[20].15 := "HMI - PRINT SIDE BTTN",
+		            COMMENT[21].0 := "MANUAL - STEP CYCLE OS",
+		            COMMENT[21].1 := "MANUAL - MAIN CONTACTOR BTTN OS",
+		            COMMENT[21].2 := "MANUAL - BLUE INDICATOR BTTN OS",
+		            COMMENT[21].3 := "MANUAL - YELLOW INDICATOR BTTN OS",
+		            COMMENT[21].4 := "MANUAL - RED INDICATOR BTTN OS",
+		            COMMENT[21].5 := "MANUAL - GREEN INDICATOR BTTN OS",
+		            COMMENT[21].6 := "MANUAL - SHEAR BTTN OS",
+		            COMMENT[21].7 := "MANUAL - DISABLE W DRIVE BTTN OS",
+		            COMMENT[21].8 := "MANUAL - INDEX W BTTN OS",
+		            COMMENT[21].10 := "MANUAL - DISABLE X DRIVE BTTN OS",
+		            COMMENT[21].11 := "MANUAL - INDEX X BTTN OS",
+		            COMMENT[21].15 := "MANUAL - PRINT SIDE BTTN OS",
+		            COMMENT[22].0 := "MANUAL - STEP CYCLE PLS",
+		            COMMENT[22].1 := "MANUAL - MAIN CONTACTOR BTTN PLS",
+		            COMMENT[22].2 := "MANUAL - BLUE INDICATOR BTTN PLS",
+		            COMMENT[22].3 := "MANUAL - YELLOW INDICATOR BTTN PLS",
+		            COMMENT[22].4 := "MANUAL - RED INDICATOR BTTN PLS",
+		            COMMENT[22].5 := "MANUAL - GREEN INDICATOR BTTN PLS",
+		            COMMENT[22].6 := "MANUAL - SHEAR BTTN PLS",
+		            COMMENT[22].7 := "MANUAL - DISABLE W DRIVE BTTN PLS",
+		            COMMENT[22].8 := "MANUAL - INDEX W BTTN PLS",
+		            COMMENT[22].10 := "MANUAL - DISABLE X DRIVE BTTN PLS",
+		            COMMENT[22].11 := "MANUAL - INDEX X BTTN PLS",
+		            COMMENT[22].15 := "MANUAL - PRINT SIDE BTTN PLS",
+		            COMMENT[23].1 := "MANUAL - MAIN CONTACTOR TGGL",
+		            COMMENT[23].2 := "MANUAL - BLUE INDICATOR TGGL",
+		            COMMENT[23].3 := "MANUAL - YELLOW INDICATOR TGGL",
+		            COMMENT[23].4 := "MANUAL - RED INDICATOR TGGL",
+		            COMMENT[23].5 := "MANUAL - GREEN INDICATOR TGGL",
+		            COMMENT[23].6 := "MANUAL - SHEAR ON TGGL",
+		            COMMENT[23].7 := "MANUAL - DISABLE W DRIVE TGGL",
+		            COMMENT[23].8 := "MANUAL - INDEX W ON TGGL",
+		            COMMENT[23].9 := "MANUAL - RESET W DRIVE TGGL",
+		            COMMENT[23].10 := "MANUAL - DISABLE X DRIVE TGGL",
+		            COMMENT[23].11 := "MANUAL - INDEX X ON TGGL",
+		            COMMENT[23].12 := "MANUAL - RESET X DRIVE TGGL",
+		            COMMENT[23].15 := "MANUAL - PRINT SIDE ON TGGL",
+		            COMMENT[24].6 := "MANUAL - SHEAR OFF TGGL",
+		            COMMENT[24].8 := "MANUAL - INDEX W OFF TGGL",
+		            COMMENT[24].11 := "MANUAL - INDEX X OFF TGGL",
+		            COMMENT[24].15 := "MANUAL - PRINT SIDE OFF TGGL",
+		            COMMENT[25].0 := "HMI - TABLE SIDE BTTN",
+		            COMMENT[25].1 := "HMI - PRINT AXIS INDEX BTTN",
+		            COMMENT[25].2 := "HMI - PRINT AXIS HOME BTTN",
+		            COMMENT[25].3 := "HMI - PRINT AXIS RESET BTTN",
+		            COMMENT[25].4 := "HMI - GRIPPER W BTTN",
+		            COMMENT[25].5 := "HMI - GRIPPER X BTTN",
+		            COMMENT[25].6 := "HMI - SIDE W AXIS TO PICK BTTN",
+		            COMMENT[25].7 := "HMI - SIDE W AXIS TO CUT BTTN",
+		            COMMENT[25].8 := "HMI - SIDE W AXIS TO PLACE BTTN",
+		            COMMENT[25].9 := "HMI - SIDE W AXIS RETRACT BTTN",
+		            COMMENT[25].10 := "HMI - SIDE W HOME BTTN",
+		            COMMENT[25].11 := "HMI - SIDE W RESET BTTN",
+		            COMMENT[25].12 := "HMI - SIDE X AXIS TO PICK BTTN",
+		            COMMENT[25].13 := "HMI - SIDE X AXIS TO CUT BTTN",
+		            COMMENT[25].14 := "HMI - SIDE X AXIS TO PLACE BTTN",
+		            COMMENT[25].15 := "HMI - SIDE X AXIS RETRACT BTTN",
+		            COMMENT[26].0 := "MANUAL - TABLE SIDE BTTN OS",
+		            COMMENT[26].1 := "MANUAL - PRINT AXIS INDEX BTTN OS",
+		            COMMENT[26].2 := "MANUAL - PRINT AXIS HOME BTTN OS",
+		            COMMENT[26].4 := "MANUAL - GRIPPER W BTTN OS",
+		            COMMENT[26].5 := "MANUAL - GRIPPER X BTTN OS",
+		            COMMENT[26].6 := "MANUAL - SIDE W AXIS TO PICK BTTN OS",
+		            COMMENT[26].7 := "MANUAL - SIDE W AXIS TO CUT BTTN OS",
+		            COMMENT[26].8 := "MANUAL - SIDE W AXIS TO PLACE BTTN OS",
+		            COMMENT[26].9 := "MANUAL - SIDE W AXIS RETRACT BTTN OS",
+		            COMMENT[26].10 := "MANUAL - SIDE W HOME BTTN OS",
+		            COMMENT[26].12 := "MANUAL - SIDE X AXIS TO PICK BTTN OS",
+		            COMMENT[26].13 := "MANUAL - SIDE X AXIS TO CUT BTTN OS",
+		            COMMENT[26].14 := "MANUAL - SIDE X AXIS TO PLACE BTTN OS",
+		            COMMENT[26].15 := "MANUAL - SIDE X AXIS RETRACT BTTN OS",
+		            COMMENT[27].0 := "MANUAL - TABLE SIDE BTTN PLS",
+		            COMMENT[27].1 := "MANUAL - PRINT AXIS INDEX BTTN PLS",
+		            COMMENT[27].2 := "MANUAL - PRINT AXIS HOME BTTN PLS",
+		            COMMENT[27].4 := "MANUAL - GRIPPER W BTTN PLS",
+		            COMMENT[27].5 := "MANUAL - GRIPPER X BTTN PLS",
+		            COMMENT[27].6 := "MANUAL - SIDE W AXIS TO PICK BTTN PLS",
+		            COMMENT[27].7 := "MANUAL - SIDE W AXIS TO CUT BTTN PLS",
+		            COMMENT[27].8 := "MANUAL - SIDE W AXIS TO PLACE BTTN PLS",
+		            COMMENT[27].9 := "MANUAL - SIDE W AXIS RETRACT BTTN PLS",
+		            COMMENT[27].10 := "MANUAL - SIDE W HOME BTTN PLS",
+		            COMMENT[27].12 := "MANUAL - SIDE X AXIS TO PICK BTTN PLS",
+		            COMMENT[27].13 := "MANUAL - SIDE X AXIS TO CUT BTTN PLS",
+		            COMMENT[27].14 := "MANUAL - SIDE X AXIS TO PLACE BTTN PLS",
+		            COMMENT[27].15 := "MANUAL - SIDE X AXIS RETRACT BTTN PLS",
+		            COMMENT[28].0 := "MANUAL - TABLE SIDE ON TGGL",
+		            COMMENT[28].1 := "MANUAL - PRINT AXIS INDEX ON TGGL",
+		            COMMENT[28].2 := "MANUAL - PRINT AXIS HOME ON TGGL",
+		            COMMENT[28].3 := "MANUAL - PRINT AXIS RESET TGGL",
+		            COMMENT[28].4 := "MANUAL - GRIPPER W TGGL",
+		            COMMENT[28].5 := "MANUAL - GRIPPER X TGGL",
+		            COMMENT[28].6 := "MANUAL - SIDE W AXIS TO PICK ON TGGL",
+		            COMMENT[28].7 := "MANUAL - SIDE W AXIS TO CUT ON TGGL",
+		            COMMENT[28].8 := "MANUAL - SIDE W AXIS TO PLACE ON TGGL",
+		            COMMENT[28].9 := "MANUAL - SIDE W AXIS RETRACT ON TGGL",
+		            COMMENT[28].10 := "MANUAL - SIDE W AXIS HOME ON TGGL",
+		            COMMENT[28].11 := "MANUAL - SIDE W RESET TGGL",
+		            COMMENT[28].12 := "MANUAL - SIDE X AXIS TO PICK ON TGGL",
+		            COMMENT[28].13 := "MANUAL - SIDE X AXIS TO CUT ON TGGL",
+		            COMMENT[28].14 := "MANUAL - SIDE X AXIS TO PLACE ON TGGL",
+		            COMMENT[28].15 := "MANUAL - SIDE X AXIS RETRACT ON TGGL",
+		            COMMENT[29].0 := "MANUAL - TABLE SIDE OFF TGGL",
+		            COMMENT[29].1 := "MANUAL - PRINT AXIS INDEX OFF TGGL",
+		            COMMENT[29].2 := "MANUAL - PRINT AXIS HOME OFF TGGL",
+		            COMMENT[29].6 := "MANUAL - SIDE W AXIS TO PICK OFF TGGL",
+		            COMMENT[29].7 := "MANUAL - SIDE W AXIS TO CUT OFF TGGL",
+		            COMMENT[29].8 := "MANUAL - SIDE W AXIS TO PLACE OFF TGGL",
+		            COMMENT[29].9 := "MANUAL - SIDE W AXIS RETRACT OFF TGGL",
+		            COMMENT[29].10 := "MANUAL - SIDE W AXIS HOME OFF TGGL",
+		            COMMENT[29].12 := "MANUAL - SIDE X AXIS TO PICK OFF TGGL",
+		            COMMENT[29].13 := "MANUAL - SIDE X AXIS TO CUT OFF TGGL",
+		            COMMENT[29].14 := "MANUAL - SIDE X AXIS TO PLACE OFF TGGL",
+		            COMMENT[29].15 := "MANUAL - SIDE X AXIS RETRACT OFF TGGL",
+		            COMMENT[30].0 := "HMI - SIDE X HOME BTTN",
+		            COMMENT[30].1 := "HMI - SIDE X AXIS RESET BTTN",
+		            COMMENT[30].12 := "MANUAL - MATERIAL W SINGLE CYCLE BTTN",
+		            COMMENT[30].13 := "MANUAL - MATERIAL X SINGLE CYCLE BTTN",
+		            COMMENT[30].14 := "MANUAL - STEP MODE BTTN",
+		            COMMENT[30].15 := "MANUAL - STOP STEP BTTN",
+		            COMMENT[31].0 := "MANUAL - SIDE X HOME BTTN OS",
+		            COMMENT[31].12 := "MANUAL - SINGLE CYCLE BTTN OS",
+		            COMMENT[32].0 := "MANUAL - SIDE X HOME BTTN PLS",
+		            COMMENT[32].12 := "MANUAL - SINGLE CYCLE BTTN PLS",
+		            COMMENT[33].0 := "MANUAL - SIDE X AXIS HOME ON TGGL",
+		            COMMENT[33].1 := "MANUAL - SIDE X AXIS RESET TGGL",
+		            COMMENT[34].0 := "MANUAL - SIDE X AXIS HOME OFF TGGL",
+		            COMMENT[35].0 := "MANUAL - SIDE W HOMED",
+		            COMMENT[35].1 := "MANUAL - SIDE W @ PICK",
+		            COMMENT[35].2 := "MANUAL - SIDE W @ CUT",
+		            COMMENT[35].3 := "MANUAL - SIDE W @ PLACE",
+		            COMMENT[35].4 := "MANUAL - SIDE W @ RETRACT",
+		            COMMENT[35].8 := "MANUAL - SIDE X HOMED",
+		            COMMENT[35].9 := "MANUAL - SIDE X @ PICK",
+		            COMMENT[35].10 := "MANUAL - SIDE X @ CUT",
+		            COMMENT[35].11 := "MANUAL - SIDE X @ PLACE",
+		            COMMENT[35].12 := "MANUAL - SIDE X @ RETRACT",
+		            COMMENT[40].0 := "SYSTEM - PLY 1 COMPLETE",
+		            COMMENT[40].1 := "SYSTEM - PLY 2 COMPLETE",
+		            COMMENT[40].2 := "SYSTEM - PLY 3 COMPLETE",
+		            COMMENT[40].3 := "SYSTEM - PLY 4 COMPLETE",
+		            COMMENT[40].4 := "SYSTEM - PLY 5 COMPLETE",
+		            COMMENT[40].5 := "SYSTEM - PLY 6 COMPLETE",
+		            COMMENT[40].6 := "SYSTEM - PLY 7 COMPLETE",
+		            COMMENT[40].7 := "SYSTEM - PLY 8 COMPLETE",
+		            COMMENT[40].8 := "SYSTEM - PLY 9 COMPLETE",
+		            COMMENT[40].9 := "SYSTEM - PLY 10 COMPLETE",
+		            COMMENT[40].10 := "SYSTEM - PLY 11 COMPLETE",
+		            COMMENT[40].11 := "SYSTEM - PLY 12 COMPLETE",
+		            COMMENT[40].12 := "SYSTEM - PLY 13 COMPLETE",
+		            COMMENT[40].13 := "SYSTEM - PLY 14 COMPLETE",
+		            COMMENT[40].14 := "SYSTEM - PLY 15 COMPLETE",
+		            COMMENT[40].15 := "SYSTEM - PLY 16 COMPLETE",
+		            COMMENT[41].0 := "SYSTEM - PLY 17 COMPLETE",
+		            COMMENT[41].1 := "SYSTEM - PLY 18 COMPLETE",
+		            COMMENT[41].2 := "SYSTEM - PLY 19 COMPLETE",
+		            COMMENT[41].3 := "SYSTEM - PLY 20 COMPLETE",
+		            COMMENT[42].0 := "HMI - PLY 1 REDO BTTN",
+		            COMMENT[42].1 := "HMI - PLY 2 REDO BTTN",
+		            COMMENT[42].2 := "HMI - PLY 3 REDO BTTN",
+		            COMMENT[42].3 := "HMI - PLY 4 REDO BTTN",
+		            COMMENT[42].4 := "HMI - PLY 5 REDO BTTN",
+		            COMMENT[42].5 := "HMI - PLY 6 REDO BTTN",
+		            COMMENT[42].6 := "HMI - PLY 7 REDO BTTN",
+		            COMMENT[42].7 := "HMI - PLY 8 REDO BTTN",
+		            COMMENT[42].8 := "HMI - PLY 9 REDO BTTN",
+		            COMMENT[42].9 := "HMI - PLY 10 REDO BTTN",
+		            COMMENT[42].10 := "HMI - PLY 11 REDO BTTN",
+		            COMMENT[42].11 := "HMI - PLY 12 REDO BTTN",
+		            COMMENT[42].12 := "HMI - PLY 13 REDO BTTN",
+		            COMMENT[42].13 := "HMI - PLY 14 REDO BTTN",
+		            COMMENT[42].14 := "HMI - PLY 15 REDO BTTN",
+		            COMMENT[42].15 := "HMI - PLY 16 REDO BTTN",
+		            COMMENT[43].0 := "HMI - PLY 17 REDO BTTN",
+		            COMMENT[43].1 := "HMI - PLY 18 REDO BTTN",
+		            COMMENT[43].2 := "HMI - PLY 19 REDO BTTN",
+		            COMMENT[43].3 := "HMI - PLY 20 REDO BTTN",
+		            COMMENT[44].0 := "SYSTEM - PLY 1 REDO BTTN OS",
+		            COMMENT[44].1 := "SYSTEM - PLY 2 REDO BTTN OS",
+		            COMMENT[44].2 := "SYSTEM - PLY 3 REDO BTTN OS",
+		            COMMENT[44].3 := "SYSTEM - PLY 4 REDO BTTN OS",
+		            COMMENT[44].4 := "SYSTEM - PLY 5 REDO BTTN OS",
+		            COMMENT[44].5 := "SYSTEM - PLY 6 REDO BTTN OS",
+		            COMMENT[44].6 := "SYSTEM - PLY 7 REDO BTTN OS",
+		            COMMENT[44].7 := "SYSTEM - PLY 8 REDO BTTN OS",
+		            COMMENT[44].8 := "SYSTEM - PLY 9 REDO BTTN OS",
+		            COMMENT[44].9 := "SYSTEM - PLY 10 REDO BTTN OS",
+		            COMMENT[44].10 := "SYSTEM - PLY 11 REDO BTTN OS",
+		            COMMENT[44].11 := "SYSTEM - PLY 12 REDO BTTN OS",
+		            COMMENT[44].12 := "SYSTEM - PLY 13 REDO BTTN OS",
+		            COMMENT[44].13 := "SYSTEM - PLY 14 REDO BTTN OS",
+		            COMMENT[44].14 := "SYSTEM - PLY 15 REDO BTTN OS",
+		            COMMENT[44].15 := "SYSTEM - PLY 16 REDO BTTN OS",
+		            COMMENT[45].0 := "SYSTEM - PLY 17 REDO BTTN OS",
+		            COMMENT[45].1 := "SYSTEM - PLY 18 REDO BTTN OS",
+		            COMMENT[45].2 := "SYSTEM - PLY 19 REDO BTTN OS",
+		            COMMENT[45].3 := "SYSTEM - PLY 20 REDO BTTN OS",
+		            COMMENT[46].0 := "SYSTEM - PLY 1 REDO BTTN PLS",
+		            COMMENT[46].1 := "SYSTEM - PLY 2 REDO BTTN PLS",
+		            COMMENT[46].2 := "SYSTEM - PLY 3 REDO BTTN PLS",
+		            COMMENT[46].3 := "SYSTEM - PLY 4 REDO BTTN PLS",
+		            COMMENT[46].4 := "SYSTEM - PLY 5 REDO BTTN PLS",
+		            COMMENT[46].5 := "SYSTEM - PLY 6 REDO BTTN PLS",
+		            COMMENT[46].6 := "SYSTEM - PLY 7 REDO BTTN PLS",
+		            COMMENT[46].7 := "SYSTEM - PLY 8 REDO BTTN PLS",
+		            COMMENT[46].8 := "SYSTEM - PLY 9 REDO BTTN PLS",
+		            COMMENT[46].9 := "SYSTEM - PLY 10 REDO BTTN PLS",
+		            COMMENT[46].10 := "SYSTEM - PLY 11 REDO BTTN PLS",
+		            COMMENT[46].11 := "SYSTEM - PLY 12 REDO BTTN PLS",
+		            COMMENT[46].12 := "SYSTEM - PLY 13 REDO BTTN PLS",
+		            COMMENT[46].13 := "SYSTEM - PLY 14 REDO BTTN PLS",
+		            COMMENT[46].14 := "SYSTEM - PLY 15 REDO BTTN PLS",
+		            COMMENT[46].15 := "SYSTEM - PLY 16 REDO BTTN PLS",
+		            COMMENT[47].0 := "SYSTEM - PLY 17 REDO BTTN PLS",
+		            COMMENT[47].1 := "SYSTEM - PLY 18 REDO BTTN PLS",
+		            COMMENT[47].2 := "SYSTEM - PLY 19 REDO BTTN PLS",
+		            COMMENT[47].3 := "SYSTEM - PLY 20 REDO BTTN PLS",
+		            RADIX := Binary) := [2,16,0,312,772,0,0,0,0,0,45,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		BHI : BHI_UDT[1]  := [[[0,0,0,0],0,0,0]];
+		C15 : COUNTER[1] (COMMENT[0] := "CURRENT PLY COUNT") := [[0,0,1]];
+		C15_0_ACC OF C15[0].ACC (RADIX := Decimal);
+		C5 : COUNTER[9] (COMMENT[0] := "SYSTEM - RUN TIME SECS",
+		            COMMENT[1] := "SYSTEM - RUN TIME MINS",
+		            COMMENT[2] := "SYSTEM - SHIFT RUN TIME SECS",
+		            COMMENT[3] := "SYSTEM - SHIFT RUN TIME MINS",
+		            COMMENT[4] := "SYSTEM - IDLE TIME SECS",
+		            COMMENT[5] := "SYSTEM - IDLE TIME MINS",
+		            COMMENT[6] := "SYSTEM - ERROR TIME SECS",
+		            COMMENT[7] := "SYSTEM - ERROR TIME MINS",
+		            COMMENT[8] := "SYSTEM - BLADE COUNT") := [[-2147483648,60,46],[-2147483648,60,2],[-2147483648,60,19],[-2147483648,60,16],[-2147483648,60,24],[-2147483648
+				,60,25],[-2147483648,60,15],[-2147483648,60,57],[0,30000,4313]];
+		CS0 : DINT[71] (RADIX := Decimal) := [1,8,0,0,8,1025,2,30,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		CS2 : DINT[71] (RADIX := Decimal) := [1,8,0,0,8,1279,2,30,5,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+		EII : EII_UDT[8]  := [[0,0,16386,0],[0,0,16386,1],[0,0,16386,2],[0,0,16386,3],[0,0,16386,4],[0,0,16386,5],[0,0,16386,6],[0,0,16386,7]];
+		ES1 : DINT[178] (RADIX := Decimal) := [1,236,0,0,96,-4069,29,-25436,-17697,-16216,25700,-1,-256,-16216,25601,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+				,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15000
+				,3000,30,2,110,10,9474,25,10614,18,16140,0,8387,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7519,0,853,0,852,0,7519,0,0,0,0
+				,0,0,0,3,0,1,0,2,0,32,0,0];
+		F18 : REAL[21] (COMMENT[1] := "LAYER 1 LENGTH",
+		            COMMENT[2] := "LAYER 2 LENGTH",
+		            COMMENT[3] := "LAYER 3 LENGTH",
+		            COMMENT[4] := "LAYER 4 LENGTH",
+		            COMMENT[5] := "LAYER 5 LENGTH",
+		            COMMENT[6] := "LAYER 6 LENGTH",
+		            COMMENT[7] := "LAYER 7 LENGTH",
+		            COMMENT[8] := "LAYER 8 LENGTH",
+		            COMMENT[9] := "LAYER 9 LENGTH",
+		            COMMENT[10] := "LAYER 10 LENGTH",
+		            COMMENT[11] := "LAYER 11 LENGTH",
+		            COMMENT[12] := "LAYER 12 LENGTH",
+		            COMMENT[13] := "LAYER 13 LENGTH",
+		            COMMENT[14] := "LAYER 14 LENGTH",
+		            COMMENT[15] := "LAYER 15 LENGTH",
+		            COMMENT[16] := "LAYER 16 LENGTH",
+		            COMMENT[17] := "LAYER 17 LENGTH",
+		            COMMENT[18] := "LAYER 18 LENGTH",
+		            COMMENT[19] := "LAYER 19 LENGTH",
+		            COMMENT[20] := "LAYER 20 LENGTH",
+		            RADIX := Float) := [0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		F209 : REAL[28] (COMMENT[0] := "AXIS1: ACTUAL VELOCITY IN UU/MIN (REAL)",
+		            COMMENT[6] := "AXIS1: DATA LINK C (REAL)",
+		            COMMENT[20] := "AXIS2: ACTUAL VELOCITY IN UU/MIN (REAL)",
+		            COMMENT[26] := "AXIS2: DATA LINK C (REAL)",
+		            RADIX := Float) := [1.83946197e-003,9.02718262e+003,9.02718262e+003,-3.61585495e-004,9.06234793e-003,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,-1.70807200e-003,8.66706908e-001,8.66637826e-001,-6.72715323e-005
+				,2.17831805e-002,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		F211 : REAL[28] (COMMENT[0] := "AXIS1: ACCELERATION LIMIT IN UU (POS. MODE) (REAL)",
+		            COMMENT[1] := "AXIS1: DECELERATION LIMIT IN UU (POS. MODE) (REAL)",
+		            COMMENT[3] := "AXIS1: VELOCITY LIMIT IN UU/SEC (POS. MODE) (REAL)",
+		            COMMENT[4] := "AXIS1: REFERENCE POSITION IN UU (REAL)",
+		            COMMENT[6] := "AXIS1: DATA LINK C (REAL)",
+		            COMMENT[20] := "AXIS2: ACCELERATION LIMIT IN UU (POS. MODE) (REAL)",
+		            COMMENT[21] := "AXIS2: DECELERATION LIMIT IN UU (POS. MODE) (REAL)",
+		            COMMENT[23] := "AXIS2: VELOCITY LIMIT IN UU/SEC (POS. MODE) (REAL)",
+		            COMMENT[24] := "AXIS2: REFERENCE POSITION IN UU (REAL)",
+		            COMMENT[26] := "AXIS2: DATA LINK C (REAL)",
+		            RADIX := Float) := [1.20000000e+001,1.20000000e+001,0.00000000e+000,2.42999992e+001,7.69460831e+001,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,1.20000000e+001,1.20000000e+001,0.00000000e+000,2.42999992e+001
+				,-5.00000000e-001,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		F8 : REAL[64] (COMMENT[0] := "SYSTEM - RUN TIME HRS",
+		            COMMENT[1] := "SYSTEM - MACHINE CYCLES",
+		            COMMENT[2] := "SYSTEM - SHIFT RUN TIME HRS",
+		            COMMENT[3] := "SYSTEM - IDLE TIME HRS",
+		            COMMENT[4] := "SYSTEM - ERROR TIME HRS",
+		            COMMENT[5] := "SYSTEM - SHIFT CYCLES",
+		            COMMENT[6] := "SYSTEM - BRAKE SCALE FACTOR",
+		            COMMENT[7] := "SYSTEM - CURRENT PLY LENGTH",
+		            COMMENT[8] := "MANUAL - MATERIAL W LENGTH",
+		            COMMENT[9] := "MANUAL - MATERIAL X LENGTH",
+		            COMMENT[10] := "SYSTEM - ADJUSTED PLY LENGTH",
+		            COMMENT[11] := "SYSTEM - SIDE W GRIPPER LENGTH",
+		            COMMENT[12] := "SYSTEM - SIDE W CUT LENGTH",
+		            COMMENT[13] := "SYSTEM - SIDE X GRIPPER LENGTH",
+		            COMMENT[14] := "SYSTEM - SIDE X CUT LENGTH",
+		            COMMENT[15] := "SYSTEM - SIDE W CUT POSITION",
+		            COMMENT[16] := "SYSTEM - SIDE X CUT POSITION",
+		            COMMENT[17] := "SYSTEM - ACCEL/DECEL COUNTS",
+		            COMMENT[18] := "SYSTEM - STANDARD ACCEL/DECEL RATE",
+		            COMMENT[19] := "SYSTEM - ACCEL/DECEL RATE",
+		            COMMENT[20] := "SYSTEM - STANDARD VELOCITY",
+		            COMMENT[21] := "SYSTEM - VELOCITY",
+		            COMMENT[22] := "HMI - LENGTH SCALE FACTOR W",
+		            COMMENT[23] := "HMI - LENGTH SCALE FACTOR X",
+		            COMMENT[30] := "SYSTEM - MATERIAL W POSITION",
+		            COMMENT[31] := "SYSTEM - MATERIAL W VELOCITY",
+		            COMMENT[32] := "SYSTEM - MATERIAL W ACCEL",
+		            COMMENT[33] := "SYSTEM - MATERIAL W DECEL",
+		            COMMENT[35] := "W$QMINIMUM LENGTH FACTOR NOT TO RUN BELOW 10.05 AT <1.0 SCALE FACTOR",
+		            COMMENT[36] := "X$QMINIMUM LENGTH FACTOR NOT TO RUN BELOW 10.05 AT <1.0 SCALE FACTOR",
+		            COMMENT[41] := "SYSTEM - SIDE W TO GRIPPER DISTANCE",
+		            COMMENT[43] := "SYSTEM - SIDE X TO GRIPPER DISTANCE",
+		            COMMENT[50] := "SYSTEM - MATERIAL X POSITION",
+		            COMMENT[51] := "SYSTEM - MATERIAL X VELOCITY",
+		            COMMENT[52] := "SYSTEM - MATERIAL X ACCEL",
+		            COMMENT[53] := "SYSTEM - MATERIAL X DECEL",
+		            RADIX := Float) := [2.66400000e+003,3.04854000e+005,9.49000000e+002,8.08700000e+003,2.49400000e+003,1.08595000e+005
+				,4.00000000e-001,0.00000000e+000,1.07000000e+002,1.07000000e+002,1.22931600e+001,9.50000000e+000
+				,7.69460831e+001,9.50000000e+000,2.79315996e+000,1.30295596e+004,4.72976100e+002,4.06399994e+001
+				,1.20000000e+001,1.19999997e-001,2.42999992e+001,2.43000000e-001,1.00500000e+000,1.00500000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,-5.00000000e-001,2.42999992e+001,1.20000000e+001,1.20000000e+001,0.00000000e+000,1.07000000e+002
+				,1.07000000e+002,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,1.00000000e+001
+				,0.00000000e+000,1.00000000e+001,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,-2.00000000e+000,2.42999992e+001,1.20000000e+001,1.20000000e+001
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000
+				,0.00000000e+000,0.00000000e+000,0.00000000e+000,0.00000000e+000];
+		HSC : HSC_UDT[6]  := [[0,0,2,15,0,0,2147483647,-2147483647,2147483647,-2147483647,0,0,0],[0,0,2,15,0,0,2147483647,-2147483647,2147483647
+				,-2147483647,0,0,0],[0,0,2,15,0,0,2147483647,-2147483647,2147483647,-2147483647,0,0,0],[0,0,2,15,0,0,2147483647
+				,-2147483647,2147483647,-2147483647,0,0,0],[0,0,2,15,0,0,2147483647,-2147483647,2147483647,-2147483647
+				,0,0,0],[0,0,2,15,0,0,2147483647,-2147483647,2147483647,-2147483647,0,0,0]];
+		L19 : DINT[8] (COMMENT[0] := "SYSTEM - SIDE W CUT COUNTS",
+		            COMMENT[1] := "SYSTEM - SIDE W PLACE COUNTS",
+		            COMMENT[2] := "SYSTEM - SIDE X CUT COUNTS",
+		            COMMENT[3] := "SYSTEM - SIDE X PLACE COUNTS",
+		            COMMENT[4] := "SYSTEM - SIDE W TOTAL PLACE COUNTS",
+		            COMMENT[5] := "SYSTEM - SIDE W RETRACT COUNTS",
+		            COMMENT[6] := "SYSTEM - SIDE X TOTAL PLACE COUNTS",
+		            COMMENT[7] := "SYSTEM - SIDE X RETRACT COUNTS",
+		            RADIX := Decimal) := [12530,41958,473,54040,54488,53413,54513,53438];
+		L204 : DINT[11] (COMMENT[0] := "AXIS1: DRIVE FAULT RESET",
+		            COMMENT[10] := "AXIS2: DRIVE FAULT RESET",
+		            RADIX := Decimal) := [0,0,0,0,0,0,0,0,0,0,0];
+		L208 : DINT[36] (COMMENT[0] := "AXIS1: INPUT ASSBLY BITS",
+		            COMMENT[0].0 := "AXIS1: ENABLED STATUS 0:DISABLED 1:ENABLED",
+		            COMMENT[0].1 := "AXIS1: PHYSICAL AXIS FAULT",
+		            COMMENT[1].1 := "AXIS1: MOTION COMPLETE",
+		            COMMENT[6] := "AXIS1: ACTUAL VELOCITY IN UU/MIN (REAL)",
+		            COMMENT[14] := "AXIS1: DATA LINK C (REAL)",
+		            COMMENT[20] := "AXIS2: INPUT ASSBLY BITS",
+		            COMMENT[20].0 := "AXIS2: ENABLED STATUS 0:DISABLED 1:ENABLED",
+		            COMMENT[20].1 := "AXIS2: PHYSICAL AXIS FAULT",
+		            COMMENT[21].1 := "AXIS2: MOTION COMPLETE",
+		            COMMENT[26] := "AXIS2: ACTUAL VELOCITY IN UU/MIN (REAL)",
+		            COMMENT[34] := "AXIS2: DATA LINK C (REAL)",
+		            RADIX := Decimal) := [827917,2,5,4,0,0,988879384,1175260347,1175260347,-1178758352,1007974974,0,0,0,0,0,-1180482720,1157075975
+				,1157075975,939710016,827917,2,5,4,0,0,-1159732896,1063116929,1063115770,-1198713824,1018327714
+				,0,0,0,0,0];
+		L210 : DINT[33] (COMMENT[0] := "AXIS1: OUTPUT ASSBLY BITS",
+		            COMMENT[0].2 := "AXIS1: START MOTION",
+		            COMMENT[0].7 := "AXIS1: DRIVE ENABLE",
+		            COMMENT[2] := "AXIS1: REFERENCE SOURCE (DINT)",
+		            COMMENT[3] := "AXIS1: ACCELERATION LIMIT IN UU (POS. MODE) (REAL)",
+		            COMMENT[11] := "AXIS1: DATA LINK C (REAL)",
+		            COMMENT[20] := "AXIS2: OUTPUT ASSBLY BITS",
+		            COMMENT[20].2 := "AXIS2: START MOTION",
+		            COMMENT[20].7 := "AXIS2: DRIVE ENABLE",
+		            COMMENT[22] := "AXIS2: REFERENCE SOURCE (DINT)",
+		            COMMENT[23] := "AXIS2: ACCELERATION LIMIT IN UU (POS. MODE) (REAL)",
+		            COMMENT[31] := "AXIS2: DATA LINK C (REAL)",
+		            RADIX := Decimal) := [128,0,2,1094713344,1094713344,0,1103259238,1117381732,0,0,0,0,0,0,0,0,0,0,0,0,128,0,2,1094713344,1094713344
+				,0,1103259238,-1090519040,0,0,0,0,0];
+		MMI : MMI_UDT[1]  := [[[0,0,0,0],0,0,0,0]];
+		N7 : DINT[40] (COMMENT[0] := "HMI - SCREEN STATUS",
+		            COMMENT[2] := "HMI - FAULT MESSAGE",
+		            COMMENT[3] := "HMI - STATUS MESSAGE",
+		            COMMENT[4] := "HMI - BLADE COUNT",
+		            COMMENT[5] := "HMI - BRAKE SCALE FACTOR %",
+		            COMMENT[10] := "SYSTEM - PLY COUNT",
+		            COMMENT[11] := "MATERIAL W AMOUNT INVERSE",
+		            COMMENT[12] := "MATERIAL X AMOUNT INVERSE",
+		            COMMENT[19] := "SYSTEM - STANDARD FREQUENCY & ACCEL/DECEL COUNTS",
+		            COMMENT[20] := "SYSTEM - NUMBER OF PLYS",
+		            COMMENT[21] := "SYSTEM - PLY NUMBER OFFSET FOR PRINT",
+		            COMMENT[22] := "SYSTEM - FAULT MESSAGE",
+		            COMMENT[23] := "SYSTEM - SIDE W & X AXIS TO HOME SPEED",
+		            COMMENT[24] := "SYSTEM - SIDE W & X AXIS OFF HOME SPEED",
+		            COMMENT[25] := "SYSTEM - SIDE W AXIS GRIP COUNTS",
+		            COMMENT[26] := "SYSTEM - SIDE X AXIS GRIP COUNTS",
+		            COMMENT[27] := "SYSTEM - SIDE W GRIPPER COUNTS",
+		            COMMENT[28] := "SYSTEM - SIDE X GRIPPER COUNTS",
+		            COMMENT[29] := "SYSTEM - ACCEL/DECEL COUNTS",
+		            COMMENT[30] := "AXIS1: RUN SEQUENCE COUNTER",
+		            COMMENT[31] := "AXIS2: RUN SEQUENCE COUNTER",
+		            COMMENT[32] := "SYSTEM - PLY NUMBER OFFSET FOR NEXT PLY",
+		            RADIX := Decimal) := [1,3918,0,5,30000,40,0,0,0,0,0,1793,1560,0,0,0,0,0,0,4064,0,36,0,4000,200,1075,1075,1060,1060,41,999,999,7,0,0,0,0,0,0,0];
+		N7_21 OF N7[21] (RADIX := Decimal);
+		N7_32 OF N7[32] (RADIX := Decimal);
+		O1_LegacyValuesAndDescriptions : INT[1] (COMMENT[0].0 := "TABLE SIDE W SELECT",
+		            COMMENT[0].1 := "TABLE SIDE X SELECT",
+		            COMMENT[0].2 := "GRIPPER W OPEN",
+		            COMMENT[0].3 := "GRIPPER X OPEN",
+		            COMMENT[0].4 := "PRINT SIDE W SELECT",
+		            COMMENT[0].5 := "PRINT SIDE X SELECT",
+		            COMMENT[0].6 := "PRINT AXIS HOME COMMAND",
+		            COMMENT[0].8 := "BLUE INDICATOR ON",
+		            COMMENT[0].9 := "AMBER INDICATOR ON",
+		            COMMENT[0].10 := "RED INDICATOR ON",
+		            COMMENT[0].11 := "GREEN INDICATOR ON",
+		            COMMENT[0].12 := "SERVO AXIS ALARM RESET",
+		            RADIX := Binary) := [512];
+		PTOX : PTOX_UDT[3] (COMMENT[0].JC := "SIDE W AXIS JOG COMMAND",
+		            COMMENT[0].EH := "SIDE W AXIS ABORT COMMAND",
+		            COMMENT[0].OF := "SIDE W AXIS OUTPUT FREQUENCY",
+		            COMMENT[0].JF := "SIDE W JOG SPEED",
+		            COMMENT[0].TOP := "SIDE W AXIS MOTION STEPS",
+		            COMMENT[0].ADP := "SIDE W AXIS ACCEL/DECEL COUNTS",
+		            COMMENT[1].JC := "SIDE X AXIS JOG COMMAND",
+		            COMMENT[1].EH := "SIDE X AXIS ABORT COMMAND",
+		            COMMENT[1].OF := "SIDE X AXIS OUTPUT FREQUENCY",
+		            COMMENT[1].JF := "SIDE X JOG SPEED",
+		            COMMENT[1].TOP := "SIDE X AXIS MOTION STEPS",
+		            COMMENT[1].ADP := "SIDE X AXIS ACCEL/DECEL COUNTS") := [[2,9216,0,16256,0,4000,53413,0,4064],[4,64,0,4064,0,4000,1075,0,500],[-1,0,0,0,0,0,0,0,0]];
+		PWMX : PWMX_UDT[3]  := [[-1,0,0,0,0,0,0,0],[-1,0,0,0,0,0,0,0],[-1,0,0,0,0,0,0,0]];
+		R : CONTROL[168]  := [[0,2036639936,3587],[536870912,9329,12291],[0,0,2],[536870912,9217,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,2036639936,4099],[536870912
+				,9330,12291],[0,0,2],[536870912,9217,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0
+				,0,0],[0,0,0],[0,2036639936,4099],[553648128,29699,9269],[805306368,0,2],[536870912,9217,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0
+				],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0
+				],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,2053417152,3587],[536870912,9329,12291],[0,0,2],[536870912,9217
+				,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,2053417152,4099],[536870912,9330,12291],[0,0,2],[536870912,9217,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0
+				],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,2053417152,4099],[553648128,29699,9269],[805306368
+				,0,2],[536870912,9217,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0
+				,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0
+				,0],[0,0,0],[0,0,0],[0,0,0]];
+		R6 : CONTROL[2] (COMMENT[0] := "SYSTEM - PRINT ASCII WRITE") := [[536870912,28,15],[536870912,16,5]];
+		RTC : RTC_UDT[1]  := [[0,0,0,0,0,0,0,0]];
+		S : INT[66] (COMMENT[0] := "Arithmetic Flags",
+		            COMMENT[0].0 := "Processor Arithmetic Carry Flag",
+		            COMMENT[0].1 := "Processor Arithmetic Underflow/ Overflow Flag",
+		            COMMENT[0].2 := "Processor Arithmetic Zero Flag",
+		            COMMENT[0].3 := "Processor Arithmetic Sign Flag",
+		            COMMENT[1] := "Processor Mode Status/ Control",
+		            COMMENT[1].0 := "Processor Mode Bit 0",
+		            COMMENT[1].1 := "Processor Mode Bit 1",
+		            COMMENT[1].2 := "Processor Mode Bit 2",
+		            COMMENT[1].3 := "Processor Mode Bit 3",
+		            COMMENT[1].4 := "Processor Mode Bit 4",
+		            COMMENT[1].5 := "Forces Enabled",
+		            COMMENT[1].6 := "Forces Present",
+		            COMMENT[1].7 := "Comms Active",
+		            COMMENT[1].8 := "Fault Override at Powerup",
+		            COMMENT[1].9 := "Startup Protection Fault",
+		            COMMENT[1].10 := "Load Memory Module on Memory Error",
+		            COMMENT[1].11 := "Load Memory Module Always",
+		            COMMENT[1].12 := "Load Memory Module and RUN",
+		            COMMENT[1].13 := "Major Error Halted",
+		            COMMENT[1].14 := "Access Denied",
+		            COMMENT[1].15 := "First Pass",
+		            COMMENT[2].0 := "STI Pending",
+		            COMMENT[2].1 := "STI Enabled",
+		            COMMENT[2].2 := "STI Executing",
+		            COMMENT[2].3 := "Index Addressing File Range",
+		            COMMENT[2].4 := "Saved with Debug Single Step",
+		            COMMENT[2].5 := "DH-485 Incoming Command Pending",
+		            COMMENT[2].6 := "DH-485 Message Reply Pending",
+		            COMMENT[2].7 := "DH-485 Outgoing Message Command Pending",
+		            COMMENT[2].15 := "Comms Servicing Selection",
+		            COMMENT[3] := "Current Scan Time/ Watchdog Scan Time",
+		            COMMENT[4] := "Time Base",
+		            COMMENT[5].0 := "Overflow Trap",
+		            COMMENT[5].2 := "Control Register Error",
+		            COMMENT[5].3 := "Major Err Detected Executing UserFault Routine",
+		            COMMENT[5].4 := "M0-M1 Referenced on Disabled Slot",
+		            COMMENT[5].8 := "Memory Module Boot",
+		            COMMENT[5].9 := "Memory Module Password Mismatch",
+		            COMMENT[5].10 := "STI Overflow",
+		            COMMENT[5].11 := "Battery Low",
+		            COMMENT[6] := "Major Error Fault Code",
+		            COMMENT[7] := "Suspend Code",
+		            COMMENT[8] := "Suspend File",
+		            COMMENT[9] := "Active Nodes",
+		            COMMENT[10] := "Active Nodes",
+		            COMMENT[11] := "I/O Slot Enables",
+		            COMMENT[12] := "I/O Slot Enables",
+		            COMMENT[13] := "Math Register",
+		            COMMENT[14] := "Math Register",
+		            COMMENT[15] := "Node Address/ Baud Rate",
+		            COMMENT[16] := "Debug Single Step Rung",
+		            COMMENT[17] := "Debug Single Step File",
+		            COMMENT[18] := "Debug Single Step Breakpoint Rung",
+		            COMMENT[19] := "Debug Single Step Breakpoint File",
+		            COMMENT[20] := "Debug Fault/ Powerdown Rung",
+		            COMMENT[21] := "Debug Fault/ Powerdown File",
+		            COMMENT[22] := "Maximum Observed Scan Time",
+		            COMMENT[23] := "Average Scan Time",
+		            COMMENT[24] := "Index Register",
+		            COMMENT[25] := "I/O Interrupt Pending",
+		            COMMENT[26] := "I/O Interrupt Pending",
+		            COMMENT[27] := "I/O Interrupt Enabled",
+		            COMMENT[28] := "I/O Interrupt Enabled",
+		            COMMENT[29] := "User Fault Routine File Number",
+		            COMMENT[30] := "STI Setpoint",
+		            COMMENT[31] := "STI File Number",
+		            COMMENT[32] := "I/O Interrupt Executing",
+		            COMMENT[33] := "Extended Proc Status Control Word",
+		            COMMENT[33].0 := "Incoming Command Pending",
+		            COMMENT[33].1 := "Message Reply Pending",
+		            COMMENT[33].2 := "Outgoing Message Command Pending",
+		            COMMENT[33].3 := "Selection Status User/DF1",
+		            COMMENT[33].4 := "Communicat Active",
+		            COMMENT[33].5 := "Communicat Servicing Selection",
+		            COMMENT[33].6 := "Message Servicing Selection Channel 0",
+		            COMMENT[33].7 := "Message Servicing Selection Channel 1",
+		            COMMENT[33].8 := "Interrupt Latency Control Flag",
+		            COMMENT[33].9 := "Scan Toggle Flag",
+		            COMMENT[33].10 := "Discrete Input Interrupt Reconfigur Flag",
+		            COMMENT[33].11 := "Online Edit Status",
+		            COMMENT[33].12 := "Online Edit Status",
+		            COMMENT[33].13 := "Scan Time Timebase Selection",
+		            COMMENT[33].14 := "DTR Control Bit",
+		            COMMENT[33].15 := "DTR Force Bit",
+		            COMMENT[34] := "Pass-thru Disabled",
+		            COMMENT[34].0 := "Pass-Thru Disabled Flag",
+		            COMMENT[34].1 := "DH+ Active Node Table Enable Flag",
+		            COMMENT[34].2 := "Floating Point Math Flag Disable,Fl",
+		            COMMENT[35] := "Last 1 ms Scan Time",
+		            COMMENT[36] := "Extended Minor Error Bits",
+		            COMMENT[36].8 := "DII Lost",
+		            COMMENT[36].9 := "STI Lost",
+		            COMMENT[36].10 := "Memory Module Data File Overwrite Protection",
+		            COMMENT[37] := "Clock Calendar Year",
+		            COMMENT[38] := "Clock Calendar Month",
+		            COMMENT[39] := "Clock Calendar Day",
+		            COMMENT[40] := "Clock Calendar Hours",
+		            COMMENT[41] := "Clock Calendar Minutes",
+		            COMMENT[42] := "Clock Calendar Seconds",
+		            COMMENT[43] := "STI Interrupt Time",
+		            COMMENT[44] := "I/O Event Interrupt Time",
+		            COMMENT[45] := "DII Interrupt Time",
+		            COMMENT[46] := "Discrete Input Interrupt- File Number",
+		            COMMENT[47] := "Discrete Input Interrupt- Slot Number",
+		            COMMENT[48] := "Discrete Input Interrupt- Bit Mask",
+		            COMMENT[49] := "Discrete Input Interrupt- Compare Value",
+		            COMMENT[50] := "Processor Catalog Number",
+		            COMMENT[51] := "Discrete Input Interrupt- Return Number",
+		            COMMENT[52] := "Discrete Input Interrupt- Accumulat",
+		            COMMENT[53] := "Reserved/ Clock Calendar Day of the Week",
+		            COMMENT[55] := "Last DII Scan Time",
+		            COMMENT[56] := "Maximum Observed DII Scan Time",
+		            COMMENT[57] := "Operating System Catalog Number",
+		            COMMENT[58] := "Operating System Series",
+		            COMMENT[59] := "Operating System FRN",
+		            COMMENT[61] := "Processor Series",
+		            COMMENT[62] := "Processor Revision",
+		            COMMENT[63] := "User Program Type",
+		            COMMENT[64] := "User Program Functional Index",
+		            COMMENT[65] := "User RAM Size",
+		            RADIX := Hex) := [0,38,0,2560,7675,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,44,0,0,0,0,0,0,0,0,0,0,512,0,31,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1400,1,13,17221,1
+				,3,-28671,1334,0];
+		S24 OF S[24] (RADIX := Hex);
+		SERIAL_R6 : SERIAL_PORT_CONTROL[2] (COMMENT[0] := "SYSTEM - PRINT ASCII WRITE") := [[536870912,28,15,0],[536870912,16,5,0]];
+		SLOT00_Bul_1766_Placeholder : SLOT00_UDT  := [[0,0,0,0,0,0,0,0],[3587,0,0,0,716,624]];
+		ST12 : STRING[54] (COMMENT[0] := "SYSTEM - CURRENT PLY",
+		            COMMENT[1] := "PLY 1 MATERIAL",
+		            COMMENT[2] := "PLY 2 MATERIAL",
+		            COMMENT[3] := "PLY 3 MATERIAL",
+		            COMMENT[4] := "PLY 4 MATERIAL",
+		            COMMENT[5] := "PLY 5 MATERIAL",
+		            COMMENT[6] := "PLY 6 MATERIAL",
+		            COMMENT[7] := "PLY 7 MATERIAL",
+		            COMMENT[8] := "PLY 8 MATERIAL",
+		            COMMENT[9] := "PLY 9 MATERIAL",
+		            COMMENT[10] := "PLY 10 MATERIAL",
+		            COMMENT[11] := "PLY 11 MATERIAL",
+		            COMMENT[12] := "PLY 12 MATERIAL",
+		            COMMENT[13] := "PLY 13 MATERIAL",
+		            COMMENT[14] := "PLY 14 MATERIAL",
+		            COMMENT[15] := "PLY 15 MATERIAL",
+		            COMMENT[16] := "PLY 16 MATERIAL",
+		            COMMENT[17] := "PLY 17 MATERIAL",
+		            COMMENT[18] := "PLY 18 MATERIAL",
+		            COMMENT[19] := "PLY 19 MATERIAL",
+		            COMMENT[20] := "PLY 20 MATERIAL",
+		            COMMENT[23] := "SYSTEM - NEXT PLY",
+		            COMMENT[24] := "SYSTEM - PRINT TEXT",
+		            COMMENT[25] := "PART NUMBER",
+		            COMMENT[26] := "SPACE",
+		            COMMENT[27] := "PART NUMBER W/SPACE",
+		            COMMENT[28] := "SYSTEM - SETUP PW",
+		            COMMENT[29] := "SYSTEM - MANUAL PW",
+		            COMMENT[30] := "SYSTEM - EMPTY STRING",
+		            COMMENT[31] := "PLY 1 ID",
+		            COMMENT[32] := "PLY 2 ID",
+		            COMMENT[33] := "PLY 3 ID",
+		            COMMENT[34] := "PLY 4 ID",
+		            COMMENT[35] := "PLY 5 ID",
+		            COMMENT[36] := "PLY 6 ID",
+		            COMMENT[37] := "PLY 7 ID",
+		            COMMENT[38] := "PLY 8 ID",
+		            COMMENT[39] := "PLY 9 ID",
+		            COMMENT[40] := "PLY 10 ID",
+		            COMMENT[41] := "PLY 11 ID",
+		            COMMENT[42] := "PLY 12 ID",
+		            COMMENT[43] := "PLY 13 ID",
+		            COMMENT[44] := "PLY 14 ID",
+		            COMMENT[45] := "PLY 15 ID",
+		            COMMENT[46] := "PLY 16 ID",
+		            COMMENT[47] := "PLY 17 ID",
+		            COMMENT[48] := "PLY 18 ID",
+		            COMMENT[49] := "PLY 19 ID",
+		            COMMENT[50] := "PLY 20 ID",
+		            COMMENT[51] := "HMI - MANUAL PW",
+		            COMMENT[51].LEN := "HMI - SETUP PW",
+		            COMMENT[52] := "HMI - SETUP PW") := [[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P11-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P10-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P11-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P10-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P11-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P10-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P11-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P10-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P11-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P10-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P11-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P10-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[7,'P11-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[2,'PW$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[2,'PX$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[2,'PW$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[12,'483Z2115-508$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[1,' $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[13,'483Z2115-508 $00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[5,'maint$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[5,'maint$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[0,'$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				],[3,'$1B$01$01$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00$00'
+				]];
+		STI : STI_UDT[1]  := [[0,0,2,0]];
+		T14 : TIMER[33] (COMMENT[0] := "AUTO - UPDATE CURRENT PLY COUNT TD",
+		            COMMENT[1] := "AUTO - UPDATE CURRENT PLY TYPE & LENGTH TD",
+		            COMMENT[2] := "AUTO - MOVE GRIPPER LENGTH TD",
+		            COMMENT[3] := "AUTO - MOVE CURRENT SIDE AXIS TO PICK & MATERIAL CLEAR TD",
+		            COMMENT[4] := "AUTO - MOVE CURRENT MATERIAL TO GRIP TD",
+		            COMMENT[5] := "AUTO - MOVE CURRENT MATERIAL TO CUT TD",
+		            COMMENT[6] := "AUTO - TURN ON SHEAR TD",
+		            COMMENT[7] := "AUTO - TURN OFF SHEAR TD",
+		            COMMENT[8] := "AUTO - MOVE CURRENT SIDE TO PLACE & MATERIAL CLEAR TD",
+		            COMMENT[9] := "AUTO - CLOSE CURRENT SIDE GRIPPER TD",
+		            COMMENT[10] := "AUTO - MOVE CURRENT MATERIAL & SIDE BACK TD",
+		            COMMENT[11] := "AUTO - CHECK IF DONE TD",
+		            COMMENT[12] := "AUTO - MOVE PRINT & TABLE TO CURRENT SIDE TD",
+		            COMMENT[15] := "AUTO - MOVE CURRENT SIDE AXIS TO CUT TD",
+		            COMMENT[18] := "STATION - SERVO DRIVE RESET TO",
+		            COMMENT[19] := "AUTO - CYCLE COMPLETE TD",
+		            COMMENT[20] := "STATION - MATERIAL W MOTION TO",
+		            COMMENT[21] := "STATION - MATERIAL X MOTION TO",
+		            COMMENT[22] := "STATION - SIDE W AXIS MOTION TO",
+		            COMMENT[23] := "STATION - SIDE X AXIS MOTION TO",
+		            COMMENT[24] := "STATION - PRINT AXIS MOTION TO",
+		            COMMENT[25] := "STATION - PRINT SIDE NOT @ W TO",
+		            COMMENT[26] := "STATION - PRINT SIDE NOT @ X TO",
+		            COMMENT[27] := "STATION - TABLE SIDE NOT @ W TO",
+		            COMMENT[28] := "STATION - TABLE SIDE NOT @ X TO",
+		            COMMENT[29] := "STATION - GRIPPER W NOT OPENED @ PICK TO",
+		            COMMENT[30] := "STATION - GRIPPER W NOT OPENED @ PLACE TO",
+		            COMMENT[31] := "STATION - GRIPPER X NOT OPENED @ PICK TO",
+		            COMMENT[32] := "STATION - GRIPPER X NOT OPENED @ PLACE TO") := [[0,100,0],[0,100,0],[0,10,0],[0,100,0],[0,500,0],[0,500,0],[0,100,0],[0,500,0],[0,500,0],[0,1500,0],[0,250,0],[0,100,0],[0,100,0],[0,250,0],[0,50,0],[0,100,0],[0,0
+				,0],[0,0,0],[33554432,2000,0],[0,100,0],[33554432,30000,0],[33554432,60000,0],[33554432,20000,0],[33554432,20000,0],[33554432
+				,30000,0],[33554432,5000,0],[33554432,5000,0],[33554432,15000,0],[33554432,15000,0],[33554432,3000,0],[33554432
+				,3000,0],[33554432,3000,0],[33554432,3000,0]];
+		T206 : TIMER[13] (COMMENT[0] := "AXIS1: READ INPUT ASSEMBLY DELAY",
+		            COMMENT[2] := "AXIS1: READ OUTPUT ASSEMBLY DELAY",
+		            COMMENT[10] := "AXIS2: READ INPUT ASSEMBLY DELAY",
+		            COMMENT[12] := "AXIS2: READ OUTPUT ASSEMBLY DELAY") := [[0,50,0],[33554432,5,5],[0,50,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[-1610612736,50,50],[0,0,0],[0,50,0]];
+		T4 : TIMER[60] (COMMENT[0] := "SYSTEM - ENABLE MATERIAL DRIVES HW TD",
+		            COMMENT[1] := "SYSTEM - CYCLE START TD",
+		            COMMENT[2] := "SYSTEM - UNLATCH HMI NO BTTN",
+		            COMMENT[3] := "SYSTEM - UNLATCH HMI ABORT BTTN",
+		            COMMENT[4] := "SYSTEM - 1 SEC TIMER",
+		            COMMENT[6] := "SYSTEM - RESET DATA TIME DELAY",
+		            COMMENT[7] := "SYSTEM - ENABLE MATERIAL W DRIVE SW TD",
+		            COMMENT[8] := "SYSTEM - ENABLE MATERIAL X DRIVE SW TD",
+		            COMMENT[9] := "SYSTEM - 1/2 SEC TIMER",
+		            COMMENT[10] := "SYSTEM - MATERIAL W DRIVE NOT ENABLED TO",
+		            COMMENT[11] := "SYSTEM - MATERIAL X DRIVE NOT ENABLED TO",
+		            COMMENT[12] := "SYSTEM - PRINT AXIS DRIVE ALARM TO",
+		            COMMENT[13] := "SYSTEM - SIDE W AXIS DRIVE ALARM TO",
+		            COMMENT[14] := "SYSTEM - SIDE X AXIS DRIVE ALARM TO",
+		            COMMENT[20] := "INITIALIZE - BEGIN CYCLE TIME DELAY",
+		            COMMENT[21] := "INITIALIZE - MOVE PRINT & TABLE TO W TD",
+		            COMMENT[22] := "INITIALIZE - HOME PRINT AXIS TD",
+		            COMMENT[23] := "INITIALIZE - JOG SIDE W AXIS OFF HOME TD",
+		            COMMENT[24] := "INITIALIZE - JOG SIDE X AXIS OFF HOME TD",
+		            COMMENT[25] := "SYSTEM UNLATCH HMI YES BUTTON",
+		            COMMENT[26] := "SYSTEM UNLATCH HMI RESTART BTTN",
+		            COMMENT[26].EN := "SYSTEM UNLATCH HMI RESTART BTTN",
+		            COMMENT[29] := "INITIALIZE - CYCLE COMPLETE TD",
+		            COMMENT[30] := "INITIALIZE - TURN ON SHEAR TD",
+		            COMMENT[31] := "INITIALIZE - TURN OFF SHEAR TD",
+		            COMMENT[32] := "INITIALIZE - JOG CURRENT SIDE TO PLACE TD",
+		            COMMENT[33] := "INITIALIZE - JOG CURRENT SIDE OFF PLACE TD",
+		            COMMENT[34] := "INITIALIZE - MOVE CURRENT SIDE TO GRIPPER TD",
+		            COMMENT[35] := "INITIALIZE - CLOSE CURRENT SIDE GRIPPER TD",
+		            COMMENT[36] := "INITIALIZE - MOVE MATERIAL CLEAR TD",
+		            COMMENT[37] := "INITIALIZE - MOVE MATERIAL BACK TD",
+		            COMMENT[40] := "SYSTEM - TURN OFF SHEAR TD",
+		            COMMENT[41] := "SYSTEM - MOVE MATERIAL CLEAR TD",
+		            COMMENT[42] := "SYSTEM - MOVE MATERIAL BACK TD",
+		            COMMENT[47] := "MANUAL - TURN OFF SHEAR TD",
+		            COMMENT[48] := "MANUAL - MOVE MATERIAL CLEAR TD",
+		            COMMENT[49] := "MANUAL - MOVE MATERIAL BACK TD",
+		            COMMENT[50] := "MANUAL - SIDE W AXIS TO PICK ON TGGL TD",
+		            COMMENT[51] := "MANUAL - SIDE W AXIS TO CUT ON TGGL TD",
+		            COMMENT[52] := "MANUAL - SIDE W AXIS TO PLACE ON TGGL TD",
+		            COMMENT[53] := "MANUAL - SIDE W AXIS RETRACT ON TGGL TD",
+		            COMMENT[54] := "MANUAL - SIDE X AXIS TO PICK ON TGGL TD",
+		            COMMENT[55] := "MANUAL - SIDE X AXIS TO CUT ON TGGL TD",
+		            COMMENT[56] := "MANUAL - SIDE X AXIS TO PLACE ON TGGL TD",
+		            COMMENT[57] := "MANUAL - SIDE X AXIS RETRACT ON TGGL TD",
+		            COMMENT[58] := "MANUAL - JOG SIDE W AXIS OFF HOME TD",
+		            COMMENT[59] := "MANUAL - JOG SIDE X AXIS OFF HOME TD") := [[-1577058304,3000,3000],[0,100,0],[33554432,2000,0],[33554432,2000,0],[16777216,997,0],[33554432,2000,0],[33554432
+				,1000,0],[-1577058304,2000,2000],[-1577058304,2000,2000],[-1073741824,500,130],[33554432,2000,0],[33554432
+				,2000,0],[33554432,2000,0],[33554432,2000,0],[33554432,2000,0],[33554432,2000,0],[33554432,2000,0],[33554432,2000
+				,0],[33554432,2000,0],[33554432,2000,0],[0,100,0],[0,100,0],[0,100,0],[0,250,0],[0,250,0],[33554432,2000,0],[33554432,2000,0],[0,0,0
+				],[0,0,0],[0,100,0],[0,100,0],[0,500,0],[0,500,0],[0,250,0],[0,250,0],[0,1500,0],[0,50,0],[0,50,0],[0,0,0],[0,0,0],[0,500,0],[0,50,0],[0,50,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,500
+				,0],[0,50,0],[0,25,0],[0,100,0],[0,100,0],[0,100,0],[0,100,0],[0,100,0],[0,100,0],[0,100,0],[0,100,0],[0,250,0],[0,250,0]];
+		MG200_000 : MESSAGE (Description := "AXIS1: READ INPUT ASSEMBLY OBJECT",
+		                   MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0);
+		MG200_001 : MESSAGE (Description := "AXIS1: WRITE OUTPUT ASSEMBLY OBJECT",
+		                   MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0);
+		MG200_002 : MESSAGE (MessageType := Unconfigured,
+		                   RequestedLength := 4,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0,
+		                   LocalElement := "O[1]");
+		MG200_003 : MESSAGE (MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0,
+		                   LocalElement := "O[0]");
+		MG200_004 : MESSAGE (Description := "AXIS1: WRITE DRIVE FAULT RESET",
+		                   MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0,
+		                   LocalElement := "O[0]");
+		MG200_005 : MESSAGE (MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0,
+		                   LocalElement := "O[0]");
+		MG200_006 : MESSAGE (MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0,
+		                   LocalElement := "O[0]");
+		MG200_007 : MESSAGE (MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0,
+		                   LocalElement := "O[0]");
+		MG200_008 : MESSAGE (MessageType := Unconfigured,
+		                   RequestedLength := 1,
+		                   CommTypeCode := 0,
+		                   LocalIndex := 0,
+		                   LocalElement := "O[0]");
+	END_TAG
+
+	PROGRAM MainProgram (MAIN := "MainRoutine",
+	                     MODE := 0,
+	                     DisableFlag := 0,
+	                     UseAsFolder := 0)
+		TAG
+		END_TAG
+
+		ROUTINE MainRoutine 
+				N: EVENT(_2_MAIN);
+		END_ROUTINE
+
+		CHILD_PROGRAMS
+		END_CHILD_PROGRAMS
+
+	END_PROGRAM
+
+	PROGRAM _2_MAIN (MAIN := "_2_MAIN",
+	                 MODE := 0,
+	                 DisableFlag := 0,
+	                 UseAsFolder := 0)
+		TAG
+		END_TAG
+
+		ROUTINE _10_MNL 
+				RC: "~$N"
+				    "SYSTEM$N"
+				    "~";
+				N: XIC(B3[30].14)ONS(B3[21].0)XIC(B3[3].12)[XIO(B13[3].0) ,XIC(B3[3].13) ][OTE(B3[22].0) ,OTU(B3[23].6) ,OTU(B3[23].7) ,OTU(B3[23].8) ,OTU(B3[23].9) ,OTU(B3[23].10) ,OTU(B3[23].11) ,OTU(B3[23].12) ,OTU(B3[23].15) ,OTU(B3[24].15) ,FLL(0,B3[28],2) ,FLL(0,B3[33],2) ];
+				N: XIC(B3[3].11)XIC(B3[30].15)OTE(B3[20].0);
+				N: XIC(B3[20].1)ONS(B3[21].1)OTE(B3[22].1);
+				N: [XIC(B3[22].1) XIO(B3[23].1) ,XIC(B3[23].1) XIO(B3[22].1) ]OTE(B3[23].1);
+				N: XIC(B3[20].2)ONS(B3[21].2)OTE(B3[22].2);
+				N: [XIC(B3[22].2) XIO(B3[23].2) ,XIC(B3[23].2) XIO(B3[22].2) ]OTE(B3[23].2);
+				N: XIC(B3[20].3)ONS(B3[21].3)OTE(B3[22].3);
+				N: [XIC(B3[22].3) XIO(B3[23].3) ,XIC(B3[23].3) XIO(B3[22].3) ]OTE(B3[23].3);
+				N: XIC(B3[20].4)ONS(B3[21].4)OTE(B3[22].4);
+				N: [XIC(B3[22].4) XIO(B3[23].4) ,XIC(B3[23].4) XIO(B3[22].4) ]OTE(B3[23].4);
+				N: XIC(B3[20].5)ONS(B3[21].5)OTE(B3[22].5);
+				N: [XIC(B3[22].5) XIO(B3[23].5) ,XIC(B3[23].5) XIO(B3[22].5) ]OTE(B3[23].5);
+				N: XIC(B3[20].6)XIO(B13[3].0)ONS(B3[21].6)OTE(B3[22].6);
+				N: [XIC(B3[22].6) ,XIC(B3[23].6) ]XIO(B3[24].6)XIC(B3[3].12)OTE(B3[23].6);
+				N: XIC(B3[23].6)[XIC(SLOT00_Bul_1766_Placeholder.O[0].6) ,XIC(B3[19].10) ][TON(T4[47],?,?) ,XIC(T4[47].DN) OTE(B3[19].10) ];
+				N: XIC(B3[19].10)[XIO(SLOT00_Bul_1766_Placeholder.O[0].6) ,XIC(B3[24].6) ]OTE(B3[24].6);
+				N: XIC(B3[20].7)XIO(B13[3].0)ONS(B3[21].7)OTE(B3[22].7);
+				N: [XIC(B3[22].7) XIO(B3[23].7) ,XIC(B3[23].7) XIO(B3[22].7) ]OTE(B3[23].7);
+				N: XIC(B3[20].8)XIC(B3[10].0)XIO(B3[10].1)XIC(B3[10].2)XIO(B13[3].0)ONS(B3[21].8)XIC(B3[3].12)OTE(B3[22].8);
+				N: [XIC(B3[22].8) ,XIC(B3[23].8) ]XIO(B3[24].8)XIO(L208[0].1)XIC(B3[3].12)[MOV(F8[10],F8[30]) ,MOV(F8[20],F8[31]) ,MOV(F8[18],F8[32]) ,MOV(F8[18],F8[33]) ,OTE(B3[23].8) ];
+				N: XIC(B3[23].8)[XIO(L208[1].1) ,XIC(B3[18].0) ]OTE(B3[18].0);
+				N: XIC(B3[18].0)[XIC(L208[1].1) ,XIC(B3[24].8) ]OTE(B3[24].8);
+				N: XIC(B3[20].9)XIO(B13[3].0)OTE(B3[23].9);
+				N: XIC(B3[20].10)XIO(B13[3].0)ONS(B3[21].10)OTE(B3[22].10);
+				N: [XIC(B3[22].10) XIO(B3[23].10) ,XIC(B3[23].10) XIO(B3[22].10) ]OTE(B3[23].10);
+				N: XIC(B3[20].11)XIC(B3[10].3)XIO(B3[10].4)XIC(B3[10].5)XIO(B13[3].0)ONS(B3[21].11)XIC(B3[3].12)OTE(B3[22].11);
+				N: [XIC(B3[22].11) ,XIC(B3[23].11) ]XIO(B3[24].11)XIO(L208[20].1)XIC(B3[3].12)[MOV(F8[10],F8[50]) ,MOV(F8[20],F8[51]) ,MOV(F8[18],F8[52]) ,MOV(F8[18],F8[53]) ,OTE(B3[23].11) ];
+				N: XIC(B3[23].11)[XIO(L208[21].1) ,XIC(B3[18].1) ]OTE(B3[18].1);
+				N: XIC(B3[18].1)[XIC(L208[21].1) ,XIC(B3[24].11) ]OTE(B3[24].11);
+				N: XIC(B3[20].12)XIO(B13[3].0)OTE(B3[23].12);
+				N: XIC(B3[20].15)XIO(SLOT00_Bul_1766_Placeholder.I[0].13)XIO(SLOT00_Bul_1766_Placeholder.I[0].14)XIO(B13[3].0)ONS(B3[21].15)XIC(B3[3].12)OTE(B3[22].15);
+				N: [XIC(B3[22].15) XIO(B3[23].15) ,XIC(B3[23].15) XIO(B3[22].15) ]OTE(B3[23].15);
+				N: [XIC(B3[22].15) XIO(B3[23].15) ,XIC(B3[24].15) XIO(B3[22].15) ]OTE(B3[24].15);
+				N: XIC(B3[25].0)XIO(B13[3].0)ONS(B3[26].0)XIC(B3[3].12)OTE(B3[27].0);
+				N: [XIC(B3[27].0) XIO(B3[28].0) ,XIC(B3[28].0) XIO(B3[27].0) ]OTE(B3[28].0);
+				N: [XIC(B3[27].0) XIO(B3[28].0) ,XIC(B3[29].0) XIO(B3[27].0) ]OTE(B3[29].0);
+				N: XIC(B3[25].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].10)XIO(B13[3].0)ONS(B3[26].1)XIC(B3[3].12)OTE(B3[27].1);
+				N: [XIC(B3[27].1) ,XIC(B3[28].1) ]XIO(B3[29].1)XIO(B3[0].2)XIC(B3[3].12)OTE(B3[28].1);
+				N: XIC(B3[28].1)[XIO(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[18].2) ]OTE(B3[18].2);
+				N: XIC(B3[18].2)[XIC(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[18].3) ]OTE(B3[18].3);
+				N: XIC(B3[18].3)[XIO(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[18].4) ]OTE(B3[18].4);
+				N: XIC(B3[18].4)[XIC(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[29].1) ]OTE(B3[29].1);
+				N: XIC(B3[25].2)XIC(SLOT00_Bul_1766_Placeholder.I[0].10)XIO(B13[3].0)ONS(B3[26].2)XIC(B3[3].12)OTE(B3[27].2);
+				N: [XIC(B3[27].2) ,XIC(B3[28].2) ]XIO(B3[29].2)XIO(B3[0].2)XIC(B3[3].12)OTE(B3[28].2);
+				N: XIC(B3[28].2)[XIO(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[18].5) ]OTE(B3[18].5);
+				N: XIC(B3[18].5)[XIC(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[29].2) ]OTE(B3[29].2);
+				N: XIC(B3[25].3)XIO(B13[3].0)OTE(B3[28].3);
+				N: XIC(B3[25].4)XIO(B13[3].0)ONS(B3[26].4)XIC(B3[3].12)OTE(B3[27].4);
+				N: [XIC(B3[27].4) XIO(B3[28].4) ,XIC(B3[28].4) XIO(B3[27].4) ]OTE(B3[28].4);
+				N: XIC(B3[25].5)XIO(B13[3].0)ONS(B3[26].5)XIC(B3[3].12)OTE(B3[27].5);
+				N: [XIC(B3[27].5) XIO(B3[28].5) ,XIC(B3[28].5) XIO(B3[27].5) ]OTE(B3[28].5);
+				N: XIC(B3[25].6)[XIC(B3[35].0) ,XIC(B3[35].4) ]XIC(SLOT00_Bul_1766_Placeholder.I[1].2)XIC(B13[0].0)XIO(B13[3].0)ONS(B3[26].6)XIC(B3[3].12)OTE(B3[27].6);
+				N: [XIC(B3[27].6) ,XIC(T4[50].EN) ]XIO(B3[29].6)XIC(SLOT00_Bul_1766_Placeholder.I[0].12)XIC(B3[3].12)[XIO(B3[18].6) [MOV(4064,PTOX[0].OF) ,MOV(500,PTOX[0].ADP) ,MOV(N7[25],PTOX[0].TOP) ] ,TON(T4[50],?,?) ,XIC(T4[50].DN) OTE(B3[28].6) ];
+				N: XIC(B3[28].6)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[18].6) ]OTE(B3[18].6);
+				N: XIC(B3[18].6)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[29].6) ][OTL(B3[35].1) ,OTU(B3[35].2) ,OTU(B3[35].3) ,OTU(B3[35].4) ,OTU(B3[35].0) ,OTE(B3[29].6) ];
+				N: XIC(B3[25].7)XIC(B3[35].1)XIC(SLOT00_Bul_1766_Placeholder.I[1].2)XIC(B13[0].0)XIO(B13[3].0)ONS(B3[26].7)XIC(B3[3].12)OTE(B3[27].7);
+				N: [XIC(B3[27].7) ,XIC(T4[51].EN) ]XIO(B3[29].7)XIC(SLOT00_Bul_1766_Placeholder.I[0].12)XIC(B3[3].12)[XIO(B3[18].7) MOV(L19[0],PTOX[0].TOP) ,TON(T4[51],?,?) ,XIC(T4[51].DN) OTE(B3[28].7) ];
+				N: XIC(B3[28].7)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[18].7) ]OTE(B3[18].7);
+				N: XIC(B3[18].7)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[29].7) ][OTL(B3[35].2) ,OTU(B3[35].3) ,OTU(B3[35].4) ,OTU(B3[35].0) ,OTU(B3[35].1) ,OTE(B3[29].7) ];
+				N: XIC(B3[25].8)XIC(B3[35].2)XIC(SLOT00_Bul_1766_Placeholder.I[1].2)XIC(B13[0].0)XIO(B13[3].0)ONS(B3[26].8)XIC(B3[3].12)OTE(B3[27].8);
+				N: [XIC(B3[27].8) ,XIC(T4[52].EN) ]XIO(B3[29].8)XIC(SLOT00_Bul_1766_Placeholder.I[0].12)XIC(B3[3].12)[XIO(B3[18].8) [MOV(16256,PTOX[0].OF) ,MOV(2032,PTOX[0].ADP) ,MOV(L19[1],PTOX[0].TOP) ] ,TON(T4[52],?,?) ,XIC(T4[52].DN) OTE(B3[28].8) ];
+				N: XIC(B3[28].8)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[18].8) ]OTE(B3[18].8);
+				N: XIC(B3[18].8)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[29].8) ][OTL(B3[35].3) ,OTU(B3[35].4) ,OTU(B3[35].0) ,OTU(B3[35].1) ,OTU(B3[35].2) ,OTE(B3[29].8) ];
+				N: XIC(B3[25].9)XIC(B3[35].3)XIC(SLOT00_Bul_1766_Placeholder.I[1].2)XIC(B13[0].0)XIO(B13[3].0)ONS(B3[26].9)XIC(B3[3].12)OTE(B3[27].9);
+				N: [XIC(B3[27].9) ,XIC(T4[53].EN) ]XIO(B3[29].9)XIC(SLOT00_Bul_1766_Placeholder.I[0].12)XIC(B3[3].12)[XIO(B3[18].9) [MOV(16256,PTOX[0].OF) ,MOV(2032,PTOX[0].ADP) ,MOV(L19[5],PTOX[0].TOP) ] ,TON(T4[53],?,?) ,XIC(T4[53].DN) OTE(B3[28].9) ];
+				N: XIC(B3[28].9)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[18].9) ]OTE(B3[18].9);
+				N: XIC(B3[18].9)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[29].9) ][OTL(B3[35].4) ,OTU(B3[35].0) ,OTU(B3[35].1) ,OTU(B3[35].2) ,OTU(B3[35].3) ,OTE(B3[29].9) ];
+				N: XIC(B3[25].10)XIC(SLOT00_Bul_1766_Placeholder.I[1].2)XIC(B13[0].0)XIO(B13[3].0)ONS(B3[26].10)XIC(B3[3].12)OTE(B3[27].10);
+				N: [XIC(B3[27].10) ,XIC(B3[28].10) ]XIO(B3[29].10)XIC(SLOT00_Bul_1766_Placeholder.I[0].12)XIC(B3[3].12)[XIO(B3[19].0) MOV(N7[23],PTOX[0].JF) ,OTE(B3[28].10) ];
+				N: XIC(B3[28].10)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[19].0) ]OTE(B3[19].0);
+				N: XIC(B3[19].0)[XIC(SLOT00_Bul_1766_Placeholder.I[0].13) ,XIC(B3[19].1) ]OTE(B3[19].1);
+				N: XIC(B3[19].1)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[19].2) ][XIO(B3[19].3) MOV(N7[24],PTOX[0].JF) ,TON(T4[58],?,?) ,XIC(T4[58].DN) OTE(B3[19].2) ];
+				N: XIC(B3[19].2)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[19].3) ]OTE(B3[19].3);
+				N: XIC(B3[19].3)[XIO(SLOT00_Bul_1766_Placeholder.I[0].13) ,XIC(B3[19].4) ]OTE(B3[19].4);
+				N: XIC(B3[19].4)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[29].10) ][OTL(B3[35].0) ,OTU(B3[35].1) ,OTU(B3[35].2) ,OTU(B3[35].3) ,OTU(B3[35].4) ,OTE(B3[29].10) ];
+				N: XIC(B3[25].11)XIO(B13[3].0)OTE(B3[28].11);
+				N: XIC(B3[25].12)[XIC(B3[35].8) ,XIC(B3[35].12) ]XIC(SLOT00_Bul_1766_Placeholder.I[1].3)XIC(B13[0].1)XIO(B13[3].0)ONS(B3[26].12)XIC(B3[3].12)OTE(B3[27].12);
+				N: [XIC(B3[27].12) ,XIC(T4[54].EN) ]XIO(B3[29].12)XIC(SLOT00_Bul_1766_Placeholder.I[1].1)XIC(B3[3].12)[XIO(B3[18].10) [MOV(4064,PTOX[1].OF) ,MOV(500,PTOX[1].ADP) ,MOV(N7[26],PTOX[1].TOP) ] ,TON(T4[54],?,?) ,XIC(T4[54].DN) OTE(B3[28].12) ];
+				N: XIC(B3[28].12)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[18].10) ]OTE(B3[18].10);
+				N: XIC(B3[18].10)[XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[29].12) ][OTL(B3[35].9) ,OTU(B3[35].10) ,OTU(B3[35].11) ,OTU(B3[35].12) ,OTU(B3[35].8) ,OTE(B3[29].12) ];
+				N: XIC(B3[25].13)XIC(B3[35].9)XIC(SLOT00_Bul_1766_Placeholder.I[1].3)XIC(B13[0].1)XIO(B13[3].0)ONS(B3[26].13)XIC(B3[3].12)OTE(B3[27].13);
+				N: [XIC(B3[27].13) ,XIC(T4[55].EN) ]XIO(B3[29].13)XIC(SLOT00_Bul_1766_Placeholder.I[1].1)XIC(B3[3].12)[XIO(B3[18].11) MOV(L19[2],PTOX[1].TOP) ,TON(T4[55],?,?) ,XIC(T4[55].DN) OTE(B3[28].13) ];
+				N: XIC(B3[28].13)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[18].11) ]OTE(B3[18].11);
+				N: XIC(B3[18].11)[XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[29].13) ][OTL(B3[35].10) ,OTU(B3[35].11) ,OTU(B3[35].12) ,OTU(B3[35].8) ,OTU(B3[35].9) ,OTE(B3[29].13) ];
+				N: XIC(B3[25].14)XIC(B3[35].10)XIC(SLOT00_Bul_1766_Placeholder.I[1].3)XIC(B13[0].1)XIO(B13[3].0)ONS(B3[26].14)XIC(B3[3].12)OTE(B3[27].14);
+				N: [XIC(B3[27].14) ,XIC(T4[56].EN) ]XIO(B3[29].14)XIC(SLOT00_Bul_1766_Placeholder.I[1].1)XIC(B3[3].12)[XIO(B3[18].12) [MOV(16256,PTOX[1].OF) ,MOV(2032,PTOX[1].ADP) ,MOV(L19[3],PTOX[1].TOP) ] ,TON(T4[56],?,?) ,XIC(T4[56].DN) OTE(B3[28].14) ];
+				N: XIC(B3[28].14)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[18].12) ]OTE(B3[18].12);
+				N: XIC(B3[18].12)[XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[29].14) ][OTL(B3[35].11) ,OTU(B3[35].12) ,OTU(B3[35].8) ,OTU(B3[35].9) ,OTU(B3[35].10) ,OTE(B3[29].14) ];
+				N: XIC(B3[25].15)XIC(B3[35].11)XIC(SLOT00_Bul_1766_Placeholder.I[1].3)XIC(B13[0].1)XIO(B13[3].0)ONS(B3[26].15)XIC(B3[3].12)OTE(B3[27].15);
+				N: [XIC(B3[27].15) ,XIC(T4[57].EN) ]XIO(B3[29].15)XIC(SLOT00_Bul_1766_Placeholder.I[1].1)XIC(B3[3].12)[XIO(B3[18].13) [MOV(16256,PTOX[1].OF) ,MOV(2032,PTOX[1].ADP) ,MOV(L19[7],PTOX[1].TOP) ] ,TON(T4[57],?,?) ,XIC(T4[57].DN) OTE(B3[28].15) ];
+				N: XIC(B3[28].15)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[18].13) ]OTE(B3[18].13);
+				N: XIC(B3[18].13)[XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[29].15) ][OTL(B3[35].12) ,OTU(B3[35].8) ,OTU(B3[35].9) ,OTU(B3[35].10) ,OTU(B3[35].11) ,OTE(B3[29].15) ];
+				N: XIC(B3[30].0)XIC(SLOT00_Bul_1766_Placeholder.I[1].3)XIC(B13[0].1)XIO(B13[3].0)ONS(B3[31].0)XIC(B3[3].12)OTE(B3[32].0);
+				N: [XIC(B3[32].0) ,XIC(B3[33].0) ]XIO(B3[34].0)XIC(SLOT00_Bul_1766_Placeholder.I[1].1)XIC(B3[3].12)[XIO(B3[19].5) MOV(N7[23],PTOX[1].JF) ,OTE(B3[33].0) ];
+				N: XIC(B3[33].0)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[19].5) ]OTE(B3[19].5);
+				N: XIC(B3[19].5)[XIC(SLOT00_Bul_1766_Placeholder.I[0].14) ,XIC(B3[19].6) ]OTE(B3[19].6);
+				N: XIC(B3[19].6)[XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[19].7) ][XIO(B3[5].10) MOV(N7[24],PTOX[1].JF) ,TON(T4[59],?,?) ,XIC(T4[59].DN) OTE(B3[19].7) ];
+				N: XIC(B3[19].7)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[19].8) ]OTE(B3[19].8);
+				N: XIC(B3[19].8)[XIO(SLOT00_Bul_1766_Placeholder.I[0].14) ,XIC(B3[19].9) ]OTE(B3[19].9);
+				N: XIC(B3[19].9)[XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[34].0) ][OTL(B3[35].8) ,OTU(B3[35].9) ,OTU(B3[35].10) ,OTU(B3[35].11) ,OTU(B3[35].12) ,OTE(B3[34].0) ];
+				N: XIC(B3[30].1)XIO(B13[3].0)OTE(B3[33].1);
+				N: XIO(B3[3].12)CLR(B3[35]);
+				N: [XIC(B3[30].12) ,XIC(B3[30].13) ]ONS(B3[31].12)XIC(B3[3].12)XIO(B13[3].0)[OTE(B3[32].12) ,OTU(B3[23].6) ,OTU(B3[23].7) ,OTU(B3[23].8) ,OTU(B3[23].9) ,OTU(B3[23].10) ,OTU(B3[23].11) ,OTU(B3[23].12) ,OTU(B3[23].15) ,OTU(B3[24].15) ,FLL(0,B3[28],2) ,FLL(0,B3[33],2) ];
+		END_ROUTINE
+
+		ROUTINE _11_AUTO 
+				RC: "~$N"
+				    "CYCLE$N"
+				    "~";
+				N: [[XIC(B3[3].7) XIO(B13[3].0) ,XIC(B13[3].0) ] XIO(B13[4].15) XIO(B13[5].15) XIC(B3[3].4) ,[XIC(B3[32].12) ,XIC(B13[3].0) XIC(B3[3].11) ] XIO(B13[5].15) XIO(B3[3].13) XIO(B3[3].0) XIO(B3[3].1) ,XIC(B3[3].13) ]OTE(B13[3].0);
+				N: XIC(B13[3].0)[[XIC(SLOT00_Bul_1766_Placeholder.I[0].4) ,XIC(SLOT00_Bul_1766_Placeholder.I[0].5) ,XIC(B3[0].1) ] [XIC(SLOT00_Bul_1766_Placeholder.I[0].6) ,XIC(SLOT00_Bul_1766_Placeholder.I[0].7) ] ,XIC(B3[3].11) ,XIC(B13[3].1) ][TON(T14[0],?,?) ,XIC(T14[0].DN) OTE(B13[3].1) ];
+				N: XIC(B13[3].1)[TON(T14[1],?,?) ,XIC(T14[1].DN) OTE(B13[3].2) ];
+				N: XIC(B13[3].2)[XIO(B13[4].8) [XIC(B3[4].0) MOV(-0.5,F8[30]) ,XIC(B3[4].1) MOV(-0.5,F8[50]) ] ,TON(T14[13],?,?) ,XIC(T14[13].DN) OTE(B13[4].12) ];
+				N: XIC(B13[4].12)[XIC(B3[4].0) XIO(L208[1].1) ,XIC(B3[4].1) XIO(L208[21].1) ,XIC(B13[4].8) ]OTE(B13[4].8);
+				N: XIC(B13[4].8)[[XIC(B3[4].0) XIC(L208[1].1) ,XIC(B3[4].1) XIC(L208[21].1) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[12].EN) ] ,XIC(B13[3].3) ][TON(T14[12],?,?) ,XIC(T14[12].DN) OTE(B13[3].3) ];
+				N: XIC(B13[3].3)[[XIC(B3[4].0) [XIC(SLOT00_Bul_1766_Placeholder.I[0].4) ,XIC(B3[0].1) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].6) ,XIC(B3[4].1) [XIC(SLOT00_Bul_1766_Placeholder.I[0].5) ,XIC(B3[0].1) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].7) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[2].EN) ] ,XIC(B13[3].6) ]OTE(B13[3].6);
+				N: XIC(B13[3].4)[XIC(B3[4].0) XIO(L208[1].1) ,XIC(B3[4].1) XIO(L208[21].1) ,XIC(B13[3].5) ]OTE(B13[3].5);
+				N: XIC(B13[3].6)[XIO(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[3].11) ,XIC(B13[3].7) ,XIC(B13[3].6) ]OTE(B13[3].7);
+				N: XIC(B13[3].7)[XIC(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[3].11) ,XIC(B13[3].8) ,XIC(B13[3].7) ]OTE(B13[3].8);
+				N: XIC(B13[3].8)[XIO(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[3].11) ,XIC(B13[3].9) ,XIC(B13[3].8) ]OTE(B13[3].9);
+				N: XIC(B13[3].9)[[XIC(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[3].11) ,XIC(B3[0].1) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[3].EN) ] ,XIC(B13[3].10) ][XIO(B13[3].11) [XIC(B3[4].0) MOV(N7[25],PTOX[0].TOP) ,XIC(B3[4].1) MOV(N7[26],PTOX[1].TOP) ] ,XIO(B13[3].12) [XIC(B3[4].0) MOV(-2.0,F8[30]) ,XIC(B3[4].1) MOV(-2.0,F8[50]) ] ,TON(T14[3],?,?) ,XIC(T14[3].DN) OTE(B13[3].10) ];
+				N: XIC(B13[3].10)[XIC(B3[4].0) XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[4].1) XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B13[3].11) ]OTE(B13[3].11);
+				N: XIC(B13[3].10)[XIC(B3[4].0) XIO(L208[1].1) ,XIC(B3[4].1) XIO(L208[21].1) ,XIC(B13[3].12) ]OTE(B13[3].12);
+				N: XIC(B13[3].11)[XIC(B13[3].12) ,XIC(B3[0].1) ][[XIC(B3[4].0) XIC(SLOT00_Bul_1766_Placeholder.I[1].2) XIC(L208[1].1) ,XIC(B3[4].1) XIC(SLOT00_Bul_1766_Placeholder.I[1].3) XIC(L208[21].1) ] [XIO(B3[3].13) ,XIC(B3[22].0) ] ,XIC(B13[3].13) ]OTE(B13[3].13);
+				N: XIC(B13[3].13)[[XIC(B3[4].0) XIC(SLOT00_Bul_1766_Placeholder.I[0].15) ,XIC(B3[4].1) XIC(SLOT00_Bul_1766_Placeholder.I[1].0) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[4].EN) ] ,XIC(B13[3].14) ][XIO(B13[3].15) [XIC(B3[4].0) MOV(F8[41],F8[30]) ,XIC(B3[4].1) MOV(F8[43],F8[50]) ] ,TON(T14[4],?,?) ,XIC(T14[4].DN) OTE(B13[3].14) ];
+				N: XIC(B13[3].14)[XIC(B3[4].0) XIO(L208[1].1) ,XIC(B3[4].1) XIO(L208[21].1) ,XIC(B13[3].15) ]OTE(B13[3].15);
+				N: XIC(B13[3].15)[[XIC(B3[4].0) XIC(L208[1].1) ,XIC(B3[4].1) XIC(L208[21].1) ] [XIO(B3[3].13) ,XIC(B3[22].0) ] ,XIC(B13[4].0) ]OTE(B13[4].0);
+				N: XIC(B13[4].0)[[XIC(B3[4].0) XIO(SLOT00_Bul_1766_Placeholder.I[0].15) ,XIC(B3[4].1) XIO(SLOT00_Bul_1766_Placeholder.I[1].0) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[5].EN) ] ,XIC(B13[4].1) ][XIO(B13[4].2) [XIC(B3[4].0) MOV(F8[12],F8[30]) ,XIC(B3[4].1) MOV(F8[14],F8[50]) ] ,XIO(B13[4].3) [XIC(B3[4].0) MOV(L19[0],PTOX[0].TOP) ,XIC(B3[4].1) MOV(L19[2],PTOX[1].TOP) ] ,TON(T14[5],?,?) ,XIC(T14[5].DN) OTE(B13[4].1) ];
+				N: XIC(B13[4].1)[XIC(B3[4].0) XIO(L208[1].1) ,XIC(B3[4].1) XIO(L208[21].1) ,XIC(B13[4].2) ]OTE(B13[4].2);
+				N: XIC(B13[4].1)[TON(T14[15],?,?) ,XIC(T14[15].DN) OTE(B13[5].8) ];
+				N: XIC(B13[5].8)[XIC(B3[4].0) XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[4].1) XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B13[4].3) ]OTE(B13[4].3);
+				N: XIC(B13[4].2)XIC(B13[4].3)[[XIC(B3[4].0) XIC(L208[1].1) XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[4].1) XIC(L208[21].1) XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[6].EN) ] ,XIC(B13[4].4) ][TON(T14[6],?,?) ,XIC(T14[6].DN) OTE(B13[4].4) ];
+				N: XIC(B13[4].4)[XIC(SLOT00_Bul_1766_Placeholder.O[0].6) ,XIC(B13[4].5) ][TON(T14[7],?,?) ,XIC(T14[7].DN) OTE(B13[4].5) ];
+				N: XIC(B13[4].5)[XIO(SLOT00_Bul_1766_Placeholder.O[0].6) [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[8].EN) ] ,XIC(B13[4].6) ][XIO(B13[4].7) [XIC(B3[4].0) MOV(L19[1],PTOX[0].TOP) ,XIC(B3[4].1) MOV(L19[3],PTOX[1].TOP) ] ,TON(T14[8],?,?) ,XIC(T14[8].DN) OTE(B13[4].6) ];
+				N: XIC(B13[4].6)[XIC(B3[4].0) XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[4].1) XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B13[4].7) ]OTE(B13[4].7);
+				N: XIC(B13[4].7)[[XIC(B3[4].0) XIC(SLOT00_Bul_1766_Placeholder.I[1].2) XIC(SLOT00_Bul_1766_Placeholder.I[0].8) ,XIC(B3[4].1) XIC(SLOT00_Bul_1766_Placeholder.I[1].3) XIC(SLOT00_Bul_1766_Placeholder.I[0].9) ] [XIO(B3[3].13) ,XIC(B3[22].0) ] ,XIC(B13[4].9) ]OTE(B13[4].9);
+				N: XIC(B13[4].9)[[XIC(B3[4].0) XIC(SLOT00_Bul_1766_Placeholder.I[0].2) ,XIC(B3[4].1) XIC(SLOT00_Bul_1766_Placeholder.I[0].3) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[9].EN) ] ,XIC(B13[4].10) ][TON(T14[9],?,?) ,XIC(T14[9].DN) OTE(B13[4].10) ];
+				N: XIC(B13[4].10)[[XIC(B3[4].0) XIO(SLOT00_Bul_1766_Placeholder.I[0].2) ,XIC(B3[4].1) XIO(SLOT00_Bul_1766_Placeholder.I[0].3) ] [XIO(B3[3].13) ,XIC(B3[22].0) ,XIC(T14[10].EN) ] ,XIC(B13[4].11) ][XIO(B13[4].13) [XIC(B3[4].0) MOV(L19[5],PTOX[0].TOP) ,XIC(B3[4].1) MOV(L19[7],PTOX[1].TOP) ] ,TON(T14[10],?,?) ,XIC(T14[10].DN) OTE(B13[4].11) ];
+				N: XIC(B13[4].11)[XIC(B3[4].0) XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[4].1) XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B13[4].13) ]OTE(B13[4].13);
+				N: XIC(B13[4].13)[XIC(B3[4].0) XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[4].1) XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B13[4].14) ][TON(T14[11],?,?) ,XIC(T14[11].DN) OTE(B13[4].14) ];
+				RC: "PLY STATUS";
+				N: EQU(N7[20],2)[XIO(B3[40].0) ,XIO(B3[40].1) ]XIO(B3[3].11)OTE(B13[10].0);
+				N: EQU(N7[20],3)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ]XIO(B3[3].11)OTE(B13[10].1);
+				N: EQU(N7[20],4)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ]XIO(B3[3].11)OTE(B13[10].2);
+				N: EQU(N7[20],5)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ]XIO(B3[3].11)OTE(B13[10].3);
+				N: EQU(N7[20],6)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ]XIO(B3[3].11)OTE(B13[10].4);
+				N: EQU(N7[20],7)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ]XIO(B3[3].11)OTE(B13[10].5);
+				N: EQU(N7[20],8)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ]XIO(B3[3].11)OTE(B13[10].6);
+				N: EQU(N7[20],9)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ]XIO(B3[3].11)OTE(B13[10].7);
+				N: EQU(N7[20],10)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ]XIO(B3[3].11)OTE(B13[10].8);
+				N: EQU(N7[20],11)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ]XIO(B3[3].11)OTE(B13[10].9);
+				N: EQU(N7[20],12)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ]XIO(B3[3].11)OTE(B13[10].10);
+				N: EQU(N7[20],13)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ]XIO(B3[3].11)OTE(B13[10].11);
+				N: EQU(N7[20],14)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ,XIO(B3[40].13) ]XIO(B3[3].11)OTE(B13[10].12);
+				N: EQU(N7[20],15)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ,XIO(B3[40].13) ,XIO(B3[40].14) ]XIO(B3[3].11)OTE(B13[10].13);
+				N: EQU(N7[20],16)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ,XIO(B3[40].13) ,XIO(B3[40].14) ,XIO(B3[40].15) ]XIO(B3[3].11)OTE(B13[10].14);
+				N: EQU(N7[20],17)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ,XIO(B3[40].13) ,XIO(B3[40].14) ,XIO(B3[40].15) ,XIO(B3[41].0) ]XIO(B3[3].11)OTE(B13[10].15);
+				N: EQU(N7[20],18)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ,XIO(B3[40].13) ,XIO(B3[40].14) ,XIO(B3[40].15) ,XIO(B3[41].0) ,XIO(B3[41].1) ]XIO(B3[3].11)OTE(B13[11].0);
+				N: EQU(N7[20],19)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ,XIO(B3[40].13) ,XIO(B3[40].14) ,XIO(B3[40].15) ,XIO(B3[41].0) ,XIO(B3[41].1) ,XIO(B3[41].2) ]XIO(B3[3].11)OTE(B13[11].1);
+				N: EQU(N7[20],20)[XIO(B3[40].0) ,XIO(B3[40].1) ,XIO(B3[40].2) ,XIO(B3[40].3) ,XIO(B3[40].4) ,XIO(B3[40].5) ,XIO(B3[40].6) ,XIO(B3[40].7) ,XIO(B3[40].8) ,XIO(B3[40].9) ,XIO(B3[40].10) ,XIO(B3[40].11) ,XIO(B3[40].12) ,XIO(B3[40].13) ,XIO(B3[40].14) ,XIO(B3[40].15) ,XIO(B3[41].0) ,XIO(B3[41].1) ,XIO(B3[41].2) ,XIO(B3[41].3) ]XIO(B3[3].11)OTE(B13[11].2);
+				N: XIC(B13[4].14)[GRT(B13[10],0) ,GRT(B13[11],0) ,XIC(B13[4].15) ]XIO(B3[3].11)OTE(B13[4].15);
+				N: EQU(N7[20],1)XIC(B3[40].0)XIO(B3[3].11)OTE(B13[12].0);
+				N: EQU(N7[20],2)XIC(B3[40].0)XIC(B3[40].1)XIO(B3[3].11)OTE(B13[12].1);
+				N: EQU(N7[20],3)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIO(B3[3].11)OTE(B13[12].2);
+				N: EQU(N7[20],4)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIO(B3[3].11)OTE(B13[12].3);
+				N: EQU(N7[20],5)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIO(B3[3].11)OTE(B13[12].4);
+				N: EQU(N7[20],6)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIO(B3[3].11)OTE(B13[12].5);
+				N: EQU(N7[20],7)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIO(B3[3].11)OTE(B13[12].6);
+				N: EQU(N7[20],8)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIO(B3[3].11)OTE(B13[12].7);
+				N: EQU(N7[20],9)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIO(B3[3].11)OTE(B13[12].8);
+				N: EQU(N7[20],10)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIO(B3[3].11)OTE(B13[12].9);
+				N: EQU(N7[20],11)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIO(B3[3].11)OTE(B13[12].10);
+				N: EQU(N7[20],12)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIO(B3[3].11)OTE(B13[12].11);
+				N: EQU(N7[20],13)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIO(B3[3].11)OTE(B13[12].12);
+				N: EQU(N7[20],14)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIC(B3[40].13)XIO(B3[3].11)OTE(B13[12].13);
+				N: EQU(N7[20],15)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIC(B3[40].13)XIC(B3[40].14)XIO(B3[3].11)OTE(B13[12].14);
+				N: EQU(N7[20],16)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIC(B3[40].13)XIC(B3[40].14)XIC(B3[40].15)XIO(B3[3].11)OTE(B13[12].15);
+				N: EQU(N7[20],17)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIC(B3[40].13)XIC(B3[40].14)XIC(B3[40].15)XIC(B3[41].0)XIO(B3[3].11)OTE(B13[13].0);
+				N: EQU(N7[20],18)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIC(B3[40].13)XIC(B3[40].14)XIC(B3[40].15)XIC(B3[41].0)XIC(B3[41].1)XIO(B3[3].11)OTE(B13[13].1);
+				N: EQU(N7[20],19)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIC(B3[40].13)XIC(B3[40].14)XIC(B3[40].15)XIC(B3[41].0)XIC(B3[41].1)XIC(B3[41].2)XIO(B3[3].11)OTE(B13[13].2);
+				N: EQU(N7[20],20)XIC(B3[40].0)XIC(B3[40].1)XIC(B3[40].2)XIC(B3[40].3)XIC(B3[40].4)XIC(B3[40].5)XIC(B3[40].6)XIC(B3[40].7)XIC(B3[40].8)XIC(B3[40].9)XIC(B3[40].10)XIC(B3[40].11)XIC(B3[40].12)XIC(B3[40].13)XIC(B3[40].14)XIC(B3[40].15)XIC(B3[41].0)XIC(B3[41].1)XIC(B3[41].2)XIC(B3[41].3)XIO(B3[3].11)OTE(B13[13].3);
+				N: XIC(B13[4].14)[GRT(B13[12],0) ,GRT(B13[13],0) ,XIC(B3[3].11) ,XIC(B13[5].0) ]OTE(B13[5].0);
+				N: XIC(B13[5].0)[XIO(B3[3].11) ,XIC(B13[5].1) ]OTE(B13[5].1);
+				N: [XIC(B13[5].0) XIC(B3[3].11) ,XIC(B13[5].1) XIC(SLOT00_Bul_1766_Placeholder.I[0].7) ][TON(T14[19],?,?) ,XIC(T14[19].DN) [XIC(B3[3].10) FLL(0,B3[40],2) ,MOV(1,C15_0_ACC) ,OTE(B13[5].15) ] ];
+		END_ROUTINE
+
+		ROUTINE _12_STTN_IO 
+				RC: "~$N"
+				    "INPUTS$N"
+				    "~";
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[0].2)XIO(SLOT00_Bul_1766_Placeholder.I[0].15)XIO(ENETBRIDGE_1769:1:O.Data.2)OTE(B13[0].0);
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[0].3)XIO(SLOT00_Bul_1766_Placeholder.I[1].0)XIO(ENETBRIDGE_1769:1:O.Data.3)OTE(B13[0].1);
+				RC: "~$N"
+				    "OUTPUTS$N"
+				    "~$L*** Generated by Migration Tool: PTO/PWM instruction not supported. *** ";
+				N: [XIC(B13[3].10) XIO(B13[3].11) ,[XIC(B13[5].8) XIO(B13[4].3) ,XIC(B13[4].6) XIO(B13[4].7) ] XIC(SLOT00_Bul_1766_Placeholder.O[0].5) ,XIC(B13[4].11) XIO(B13[4].13) ,XIC(B3[7].9) XIO(B3[7].10) XIC(SLOT00_Bul_1766_Placeholder.O[0].5) ,XIC(B3[28].6) XIO(B3[18].6) ,[XIC(B3[28].7) XIO(B3[18].7) ,XIC(B3[28].8) XIO(B3[18].8) ] XIC(SLOT00_Bul_1766_Placeholder.O[0].5) ,XIC(B3[28].9) XIO(B3[18].9) ]XIC(B3[4].0)PCE(155,PCE001)PTO(0);
+				N: [XIC(B3[5].6) XIO(B3[5].8) ,XIC(B3[5].9) XIO(B3[5].11) XIC(SLOT00_Bul_1766_Placeholder.O[0].5) ,[XIC(B3[7].3) XIO(B3[7].5) XIC(SLOT00_Bul_1766_Placeholder.O[0].5) ,XIC(B3[7].6) XIO(B3[7].8) ] XIC(B3[4].0) ,[XIC(B3[28].10) XIO(B3[19].1) ,XIC(B3[19].2) XIO(B3[19].4) XIC(SLOT00_Bul_1766_Placeholder.O[0].5) ] ]OTE(PTOX[0].JC);
+				N: [XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(B3[16].15) ]OTE(PTOX[0].EH);
+				N: [XIC(T14[5].EN) XIO(T14[6].EN) ,XIC(T14[8].EN) XIO(B13[4].9) ,XIC(T4[23].EN) XIO(B3[5].11) ,XIC(T4[32].EN) XIO(B3[7].5) ,XIC(T4[34].EN) XIO(B3[7].11) ,XIC(T4[51].EN) XIO(B3[29].7) ,XIC(T4[51].EN) XIO(B3[29].7) ,XIC(T4[52].EN) XIO(B3[29].8) ,XIC(T4[58].EN) XIO(B3[19].4) ]OTE(SLOT00_Bul_1766_Placeholder.O[0].5);
+				RC: "*** Generated by Migration Tool: PTO/PWM instruction not supported. *** ";
+				N: [XIC(B13[3].10) XIO(B13[3].11) XIC(SLOT00_Bul_1766_Placeholder.O[0].7) ,XIC(B13[5].8) XIO(B13[4].3) ,XIC(B13[4].6) XIO(B13[4].7) ,XIC(B13[4].11) XIO(B13[4].13) XIC(SLOT00_Bul_1766_Placeholder.O[0].7) ,XIC(B3[7].9) XIO(B3[7].10) ,[XIC(B3[28].12) XIO(B3[18].10) ,XIC(B3[28].15) XIO(B3[18].13) ] XIC(SLOT00_Bul_1766_Placeholder.O[0].7) ,[XIC(B3[28].13) XIO(B3[18].11) ,XIC(B3[28].14) XIO(B3[18].12) ] ]XIC(B3[4].1)PCE(155,PCE002)PTO(1);
+				N: [XIC(B3[5].12) XIO(B3[5].14) XIC(SLOT00_Bul_1766_Placeholder.O[0].7) ,XIC(B3[5].15) XIO(B3[6].1) ,[XIC(B3[7].3) XIO(B3[7].5) ,XIC(B3[7].6) XIO(B3[7].8) ] XIC(B3[4].1) ,XIC(B3[33].0) XIO(B3[19].6) XIC(SLOT00_Bul_1766_Placeholder.O[0].7) ,XIC(B3[19].7) XIO(B3[19].9) ]OTE(PTOX[1].JC);
+				N: [XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(B3[16].15) ]OTE(PTOX[1].EH);
+				N: [XIC(T14[3].EN) XIO(B13[3].13) ,XIC(T4[22].EN) XIO(B3[5].14) ,XIC(T14[10].EN) XIO(T14[11].EN) ,XIC(T4[33].EN) XIO(B3[7].8) ,XIC(T4[54].EN) XIO(B3[29].12) ,XIC(T4[57].EN) XIO(B3[29].15) ,XIC(B3[33].0) XIO(B3[19].6) ]OTE(SLOT00_Bul_1766_Placeholder.O[0].7);
+				N: [XIC(B13[4].4) XIO(B13[4].5) ,XIC(B3[4].10) XIO(B3[4].11) ,XIC(B3[7].1) XIO(B3[7].2) ,XIC(B3[23].6) XIO(B3[19].10) ]OTE(SLOT00_Bul_1766_Placeholder.O[0].6);
+				N: XIO(B3[0].1)[XIC(B13[3].6) XIO(B13[3].7) XIO(B3[3].11) ,XIC(B3[28].1) XIO(B3[18].2) ]OTE(SLOT00_Bul_1766_Placeholder.O[0].8);
+				N: XIC(B3[4].8)OTE(SLOT00_Bul_1766_Placeholder.O[0].9);
+				N: XIC(B3[4].9)OTE(SLOT00_Bul_1766_Placeholder.O[0].10);
+				N: [XIC(B13[3].3) XIC(B3[4].0) ,XIC(B3[5].2) XIC(B3[4].0) ,XIC(B3[29].0) ,XIC(ENETBRIDGE_1769:1:O.Data.0) ][XIO(T14[0].EN) ,XIC(B13[3].3) ]XIO(B13[5].1)XIO(B3[28].0)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)OTE(ENETBRIDGE_1769:1:O.Data.0);
+				N: [XIC(B13[3].3) XIC(B3[4].1) ,XIC(B13[5].1) ,XIC(B3[5].2) [XIC(B3[4].1) ,EQU(F18[1],0.0) ] ,XIC(B3[28].0) ,XIC(ENETBRIDGE_1769:1:O.Data.1) ][XIO(T14[0].EN) ,XIC(B13[3].3) ,XIC(B13[5].1) ]XIO(B3[29].0)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)OTE(ENETBRIDGE_1769:1:O.Data.1);
+				N: [XIC(B13[3].13) XIO(B13[4].0) ,XIC(B13[4].9) XIO(B13[4].10) ,XIC(B3[7].11) XIO(B3[7].12) ,XIC(B3[28].4) ]XIC(B3[4].0)XIO(B3[5].1)OTE(ENETBRIDGE_1769:1:O.Data.2);
+				N: [XIC(B13[3].13) XIO(B13[4].0) ,XIC(B13[4].9) XIO(B13[4].10) ,XIC(B3[7].11) XIO(B3[7].12) ,XIC(B3[28].5) ]XIC(B3[4].1)XIO(B3[5].1)OTE(ENETBRIDGE_1769:1:O.Data.3);
+				N: XIO(B3[0].1)[XIC(B13[3].3) XIC(B3[4].0) ,XIC(B3[5].2) XIC(B3[4].0) ,XIC(B3[24].15) ,XIC(ENETBRIDGE_1769:1:O.Data.4) ][XIO(T14[0].EN) ,XIC(B13[3].3) ]XIO(B3[23].15)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)OTE(ENETBRIDGE_1769:1:O.Data.4);
+				N: XIO(B3[0].1)[XIC(B13[3].3) XIC(B3[4].1) ,XIC(B3[5].2) [XIC(B3[4].1) ,EQU(F18[1],0.0) ] ,XIC(B3[23].15) ,XIC(ENETBRIDGE_1769:1:O.Data.5) ][XIO(T14[0].EN) ,XIC(B13[3].3) ]XIO(B3[24].15)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)OTE(ENETBRIDGE_1769:1:O.Data.5);
+				N: XIO(B3[0].1)[XIC(B3[5].3) XIO(B3[5].5) ,XIC(B3[28].2) XIO(B3[29].2) ]OTE(ENETBRIDGE_1769:1:O.Data.6);
+				N: [[XIC(B3[11].7) ,XIC(B3[11].8) ,XIC(B3[11].9) ,XIC(B13[8].2) ,XIC(B13[8].3) ,XIC(B13[8].4) ] XIC(B3[16].2) ,XIC(B13[0].8) ]XIO(T14[18].DN)OTE(B13[0].8);
+				N: XIC(B13[0].8)[TON(T14[18],?,?) ,OTU(B3[11].7) ,OTU(B3[11].8) ,OTU(B3[11].9) ];
+				N: [XIC(B13[0].8) ,XIC(B3[28].3) ,XIC(B3[28].11) ,XIC(B3[33].1) ]OTE(ENETBRIDGE_1769:1:O.Data.12);
+				N: [DIV(N7[5],100.0,F8[6]) ,CPT(N7[11],((0 - 4095) / (4095 - 0))*SLOT00_Bul_1766_Placeholder.I[4] + (4095 - (0*((0 - 4095) / (4095 - 0))))) ,MUL(N7[11],F8[6],SLOT00_Bul_1766_Placeholder.O[4]) ,CPT(N7[12],((0 - 4095) / (4095 - 0))*SLOT00_Bul_1766_Placeholder.I[5] + (4095 - (0*((0 - 4095) / (4095 - 0))))) ,MUL(N7[12],F8[6],SLOT00_Bul_1766_Placeholder.O[5]) ];
+		END_ROUTINE
+
+		ROUTINE _13_STTN_FLTS 
+				N: [NEQ(B13[8],0) ,NEQ(B13[9],0) ]OTE(B3[12].0);
+				N: XIO(B3[10].2)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[20],?,?) ,XIC(T14[20].DN) OTL(B13[8].0) ];
+				N: XIC(B13[8].0)[MOV(20,N7[22]) ,EQU(N7[2],20) XIC(B3[2].2) OTU(B13[8].0) ];
+				N: XIO(B3[10].5)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[21],?,?) ,XIC(T14[21].DN) OTL(B13[8].1) ];
+				N: XIC(B13[8].1)[MOV(21,N7[22]) ,EQU(N7[2],21) XIC(B3[2].2) OTU(B13[8].1) ];
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[1].2)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[22],?,?) ,XIC(T14[22].DN) OTL(B13[8].2) ];
+				N: XIC(B13[8].2)[MOV(22,N7[22]) ,EQU(N7[2],22) XIC(B3[2].2) OTU(B13[8].2) ];
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[1].3)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[23],?,?) ,XIC(T14[23].DN) OTL(B13[8].3) ];
+				N: XIC(B13[8].3)[MOV(23,N7[22]) ,EQU(N7[2],23) XIC(B3[2].2) OTU(B13[8].3) ];
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[0].10)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[24],?,?) ,XIC(T14[24].DN) OTL(B13[8].4) ];
+				N: XIC(B13[8].4)[MOV(24,N7[22]) ,EQU(N7[2],24) XIC(B3[2].2) OTU(B13[8].4) ];
+				N: XIO(B3[0].1)XIC(ENETBRIDGE_1769:1:O.Data.4)[XIO(SLOT00_Bul_1766_Placeholder.I[0].4) ,XIC(SLOT00_Bul_1766_Placeholder.I[0].5) ]XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[25],?,?) ,XIC(T14[25].DN) OTL(B13[8].5) ];
+				N: XIC(B13[8].5)[MOV(25,N7[22]) ,EQU(N7[2],25) XIC(B3[2].2) OTU(B13[8].5) ];
+				N: XIO(B3[0].1)XIC(ENETBRIDGE_1769:1:O.Data.5)[XIO(SLOT00_Bul_1766_Placeholder.I[0].5) ,XIC(SLOT00_Bul_1766_Placeholder.I[0].4) ]XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[26],?,?) ,XIC(T14[26].DN) OTL(B13[8].6) ];
+				N: XIC(B13[8].6)[MOV(26,N7[22]) ,EQU(N7[2],26) XIC(B3[2].2) OTU(B13[8].6) ];
+				N: XIC(ENETBRIDGE_1769:1:O.Data.0)[XIO(SLOT00_Bul_1766_Placeholder.I[0].6) ,XIC(SLOT00_Bul_1766_Placeholder.I[0].7) ]XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[27],?,?) ,XIC(T14[27].DN) OTL(B13[8].7) ];
+				N: XIC(B13[8].7)[MOV(27,N7[22]) ,EQU(N7[2],27) XIC(B3[2].2) OTU(B13[8].7) ];
+				N: XIC(ENETBRIDGE_1769:1:O.Data.1)[XIO(SLOT00_Bul_1766_Placeholder.I[0].7) ,XIC(SLOT00_Bul_1766_Placeholder.I[0].6) ]XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[28],?,?) ,XIC(T14[28].DN) OTL(B13[8].8) ];
+				N: XIC(B13[8].8)[MOV(28,N7[22]) ,EQU(N7[2],28) XIC(B3[2].2) OTU(B13[8].8) ];
+				N: XIC(ENETBRIDGE_1769:1:O.Data.2)XIO(SLOT00_Bul_1766_Placeholder.I[0].15)XIC(B13[3].13)XIO(B13[3].14)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[29],?,?) ,XIC(T14[29].DN) OTL(B13[8].9) ];
+				N: XIC(B13[8].9)[MOV(29,N7[22]) ,EQU(N7[2],29) XIC(B3[2].2) OTU(B13[8].9) ];
+				N: XIC(ENETBRIDGE_1769:1:O.Data.2)XIO(SLOT00_Bul_1766_Placeholder.I[0].2)XIC(B13[4].9)XIO(B13[4].10)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[30],?,?) ,XIC(T14[30].DN) OTL(B13[8].10) ];
+				N: XIC(B13[8].10)[MOV(30,N7[22]) ,EQU(N7[2],30) XIC(B3[2].2) OTU(B13[8].10) ];
+				N: XIC(ENETBRIDGE_1769:1:O.Data.3)XIO(SLOT00_Bul_1766_Placeholder.I[1].0)XIC(B13[3].13)XIO(B13[3].14)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[31],?,?) ,XIC(T14[31].DN) OTL(B13[8].11) ];
+				N: XIC(B13[8].11)[MOV(31,N7[22]) ,EQU(N7[2],31) XIC(B3[2].2) OTU(B13[8].11) ];
+				N: XIC(ENETBRIDGE_1769:1:O.Data.3)XIO(SLOT00_Bul_1766_Placeholder.I[0].3)XIC(B13[4].9)XIO(B13[4].10)XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)[TON(T14[32],?,?) ,XIC(T14[32].DN) OTL(B13[8].12) ];
+				N: XIC(B13[8].12)[MOV(32,N7[22]) ,EQU(N7[2],32) XIC(B3[2].2) OTU(B13[8].12) ];
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[0].8)XIC(B13[4].7)XIC(B3[4].0)XIC(SLOT00_Bul_1766_Placeholder.I[1].2)XIO(B13[4].9)OTL(B13[8].14);
+				N: XIC(B13[8].14)[MOV(34,N7[22]) ,EQU(N7[2],34) XIC(B3[2].2) OTU(B13[8].14) ];
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[0].9)XIC(B13[4].7)XIC(B3[4].1)XIC(SLOT00_Bul_1766_Placeholder.I[1].3)XIO(B13[4].9)OTL(B13[9].0);
+				N: XIC(B13[9].0)[MOV(36,N7[22]) ,EQU(N7[2],36) XIC(B3[2].2) OTU(B13[9].0) ];
+		END_ROUTINE
+
+		ROUTINE _190_AX_MNTR 
+				RC: "AXIS1: READ INPUT ASSEMBLY$N"
+				    "------------------------------------------$N"
+				    "THE INPUT ASSEMBLY IS IDENTIFIED BY INSTANCE 113 AND CONSISTS OF 64 BYTES$N"
+				    " $L*** Generated by Migration Tool: MSG instruction and associated MESSAGE tag need to be manually verified. *** ";
+				N: PCE(150,PCE003)MSG();
+				RC: "AXIS1: READ INPUT ASSEMBLY$N"
+				    "------------------------------------------$N"
+				    "AFTER THE INPUT ASSEMBLY IS READ THE REAL VALUES ARE THEN COPIED TO A FLOAT DATA FILE.$N"
+				    "ALSO, A TIMER (OPTIONAL) WAS ADDED TO CONTROL THE ASSEMBLY READ RATE (0 - CONTINUOUS READ, IS THE DEFAULT).$N"
+				    "$N"
+				    "IF THE READ INPUT ASSEMBLY MESSAGE ERRORS OUT, CONTINUE TO TRY TO EXECUTE MESSAGE INSTRUCTION. $L*** Generated by Migration Tool: Source and destination types may differ *** $L*** Generated by Migration Tool: Source and destination types may differ *** ";
+				N: [XIC(MG200_000.DN) [XIO(T206[0].TT) [PCE(120,PCE004) COP(L208[6],F209[0],12) ,PCE(120,PCE005) COP(L208[14],F209[6],4) ] ,TON(T206[0],?,?) ] ,[XIC(T206[0].DN) ,XIC(MG200_000.ER) ] OTU(MG200_000.EN) ];
+				RC: "AXIS1: WRITE OUTPUT ASSEMBLY$N"
+				    "------------------------------------------$N"
+				    "THE OUTPUT ASSEMBLY IS IDENTIFIED BY INSTANCE 114 AND CONSISTS OF 52 BYTES$N"
+				    "$N"
+				    "BEFORE WRITING TO THE OUTPUT ASSEMBLY THE REAL VALUES ARE COPIED FROM A FLOAT DATA FILE TO THE LONG DATA FILE.$N"
+				    "ALSO, A TIMER (OPTIONAL) WAS ADDED TO CONTROL THE ASSEMBLY WRITE RATE (0 - CONTINUOUS READ, IS THE DEFAULT)$N"
+				    " $N"
+				    "IF THE WRITE OUTPUT ASSEMBLY MESSAGE ERRORS OUT, TRIGGER A COMMUNICATION LOSS FAULT, BUT CONTINUE TO TRY TO EXECUTE MESSAGE INSTRUCTION.$L*** Generated by Migration Tool: Source and destination types may differ *** $L*** Generated by Migration Tool: Source and destination types may differ *** $L*** Generated by Migration Tool: MSG instruction and associated MESSAGE tag need to be manually verified. *** ";
+				N: [PCE(120,PCE006) COP(F211[0],L210[3],12) ,PCE(120,PCE007) COP(F211[6],L210[11],4) ,PCE(150,PCE008) MSG() ];
+				N: [XIC(MG200_001.DN) [TON(T206[2],?,?) ,OTU(B3[14].0) ] ,[XIC(T206[2].DN) ,XIC(MG200_001.ER) ] OTU(MG200_001.EN) ];
+				N: XIC(MG200_001.ER)OTL(B3[14].0);
+				RC: "AXIS2: READ INPUT ASSEMBLY$N"
+				    "------------------------------------------$N"
+				    "THE INPUT ASSEMBLY IS IDENTIFIED BY INSTANCE 113 AND CONSISTS OF 64 BYTES$N"
+				    " $L*** Generated by Migration Tool: MSG instruction and associated MESSAGE tag need to be manually verified. *** ";
+				N: PCE(150,PCE009)MSG();
+				RC: "AXIS2: READ INPUT ASSEMBLY$N"
+				    "------------------------------------------$N"
+				    "AFTER THE INPUT ASSEMBLY IS READ THE REAL VALUES ARE THEN COPIED TO A FLOAT DATA FILE.$N"
+				    "ALSO, A TIMER (OPTIONAL) WAS ADDED TO CONTROL THE ASSEMBLY READ RATE (0 - CONTINUOUS READ, IS THE DEFAULT).$N"
+				    "$N"
+				    "IF THE READ INPUT ASSEMBLY MESSAGE ERRORS OUT, CONTINUE TO TRY TO EXECUTE MESSAGE INSTRUCTION. $L*** Generated by Migration Tool: Source and destination types may differ *** $L*** Generated by Migration Tool: Source and destination types may differ *** ";
+				N: [XIC(MG200_010.DN) [XIO(T206[10].TT) [PCE(120,PCE010) COP(L208[26],F209[20],12) ,PCE(120,PCE011) COP(L208[34],F209[26],4) ] ,TON(T206[10],?,?) ] ,[XIC(T206[10].DN) ,XIC(MG200_010.ER) ] OTU(MG200_010.EN) ];
+				RC: "AXIS2: WRITE OUTPUT ASSEMBLY$N"
+				    "------------------------------------------$N"
+				    "THE OUTPUT ASSEMBLY IS IDENTIFIED BY INSTANCE 114 AND CONSISTS OF 52 BYTES$N"
+				    "$N"
+				    "BEFORE WRITING TO THE OUTPUT ASSEMBLY THE REAL VALUES ARE COPIED FROM A FLOAT DATA FILE TO THE LONG DATA FILE.$N"
+				    "ALSO, A TIMER (OPTIONAL) WAS ADDED TO CONTROL THE ASSEMBLY WRITE RATE (0 - CONTINUOUS READ, IS THE DEFAULT)$N"
+				    " $N"
+				    "IF THE WRITE OUTPUT ASSEMBLY MESSAGE ERRORS OUT, TRIGGER A COMMUNICATION LOSS FAULT, BUT CONTINUE TO TRY TO EXECUTE MESSAGE INSTRUCTION.$L*** Generated by Migration Tool: Source and destination types may differ *** $L*** Generated by Migration Tool: Source and destination types may differ *** $L*** Generated by Migration Tool: MSG instruction and associated MESSAGE tag need to be manually verified. *** ";
+				N: [PCE(120,PCE012) COP(F211[20],L210[23],12) ,PCE(120,PCE013) COP(F211[26],L210[31],4) ,PCE(150,PCE014) MSG() ];
+				N: [XIC(MG200_011.DN) [TON(T206[12],?,?) ,OTU(B3[14].1) ] ,[XIC(T206[12].DN) ,XIC(MG200_011.ER) ] OTU(MG200_011.EN) ];
+				N: XIC(MG200_011.ER)OTL(B3[14].1);
+		END_ROUTINE
+
+		ROUTINE _191_AX_PROG 
+				RC: "AXIS 1: DRIVE ENABLE$N"
+				    "$N"
+				    "";
+				N: XIC(T4[0].DN)XIO(B3[23].7)XIO(B3[3].0)XIO(B3[3].1)TON(T4[7],?,?);
+				N: XIC(T4[7].DN)XIO(L208[0].1)OTL(L210[0].7);
+				RC: "AXIS 1: DRIVE DISABLE$N"
+				    "-------------------------------------$N"
+				    "DOES NOT ABORT THE RUN SEQUENCE ... USE THE STOP COMMAND TO ABORT RUN AND DISABLE DRIVE.$N"
+				    " ";
+				N: XIO(T4[7].DN)OTU(L210[0].7);
+				RC: "AXIS 1: DRIVE FAULT RESET$N"
+				    " ";
+				N: [XIC(B3[11].3) ,XIC(B3[11].4) ,XIC(B13[8].0) ]OTL(B3[14].2);
+				N: [XIC(B3[14].2) [XIC(B3[16].2) ,XIC(B13[3].0) XIO(B13[3].1) ] ,XIC(B3[23].9) ][MOV(999,N7[30]) ,XIC(L208[0].1) MOV(1,L204[0]) ];
+				RC: "*** Generated by Migration Tool: MSG instruction and associated MESSAGE tag need to be manually verified. *** ";
+				N: EQU(L204[0],1)[PCE(150,PCE015) MSG() ,OTU(B3[14].2) ,XIO(L208[0].1) MOV(0,L204[0]) ];
+				RC: "AXIS 1:  RUN SEQUENCE$N"
+				    "----------------------------------------$N"
+				    "CONFIGURES AND EXECUTES SIMPLE POINT-TO-POINT MOTION PROFILE$N"
+				    " ";
+				N: [[XIC(B13[4].12) XIO(B13[4].8) ,XIC(B13[3].4) XIO(B13[3].5) ,XIO(B3[0].1) XIC(B13[3].10) XIO(B13[3].12) ,XIC(B13[3].14) XIO(B13[3].15) ,XIC(B13[4].1) XIO(B13[4].2) ] XIC(B3[4].0) ,XIC(B3[23].8) XIO(B3[18].0) ]XIO(L208[0].1)ONS(B3[13].1)[MOV(10,N7[30]) ,OTU(L210[0].2) ];
+				RC: "AXIS 1: RUN SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "SET ETHERNET/IP EXTERNAL REFERENCE SOURCE MODE:  0 = CURRENT, 1 = VELOCITY, 2 = INCREMENTAL POSITION, 3 = ABSOLUTE POSITION$N"
+				    "4 = INCREMENTAL REGISTRATION, 5 = ABSOLUTE REGISTRATION$N"
+				    " $N"
+				    "IN THIS EXAMPLE WE ARE GOING TO DO A SIMPLE POINT-TO-POINT MOVE OUT AND BACK VIA AN INCREMENTAL POSITION MOVE (2).$N"
+				    " $N"
+				    " ";
+				N: EQU(N7[30],10)[MOV(2,L210[2]) ,MOV(20,N7[30]) ];
+				RC: "AXIS 1: RUN SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "CONFIGURE THE MOVE (IN THE FORWARD DIRECTION) MOTION PROFILE$N"
+				    " ";
+				N: EQU(N7[30],20)[MOV(F8[30],F211[4]) ,MOV(F8[31],F211[3]) ,MOV(F8[32],F211[0]) ,MOV(F8[33],F211[1]) ,MOV(40,N7[30]) ];
+				RC: "AXIS 1: RUN SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "EXECUTE THE FORWARD MOVE MOTION PROFILE$N"
+				    " ";
+				N: EQU(N7[30],40)[OTL(L210[0].2) ,MOV(50,N7[30]) ];
+				N: EQU(N7[30],50)XIO(L208[1].1)[OTU(L210[0].2) ,MOV(60,N7[30]) ];
+				RC: "AXIS 1: STOP SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "ABORTS THE RUN SEQUENCE AND DISABLES THE DRIVE.$N"
+				    "ALSO, EXECUTE STOP IF COMMUNICATION LOST TO DRIVE.$N"
+				    " ";
+				N: [XIC(B3[14].0) ,XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(B3[16].15) ,XIC(T4[20].EN) ,XIC(B13[3].0) XIO(B13[3].1) ]ONS(B3[13].2)[MOV(999,N7[30]) ,OTU(L210[0].2) ];
+				RC: "AXIS 2: DRIVE ENABLE$N"
+				    " ";
+				N: XIC(T4[0].DN)XIO(B3[23].10)XIO(B3[3].0)XIO(B3[3].1)TON(T4[8],?,?);
+				N: XIC(T4[8].DN)XIO(L208[20].1)OTL(L210[20].7);
+				RC: "AXIS 2: DRIVE DISABLE$N"
+				    "-------------------------------------$N"
+				    "DOES NOT ABORT THE RUN SEQUENCE ... USE THE STOP COMMAND TO ABORT RUN AND DISABLE DRIVE.$N"
+				    " ";
+				N: XIO(T4[8].DN)OTU(L210[20].7);
+				RC: "AXIS 2: DRIVE FAULT RESET$N"
+				    " ";
+				N: [XIC(B3[11].5) ,XIC(B3[11].6) ,XIC(B13[8].1) ]OTL(B3[14].3);
+				N: [XIC(B3[14].3) [XIC(B3[16].2) ,XIC(B13[3].0) XIO(B13[3].1) ] ,XIC(B3[23].12) ][MOV(999,N7[31]) ,XIC(L208[20].1) MOV(1,L204[10]) ];
+				RC: "*** Generated by Migration Tool: MSG instruction and associated MESSAGE tag need to be manually verified. *** ";
+				N: EQU(L204[10],1)[PCE(150,PCE016) MSG() ,OTU(B3[14].3) ,XIO(L208[20].1) MOV(0,L204[10]) ];
+				RC: "AXIS 2:  RUN SEQUENCE$N"
+				    "----------------------------------------$N"
+				    "CONFIGURES AND EXECUTES SIMPLE POINT-TO-POINT MOTION PROFILE$N"
+				    " ";
+				N: [[XIC(B13[4].12) XIO(B13[4].8) ,XIC(B13[3].4) XIO(B13[3].5) ,XIO(B3[0].1) XIC(B13[3].10) XIO(B13[3].12) ,XIC(B13[3].14) XIO(B13[3].15) ,XIC(B13[4].1) XIO(B13[4].2) ] XIC(B3[4].1) ,XIC(B3[23].11) XIO(B3[18].1) ]XIO(L208[20].1)ONS(B3[13].4)[MOV(10,N7[31]) ,OTU(L210[20].2) ];
+				RC: "AXIS 2: RUN SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "SET ETHERNET/IP EXTERNAL REFERENCE SOURCE MODE:  0 = CURRENT, 1 = VELOCITY, 2 = INCREMENTAL POSITION, 3 = ABSOLUTE POSITION$N"
+				    "4 = INCREMENTAL REGISTRATION, 5 = ABSOLUTE REGISTRATION$N"
+				    " $N"
+				    "IN THIS EXAMPLE WE ARE GOING TO DO A SIMPLE POINT-TO-POINT MOVE OUT AND BACK VIA AN INCREMENTAL POSITION MOVE (2).$N"
+				    " $N"
+				    " ";
+				N: EQU(N7[31],10)[MOV(2,L210[22]) ,MOV(20,N7[31]) ];
+				RC: "AXIS 2: RUN SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "CONFIGURE THE MOVE (IN THE FORWARD DIRECTION) MOTION PROFILE$N"
+				    " ";
+				N: EQU(N7[31],20)[MOV(F8[50],F211[24]) ,MOV(F8[51],F211[23]) ,MOV(F8[52],F211[20]) ,MOV(F8[53],F211[21]) ,MOV(40,N7[31]) ];
+				RC: "AXIS 2: RUN SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "EXECUTE THE FORWARD MOVE MOTION PROFILE$N"
+				    " ";
+				N: EQU(N7[31],40)[OTL(L210[20].2) ,MOV(50,N7[31]) ];
+				N: EQU(N7[31],50)XIO(L208[21].1)[OTU(L210[20].2) ,MOV(60,N7[31]) ];
+				RC: "AXIS 2: STOP SEQUENCE$N"
+				    "-----------------------------------$N"
+				    "ABORTS THE RUN SEQUENCE AND DISABLES THE DRIVE.$N"
+				    "ALSO, EXECUTE STOP IF COMMUNICATION LOST TO DRIVE.$N"
+				    " ";
+				N: [XIC(B3[14].1) ,XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(B3[16].15) ,XIC(T4[20].EN) ,XIC(B13[3].0) XIO(B13[3].1) ]ONS(B3[13].5)[MOV(999,N7[31]) ,OTU(L210[20].2) ];
+		END_ROUTINE
+
+		ROUTINE _2_MAIN 
+				RC: "SHEETER CUTTER SYSTEM$N"
+				    "BY$N"
+				    "CENTURY DESIGN$N"
+				    "$N"
+				    "~$N"
+				    "SUBROUTINES$N"
+				    "~";
+				N: JSR(_3_HMI,0);
+				N: JSR(_4_SYS,0);
+				N: JSR(_5_SYS_IO,0);
+				N: JSR(_6_SYS_FLTS,0);
+				N: XIC(B3[3].15)JSR(_7_STTS,0);
+				N: XIO(B3[3].5)JSR(_8_INIT,0);
+				N: XIC(B3[3].11)JSR(_10_MNL,0);
+				N: [XIC(B3[3].3) ,EQU(N7[0],30) ,XIC(B13[3].0) ,XIC(B3[32].12) ,XIC(B3[3].13) ]JSR(_11_AUTO,0);
+				N: JSR(_12_STTN_IO,0);
+				N: [XIC(B3[3].3) ,XIC(B13[3].0) ,XIC(B3[3].13) ,XIC(B3[3].1) ]JSR(_13_STTN_FLTS,0);
+				N: [OTU(B3[0].0) ,OTL(B3[0].1) ];
+				N: [OTU(S:V) ,OTU(S[5].0) ];
+				RC: "INITIALIZE REGISTERS AND COMMAND BITS$N"
+				    " ";
+				N: XIC(S[1].15)[MOV(999,N7[30]) ,MOV(999,N7[31]) ,OTU(L210[0].7) ,OTU(L210[20].7) ];
+				RC: "EXECUTE AXIS MONITOR ROUTINE$N"
+				    "--------------------------------------------------$N"
+				    "- READS DRIVES STATUS VIA THE INPUT ASSEMBLY$N"
+				    "- WRITES THE OUTPUT ASSEMBLY TO THE DRIVE$N"
+				    " ";
+				N: JSR(_190_AX_MNTR,0);
+				RC: "EXECUTE AXIS PROGRAM ROUTINE$N"
+				    "--------------------------------------------------$N"
+				    "AXIS MOTION CONTROL PROGRAM CODE$N"
+				    " ";
+				N: JSR(_191_AX_PROG,0);
+		END_ROUTINE
+
+		ROUTINE _3_HMI 
+				RC: "~$N"
+				    "FAULT MESSAGE$N"
+				    "~";
+				N: [XIO(B3[3].0) XIO(B3[3].1) ,XIC(S[1].15) ][MOV(0,N7[2]) ,MOV(0,N7[22]) ];
+				N: [XIC(B3[3].0) ,XIC(B3[3].1) ]OTE(B3[17].0);
+				RC: "~$N"
+				    "PLY MESSAGE$N"
+				    "~";
+				N: [[XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(B3[16].15) ] XIO(B3[3].8) ,XIC(B3[15].2) ,XIC(B3[17].1) XIO(B3[16].12) XIO(B3[16].13) ]XIO(B3[3].10)XIO(B3[3].11)XIO(S[1].15)OTE(B3[17].1);
+				RC: "~$N"
+				    "REDO MESSAGE$N"
+				    "~";
+				N: XIC(B3[3].9)OTE(B3[17].2);
+				RC: "~$N"
+				    "CONTINUE$N"
+				    "~";
+				N: [CMP(ST12[28] = ST12[51]) OTE(B3[17].3) ,EQU(N7[0],7) COP(ST12[30],ST12[51],1) ];
+				N: [XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(S[1].15) ]MOV(1,N7[3]);
+				RC: "~$N"
+				    "STATUS MESSAGE$N"
+				    "~";
+				N: [XIO(SLOT00_Bul_1766_Placeholder.I[0].11) ,XIO(SLOT00_Bul_1766_Placeholder.I[0].0) ]XIO(B3[3].0)XIO(B3[3].1)MOV(2,N7[3]);
+				N: XIO(T4[20].EN)XIO(B3[3].5)XIO(B3[3].0)XIO(B3[3].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)MOV(3,N7[3]);
+				N: XIC(T4[20].EN)XIO(B3[3].5)MOV(4,N7[3]);
+				N: XIO(T4[1].EN)XIC(B3[3].5)XIC(B3[3].8)XIO(B3[3].9)XIO(B3[3].0)XIO(B3[3].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)MOV(5,N7[3]);
+				N: XIC(T4[1].EN)MOV(6,N7[3]);
+				N: XIC(B3[3].9)XIO(T4[1].EN)XIC(B3[3].8)MOV(8,N7[3]);
+				N: XIO(T4[1].EN)XIO(B3[3].8)MOV(9,N7[3]);
+		END_ROUTINE
+
+		ROUTINE _4_SYS 
+				RC: "~$N"
+				    "STATUS$N"
+				    "~";
+				N: NEQ(B3[11],0)OTE(B3[3].0);
+				N: NEQ(B3[12],0)XIO(B3[3].0)OTE(B3[3].1);
+				N: [LIM(1,N7[0],2) ,EQU(N7[0],5) ][OTE(B3[3].3) ,XIO(B3[3].0) XIO(B3[3].1) XIO(B3[16].15) OTE(B3[3].4) ];
+				N: [XIC(B3[16].1) XIC(B3[3].8) ,XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(B3[16].15) ,XIC(B3[3].11) ,XIC(S[1].15) ]OTU(B3[3].5);
+				N: [XIC(B3[16].4) ,XIC(B3[16].7) ]ONS(B3[1].0)OTE(B3[2].0);
+				N: XIC(B3[16].11)[MOV(1,C15_0_ACC) ,FLL(0,B3[40],2) ];
+				N: XIC(B3[3].5)[XIC(B3[2].0) NEQ(F18[1],0.0) XIC(T4[7].DN) XIC(T4[8].DN) XIO(B3[3].9) XIO(B3[17].1) ,XIC(T4[1].EN) ]XIO(B3[16].5)[XIO(B13[5].15) ,XIC(B3[3].10) ]XIC(B3[3].4)[TON(T4[1],?,?) ,XIC(T4[1].DN) OTE(B3[3].7) ];
+				N: XIO(T4[1].EN)XIO(B13[3].0)OTE(B3[3].8);
+				N: XIC(B3[3].5)[GRT(B13[12],0) ,GRT(B13[13],0) ]XIC(B3[3].3)XIC(B3[3].8)ONS(B3[1].1)XIO(B3[3].10)XIO(B3[3].11)OTL(B3[3].9);
+				N: XIC(T14[19].EN)XIO(B3[3].10)XIO(B3[3].11)OTL(B3[3].9);
+				N: [XIC(B3[15].0) ,XIC(B3[15].1) ,XIC(S[1].15) ]OTU(B3[3].9);
+				N: XIC(B3[16].3)ONS(B3[1].3)OTE(B3[2].3);
+				N: [XIC(B3[2].3) XIO(B3[3].10) ,XIC(B3[3].10) XIO(B3[2].3) ]OTE(B3[3].10);
+				N: LIM(9,N7[0],29)[OTE(B3[3].11) ,XIC(SLOT00_Bul_1766_Placeholder.I[0].1) XIC(SLOT00_Bul_1766_Placeholder.I[0].11) XIC(SLOT00_Bul_1766_Placeholder.I[0].0) XIO(B3[3].0) OTE(B3[3].12) ];
+				N: [XIO(B3[3].11) XIO(T4[20].EN) ,XIC(B3[5].1) XIO(B3[5].3) ]ONS(B3[1].4)[FLL(0,B13[3],4) ,OTU(ENETBRIDGE_1769:1:O.Data.0) ,OTU(ENETBRIDGE_1769:1:O.Data.1) ,OTU(ENETBRIDGE_1769:1:O.Data.4) ,OTU(ENETBRIDGE_1769:1:O.Data.5) ];
+				N: XIC(B3[3].11)[XIC(B3[22].0) ,XIC(B3[3].13) ]XIO(B13[5].15)XIO(B3[20].0)XIO(B3[3].0)XIO(B3[3].1)OTE(B3[3].13);
+				N: XIC(T14[5].EN)ONS(B3[1].11)XIO(B3[3].11)OTL(B3[4].4);
+				N: XIC(B13[4].9)ONS(B3[1].12)XIO(B3[3].11)OTU(B3[4].4);
+				N: [XIC(B3[11].0) ,XIC(B3[11].2) ,XIC(B3[16].15) ]ONS(B3[1].14)XIC(B3[4].4)OTL(B3[3].14);
+				N: XIC(S[1].15)[OTU(B3[4].4) ,OTU(B3[3].14) ];
+				N: XIO(B3[3].8)XIO(B3[3].10)XIO(B3[3].11)OTL(B3[3].15);
+				N: [XIC(B3[3].10) ,XIC(B3[3].11) ,XIC(S[1].15) ][OTU(B3[3].15) ,RES(T4[4]) ];
+				N: XIC(B3[16].0)[TON(T4[6],?,?) ,XIC(T4[6].DN) [FLL(0.0,F8[2],4) ,RES(C5[2]) ,RES(C5[3]) ,RES(C5[4]) ,RES(C5[5]) ,RES(C5[6]) ,RES(C5[7]) ] ];
+				RC: "~$N"
+				    "PLYS$N"
+				    "~";
+				N: XIC(B13[3].1)ONS(B3[0].13)XIO(B3[3].11)[XIO(B3[40].0) MOV(1,C15_0_ACC) ,XIC(B3[40].0) XIO(B3[40].1) MOV(2,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIO(B3[40].2) MOV(3,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIO(B3[40].3) MOV(4,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIO(B3[40].4) MOV(5,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIO(B3[40].5) MOV(6,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIO(B3[40].6) MOV(7,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIO(B3[40].7) MOV(8,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIO(B3[40].8) MOV(9,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIO(B3[40].9) MOV(10,C15_0_ACC) ];
+				N: XIC(B13[3].1)ONS(B3[0].14)XIO(B3[3].11)[XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIO(B3[40].10) MOV(11,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIO(B3[40].11) MOV(12,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIO(B3[40].12) MOV(13,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIC(B3[40].12) XIO(B3[40].13) MOV(14,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIC(B3[40].12) XIC(B3[40].13) XIO(B3[40].14) MOV(15,C15_0_ACC) ];
+				N: XIC(B13[3].1)ONS(B3[0].15)XIO(B3[3].11)[XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIC(B3[40].12) XIC(B3[40].13) XIC(B3[40].14) XIO(B3[40].15) MOV(16,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIC(B3[40].12) XIC(B3[40].13) XIC(B3[40].14) XIC(B3[40].15) XIO(B3[41].0) MOV(17,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIC(B3[40].12) XIC(B3[40].13) XIC(B3[40].14) XIC(B3[40].15) XIC(B3[41].0) XIO(B3[41].1) MOV(18,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIC(B3[40].12) XIC(B3[40].13) XIC(B3[40].14) XIC(B3[40].15) XIC(B3[41].0) XIC(B3[41].1) XIO(B3[41].2) MOV(19,C15_0_ACC) ,XIC(B3[40].0) XIC(B3[40].1) XIC(B3[40].2) XIC(B3[40].3) XIC(B3[40].4) XIC(B3[40].5) XIC(B3[40].6) XIC(B3[40].7) XIC(B3[40].8) XIC(B3[40].9) XIC(B3[40].10) XIC(B3[40].11) XIC(B3[40].12) XIC(B3[40].13) XIC(B3[40].14) XIC(B3[40].15) XIC(B3[41].0) XIC(B3[41].1) XIC(B3[41].2) XIO(B3[41].3) MOV(20,C15_0_ACC) ];
+				N: [XIC(T14[9].EN) ,XIC(B3[16].13) ]ONS(B3[0].12)XIO(B3[3].11)[EQU(C15_0_ACC,1) OTL(B3[40].0) ,EQU(C15_0_ACC,2) OTL(B3[40].1) ,EQU(C15_0_ACC,3) OTL(B3[40].2) ,EQU(C15_0_ACC,4) OTL(B3[40].3) ,EQU(C15_0_ACC,5) OTL(B3[40].4) ,EQU(C15_0_ACC,6) OTL(B3[40].5) ,EQU(C15_0_ACC,7) OTL(B3[40].6) ,EQU(C15_0_ACC,8) OTL(B3[40].7) ,EQU(C15_0_ACC,9) OTL(B3[40].8) ,EQU(C15_0_ACC,10) OTL(B3[40].9) ,EQU(C15_0_ACC,11) OTL(B3[40].10) ,EQU(C15_0_ACC,12) OTL(B3[40].11) ,EQU(C15_0_ACC,13) OTL(B3[40].12) ,EQU(C15_0_ACC,14) OTL(B3[40].13) ,EQU(C15_0_ACC,15) OTL(B3[40].14) ,EQU(C15_0_ACC,16) OTL(B3[40].15) ,EQU(C15_0_ACC,17) OTL(B3[41].0) ,EQU(C15_0_ACC,18) OTL(B3[41].1) ,EQU(C15_0_ACC,19) OTL(B3[41].2) ,EQU(C15_0_ACC,20) OTL(B3[41].3) ];
+				N: XIC(B3[16].13)ONS(B3[0].9)XIO(B3[3].11)[EQU(C15_0_ACC,19) GRT(N7[20],19) MOV(20,C15_0_ACC) ,EQU(C15_0_ACC,18) GRT(N7[20],18) MOV(19,C15_0_ACC) ,EQU(C15_0_ACC,17) GRT(N7[20],17) MOV(18,C15_0_ACC) ,EQU(C15_0_ACC,16) GRT(N7[20],16) MOV(17,C15_0_ACC) ,EQU(C15_0_ACC,15) GRT(N7[20],15) MOV(16,C15_0_ACC) ,EQU(C15_0_ACC,14) GRT(N7[20],14) MOV(15,C15_0_ACC) ,EQU(C15_0_ACC,13) GRT(N7[20],13) MOV(14,C15_0_ACC) ,EQU(C15_0_ACC,12) GRT(N7[20],12) MOV(13,C15_0_ACC) ,EQU(C15_0_ACC,11) GRT(N7[20],11) MOV(12,C15_0_ACC) ,EQU(C15_0_ACC,10) GRT(N7[20],10) MOV(11,C15_0_ACC) ,EQU(C15_0_ACC,9) GRT(N7[20],9) MOV(10,C15_0_ACC) ,EQU(C15_0_ACC,8) GRT(N7[20],8) MOV(9,C15_0_ACC) ,EQU(C15_0_ACC,7) GRT(N7[20],7) MOV(8,C15_0_ACC) ,EQU(C15_0_ACC,6) GRT(N7[20],6) MOV(7,C15_0_ACC) ,EQU(C15_0_ACC,5) GRT(N7[20],5) MOV(6,C15_0_ACC) ,EQU(C15_0_ACC,4) GRT(N7[20],4) MOV(5,C15_0_ACC) ,EQU(C15_0_ACC,3) GRT(N7[20],3) MOV(4,C15_0_ACC) ,EQU(C15_0_ACC,2) GRT(N7[20],2) MOV(3,C15_0_ACC) ,EQU(C15_0_ACC,1) GRT(N7[20],1) MOV(2,C15_0_ACC) ];
+				N: XIC(B3[16].12)ONS(B3[0].11)XIO(B3[3].11)[EQU(C15_0_ACC,1) OTU(B3[40].0) ,EQU(C15_0_ACC,2) OTU(B3[40].1) ,EQU(C15_0_ACC,3) OTU(B3[40].2) ,EQU(C15_0_ACC,4) OTU(B3[40].3) ,EQU(C15_0_ACC,5) OTU(B3[40].4) ,EQU(C15_0_ACC,6) OTU(B3[40].5) ,EQU(C15_0_ACC,7) OTU(B3[40].6) ,EQU(C15_0_ACC,8) OTU(B3[40].7) ,EQU(C15_0_ACC,9) OTU(B3[40].8) ,EQU(C15_0_ACC,10) OTU(B3[40].9) ,EQU(C15_0_ACC,11) OTU(B3[40].10) ,EQU(C15_0_ACC,12) OTU(B3[40].11) ,EQU(C15_0_ACC,13) OTU(B3[40].12) ,EQU(C15_0_ACC,14) OTU(B3[40].13) ,EQU(C15_0_ACC,15) OTU(B3[40].14) ,EQU(C15_0_ACC,16) OTU(B3[40].15) ,EQU(C15_0_ACC,17) OTU(B3[41].0) ,EQU(C15_0_ACC,18) OTU(B3[41].1) ,EQU(C15_0_ACC,19) OTU(B3[41].2) ,EQU(C15_0_ACC,20) OTU(B3[41].3) ];
+				N: XIC(B3[42].0)ONS(B3[44].0)OTE(B3[46].0);
+				N: [XIC(B3[46].0) XIO(B3[40].0) ,XIC(B3[40].0) XIO(B3[46].0) ]OTE(B3[40].0);
+				N: XIC(B3[42].1)ONS(B3[44].1)OTE(B3[46].1);
+				N: [XIC(B3[46].1) XIO(B3[40].1) ,XIC(B3[40].1) XIO(B3[46].1) ]OTE(B3[40].1);
+				N: XIC(B3[42].2)ONS(B3[44].2)OTE(B3[46].2);
+				N: [XIC(B3[46].2) XIO(B3[40].2) ,XIC(B3[40].2) XIO(B3[46].2) ]OTE(B3[40].2);
+				N: XIC(B3[42].3)ONS(B3[44].3)OTE(B3[46].3);
+				N: [XIC(B3[46].3) XIO(B3[40].3) ,XIC(B3[40].3) XIO(B3[46].3) ]OTE(B3[40].3);
+				N: XIC(B3[42].4)ONS(B3[44].4)OTE(B3[46].4);
+				N: [XIC(B3[46].4) XIO(B3[40].4) ,XIC(B3[40].4) XIO(B3[46].4) ]OTE(B3[40].4);
+				N: XIC(B3[42].5)ONS(B3[44].5)OTE(B3[46].5);
+				N: [XIC(B3[46].5) XIO(B3[40].5) ,XIC(B3[40].5) XIO(B3[46].5) ]OTE(B3[40].5);
+				N: XIC(B3[42].6)ONS(B3[44].6)OTE(B3[46].6);
+				N: [XIC(B3[46].6) XIO(B3[40].6) ,XIC(B3[40].6) XIO(B3[46].6) ]OTE(B3[40].6);
+				N: XIC(B3[42].7)ONS(B3[44].7)OTE(B3[46].7);
+				N: [XIC(B3[46].7) XIO(B3[40].7) ,XIC(B3[40].7) XIO(B3[46].7) ]OTE(B3[40].7);
+				N: XIC(B3[42].8)ONS(B3[44].8)OTE(B3[46].8);
+				N: [XIC(B3[46].8) XIO(B3[40].8) ,XIC(B3[40].8) XIO(B3[46].8) ]OTE(B3[40].8);
+				N: XIC(B3[42].9)ONS(B3[44].9)OTE(B3[46].9);
+				N: [XIC(B3[46].9) XIO(B3[40].9) ,XIC(B3[40].9) XIO(B3[46].9) ]OTE(B3[40].9);
+				N: XIC(B3[42].10)ONS(B3[44].10)OTE(B3[46].10);
+				N: [XIC(B3[46].10) XIO(B3[40].10) ,XIC(B3[40].10) XIO(B3[46].10) ]OTE(B3[40].10);
+				N: XIC(B3[42].11)ONS(B3[44].11)OTE(B3[46].11);
+				N: [XIC(B3[46].11) XIO(B3[40].11) ,XIC(B3[40].11) XIO(B3[46].11) ]OTE(B3[40].11);
+				N: XIC(B3[42].12)ONS(B3[44].12)OTE(B3[46].12);
+				N: [XIC(B3[46].12) XIO(B3[40].12) ,XIC(B3[40].12) XIO(B3[46].12) ]OTE(B3[40].12);
+				N: XIC(B3[42].13)ONS(B3[44].13)OTE(B3[46].13);
+				N: [XIC(B3[46].13) XIO(B3[40].13) ,XIC(B3[40].13) XIO(B3[46].13) ]OTE(B3[40].13);
+				N: XIC(B3[42].14)ONS(B3[44].14)OTE(B3[46].14);
+				N: [XIC(B3[46].14) XIO(B3[40].14) ,XIC(B3[40].14) XIO(B3[46].14) ]OTE(B3[40].14);
+				N: XIC(B3[42].15)ONS(B3[44].15)OTE(B3[46].15);
+				N: [XIC(B3[46].15) XIO(B3[40].15) ,XIC(B3[40].15) XIO(B3[46].15) ]OTE(B3[40].15);
+				N: XIC(B3[43].0)ONS(B3[45].0)OTE(B3[47].0);
+				N: [XIC(B3[47].0) XIO(B3[41].0) ,XIC(B3[41].0) XIO(B3[47].0) ]OTE(B3[41].0);
+				N: XIC(B3[43].1)ONS(B3[45].1)OTE(B3[47].1);
+				N: [XIC(B3[47].1) XIO(B3[41].1) ,XIC(B3[41].1) XIO(B3[47].1) ]OTE(B3[41].1);
+				N: XIC(B3[43].2)ONS(B3[45].2)OTE(B3[47].2);
+				N: [XIC(B3[47].2) XIO(B3[41].2) ,XIC(B3[41].2) XIO(B3[47].2) ]OTE(B3[41].2);
+				N: XIC(B3[43].3)ONS(B3[45].3)OTE(B3[47].3);
+				N: [XIC(B3[47].3) XIO(B3[41].3) ,XIC(B3[41].3) XIO(B3[47].3) ]OTE(B3[41].3);
+				N: [XIC(B3[15].1) ,XIC(B3[16].6) ,XIC(S[1].15) ][FLL(0,B3[40],2) ,COP(ST12[30],ST12[1],3) ,COP(ST12[30],ST12[4],3) ,COP(ST12[30],ST12[7],3) ,COP(ST12[30],ST12[10],3) ,COP(ST12[30],ST12[13],3) ,COP(ST12[30],ST12[16],3) ,COP(ST12[30],ST12[19],2) ];
+				N: [XIC(B3[15].1) ,XIC(B3[16].6) ,XIC(S[1].15) ][FLL(0.0,F18[1],20) ,COP(ST12[30],ST12[31],3) ,COP(ST12[30],ST12[34],3) ,COP(ST12[30],ST12[37],3) ,COP(ST12[30],ST12[40],3) ,COP(ST12[30],ST12[43],3) ,COP(ST12[30],ST12[46],3) ,COP(ST12[30],ST12[49],2) ];
+				N: [XIC(B3[15].1) ,XIC(B3[16].6) ,XIC(S[1].15) ][MOV(0,N7[20]) ,MOV(1,C15_0_ACC) ,COP(ST12[30],ST12[0],1) ,MOV(0.0,F8[7]) ,COP(ST12[30],ST12[24],1) ];
+				N: XIC(B3[15].0)[TON(T4[25],?,?) ,XIC(T4[25].DN) OTU(B3[15].0) ];
+				N: XIC(B3[15].1)[TON(T4[2],?,?) ,XIC(T4[2].DN) OTU(B3[15].1) ];
+				N: XIC(B3[16].4)[TON(T4[19],?,?) ,XIC(T4[19].DN) OTU(B3[16].4) ];
+				N: XIC(B3[16].5)[TON(T4[16],?,?) ,XIC(T4[16].DN) OTU(B3[16].5) ];
+				N: XIC(B3[16].13)[TON(T4[17],?,?) ,XIC(T4[17].DN) OTU(B3[16].13) ];
+				N: XIC(B3[16].12)[TON(T4[15],?,?) ,XIC(T4[15].DN) OTU(B3[16].12) ];
+				N: XIC(B3[16].7)[TON(T4[5],?,?) ,XIC(T4[5].DN) OTU(B3[16].7) ];
+				N: XIC(B3[16].11)[TON(T4[26],?,?) ,XIC(T4[26].DN) OTU(B3[16].11) ];
+				N: XIC(B3[16].6)[TON(T4[3],?,?) ,XIC(T4[3].DN) OTU(B3[16].6) ];
+				N: XIC(B3[16].15)[TON(T4[18],?,?) ,XIC(T4[18].DN) OTU(B3[16].15) ];
+				N: NEQ(N7[20],0)ONS(B3[0].10)OTE(B3[2].10);
+				N: [XIC(B13[3].2) ,XIC(B3[2].10) ,XIC(B3[16].13) ]XIO(B3[3].11)COP(ST12[C15_0_ACC],ST12[0],1);
+				N: [[CMP(ST12[0] = ST12[21]) XIO(B3[3].11) ,EQU(N7[0],12) ] OTE(B3[4].0) ,[CMP(ST12[0] = ST12[22]) XIO(B3[3].11) ,EQU(N7[0],14) ] OTE(B3[4].1) ];
+				N: XIC(B13[3].2)ONS(B3[1].13)XIO(B3[3].11)LES(C15_0_ACC,20)ADD(C15_0_ACC,1,N7_32);
+				N: XIC(B13[3].2)XIO(B3[3].11)COP(ST12[N7_32],ST12[23],1);
+				N: [CMP(ST12[23] = ST12[21]) OTE(B3[4].2) ,CMP(ST12[23] = ST12[22]) OTE(B3[4].3) ];
+				N: [MOV(N7[20],C15[0].PRE) ,MOV(C15[0].PRE,N7[10]) ];
+				N: [LES(F8[22],1.0) LES(F8[8],10.05) MOV(10.05,F8[35]) ,GEQ(F8[8],10.05) MOV(F8[8],F8[35]) ];
+				N: [LES(F8[23],1.0) LES(F8[9],10.05) MOV(10.05,F8[36]) ,GEQ(F8[9],10.05) MOV(F8[9],F8[36]) ];
+				RC: "~$N"
+				    "PINCH ROLLS$N"
+				    "~";
+				N: [XIC(B13[3].2) ,XIC(B3[2].10) ,XIC(B3[16].13) ,XIC(B3[3].11) ][XIO(B3[3].11) [MOV(F18[C15_0_ACC],F8[7]) ,XIC(B3[4].0) MUL(F8[7],F8[22],F8[10]) ,XIC(B3[4].1) MUL(F8[7],F8[23],F8[10]) ] ,XIC(B3[3].11) [XIC(B3[4].0) [MOV(F8[35],F8[7]) ,MUL(F8[7],F8[22],F8[10]) ] ,XIC(B3[4].1) [MOV(F8[36],F8[7]) ,MUL(F8[7],F8[23],F8[10]) ] ] ,XIC(B3[4].0) [SUB(F8[10],F8[11],F8[12]) ,DIV(F8[12],0.0059055,F8[15]) ,MOV(F8[15],L19[0]) ,GEQ(F8[12],60.0) SUB(L19[0],500,L19[0]) ,SUB(L19[4],L19[0],L19[1]) ] ,XIC(B3[4].1) [SUB(F8[10],F8[13],F8[14]) ,DIV(F8[14],0.0059055,F8[16]) ,MOV(F8[16],L19[2]) ,GEQ(F8[14],60.0) SUB(L19[2],500,L19[2]) ,SUB(L19[6],L19[2],L19[3]) ] ];
+				N: [XIC(T14[3].EN) XIO(B13[3].11) [XIC(B3[4].0) [MOV(4064,PTOX[0].OF) ,MOV(500,PTOX[0].ADP) ] ,XIC(B3[4].1) [MOV(4064,PTOX[1].OF) ,MOV(500,PTOX[1].ADP) ] ] ,XIC(T14[5].EN) XIO(T14[8].EN) [XIC(B3[4].0) [GEQ(F8[12],0.5) LES(F8[12],6.0) [MUL(N7[19],0.01,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[0].OF) ,MOV(N7[29],PTOX[0].ADP) ] ,GEQ(F8[12],6.0) LES(F8[12],12.0) [MUL(N7[19],0.1,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[0].OF) ,MOV(N7[29],PTOX[0].ADP) ] ,GEQ(F8[12],12.0) LES(F8[12],24.0) [MUL(N7[19],0.25,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[0].OF) ,MOV(N7[29],PTOX[0].ADP) ] ,GEQ(F8[12],24.0) LES(F8[12],36.0) [MUL(N7[19],0.5,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[0].OF) ,MOV(N7[29],PTOX[0].ADP) ] ,GEQ(F8[12],36.0) LES(F8[12],48.0) [MUL(N7[19],0.75,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[0].OF) ,MOV(N7[29],PTOX[0].ADP) ] ,GEQ(F8[12],48.0) [MOV(N7[19],N7[29]) ,MOV(N7[29],PTOX[0].OF) ,MOV(N7[29],PTOX[0].ADP) ] ] ,XIC(B3[4].1) [GEQ(F8[14],0.5) LES(F8[14],6.0) [MUL(N7[19],0.01,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[1].OF) ,MOV(N7[29],PTOX[1].ADP) ] ,GEQ(F8[14],6.0) LES(F8[14],12.0) [MUL(N7[19],0.1,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[1].OF) ,MOV(N7[29],PTOX[1].ADP) ] ,GEQ(F8[14],12.0) LES(F8[14],24.0) [MUL(N7[19],0.25,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[1].OF) ,MOV(N7[29],PTOX[1].ADP) ] ,GEQ(F8[14],24.0) LES(F8[14],36.0) [MUL(N7[19],0.5,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[1].OF) ,MOV(N7[29],PTOX[1].ADP) ] ,GEQ(F8[14],36.0) LES(F8[14],48.0) [MUL(N7[19],0.75,F8[17]) ,MOV(F8[17],N7[29]) ,MOV(N7[29],PTOX[1].OF) ,MOV(N7[29],PTOX[1].ADP) ] ,GEQ(F8[14],48.0) [MOV(N7[19],N7[29]) ,MOV(N7[29],PTOX[1].OF) ,MOV(N7[29],PTOX[1].ADP) ] ] ] ,XIC(T14[8].EN) XIO(T14[10].EN) [XIC(B3[4].0) [MOV(8128,PTOX[0].OF) ,MOV(2898,PTOX[0].ADP) ] ,XIC(B3[4].1) [MOV(8128,PTOX[1].OF) ,MOV(2898,PTOX[1].ADP) ] ] ,XIC(T14[10].EN) [XIC(B3[4].0) [MOV(16256,PTOX[0].OF) ,MOV(4064,PTOX[0].ADP) ] ,XIC(B3[4].1) [MOV(16256,PTOX[1].OF) ,MOV(4064,PTOX[1].ADP) ] ] ];
+				N: [XIC(T14[2].EN) XIO(B13[3].15) ,XIC(T14[4].EN) XIO(B13[4].0) ,XIC(T14[8].EN) XIO(T14[19].EN) ][XIC(B3[4].0) [MOV(F8[20],F8[31]) ,MOV(F8[18],F8[32]) ,MOV(F8[18],F8[33]) ] ,XIC(B3[4].1) [MOV(F8[20],F8[51]) ,MOV(F8[18],F8[52]) ,MOV(F8[18],F8[53]) ] ];
+				N: XIC(T14[5].EN)XIO(B13[4].5)[XIC(B3[4].0) [GEQ(F8[12],0.5) LES(F8[12],6.0) [MUL(F8[20],0.01,F8[21]) ,MOV(F8[21],F8[31]) ,MUL(F8[18],0.01,F8[19]) ,MOV(F8[19],F8[32]) ,MOV(F8[19],F8[33]) ] ,GEQ(F8[12],6.0) LES(F8[12],12.0) [MUL(F8[20],0.1,F8[21]) ,MOV(F8[21],F8[31]) ,MUL(F8[18],0.1,F8[19]) ,MOV(F8[19],F8[32]) ,MOV(F8[19],F8[33]) ] ,GEQ(F8[12],12.0) LES(F8[12],24.0) [MUL(F8[20],0.25,F8[21]) ,MOV(F8[21],F8[31]) ,MUL(F8[18],0.25,F8[19]) ,MOV(F8[19],F8[32]) ,MOV(F8[19],F8[33]) ] ,GEQ(F8[12],24.0) LES(F8[12],36.0) [MUL(F8[20],0.5,F8[21]) ,MOV(F8[21],F8[31]) ,MUL(F8[18],0.5,F8[19]) ,MOV(F8[19],F8[32]) ,MOV(F8[19],F8[33]) ] ,GEQ(F8[12],36.0) LES(F8[12],48.0) [MUL(F8[20],0.75,F8[21]) ,MOV(F8[21],F8[31]) ,MUL(F8[18],0.75,F8[19]) ,MOV(F8[19],F8[32]) ,MOV(F8[19],F8[33]) ] ,GEQ(F8[12],48.0) [MOV(F8[20],F8[31]) ,MOV(F8[18],F8[32]) ,MOV(F8[18],F8[33]) ] ] ,XIC(B3[4].1) [GEQ(F8[14],0.5) LES(F8[14],6.0) [MUL(F8[20],0.01,F8[21]) ,MOV(F8[21],F8[51]) ,MUL(F8[18],0.01,F8[19]) ,MOV(F8[19],F8[52]) ,MOV(F8[19],F8[53]) ] ,GEQ(F8[14],6.0) LES(F8[14],12.0) [MUL(F8[20],0.1,F8[21]) ,MOV(F8[21],F8[51]) ,MUL(F8[18],0.1,F8[19]) ,MOV(F8[19],F8[52]) ,MOV(F8[19],F8[53]) ] ,GEQ(F8[14],12.0) LES(F8[14],24.0) [MUL(F8[20],0.25,F8[21]) ,MOV(F8[21],F8[51]) ,MUL(F8[18],0.25,F8[19]) ,MOV(F8[19],F8[52]) ,MOV(F8[19],F8[53]) ] ,GEQ(F8[14],24.0) LES(F8[14],36.0) [MUL(F8[20],0.5,F8[21]) ,MOV(F8[21],F8[51]) ,MUL(F8[18],0.5,F8[19]) ,MOV(F8[19],F8[52]) ,MOV(F8[19],F8[53]) ] ,GEQ(F8[14],36.0) LES(F8[14],48.0) [MUL(F8[20],0.75,F8[21]) ,MOV(F8[21],F8[51]) ,MUL(F8[18],0.75,F8[19]) ,MOV(F8[19],F8[52]) ,MOV(F8[19],F8[53]) ] ,GEQ(F8[14],48.0) [MOV(F8[20],F8[51]) ,MOV(F8[18],F8[52]) ,MOV(F8[18],F8[53]) ] ] ];
+				N: [XIC(B13[3].2) ,XIC(B3[2].10) ,XIC(B3[16].13) ]ONS(B3[1].5)ADD(C15_0_ACC,30,N7_21);
+				N: [XIC(B13[3].2) ,XIC(B3[2].10) ,XIC(B3[16].13) ]XIO(B13[3].4)CONCAT(ST12[25],ST12[26],ST12[27]);
+				N: [XIC(B13[3].4) ,XIC(B3[2].10) ,XIC(B3[16].13) ]XIO(B13[3].5)CONCAT(ST12[27],ST12[N7_21],ST12[24]);
+				N: [XIC(B13[3].0) XIO(B13[3].1) ,XIC(B13[3].2) XIO(B13[3].3) ]ONS(B3[1].6)[ACL(0,YES,YES) ,AWA(0,ST12[53],SERIAL_R6[1],16,?) ];
+				N: XIC(B13[3].4)ONS(B3[1].7)AWA(0,ST12[24],SERIAL_R6[0],28,?);
+				N: [XIC(B3[16].8) ,XIC(B3[20].13) XIO(B13[3].0) ]ONS(B3[1].8)OTE(B3[2].8);
+				N: [XIC(B3[2].8) XIO(B3[4].8) ,XIC(B3[4].8) XIO(B3[2].8) ]XIO(B3[11].0)OTE(B3[4].8);
+				N: [XIC(B3[16].9) ,XIC(B3[20].14) XIO(B13[3].0) ]ONS(B3[1].9)OTE(B3[2].9);
+				N: [XIC(B3[2].9) XIO(B3[4].9) ,XIC(B3[4].9) XIO(B3[2].9) ]XIO(B3[11].0)OTE(B3[4].9);
+				N: [XIC(B3[16].10) ,XIC(B3[4].10) ]XIO(B3[4].12)XIO(T4[1].EN)XIO(T4[20].EN)XIO(B3[3].0)XIO(B3[3].1)OTE(B3[4].10);
+				N: XIC(B3[4].10)[XIC(SLOT00_Bul_1766_Placeholder.O[0].6) ,XIC(B3[4].11) ][TON(T4[40],?,?) ,XIC(T4[40].DN) OTE(B3[4].11) ];
+				N: XIC(B3[4].11)[XIO(SLOT00_Bul_1766_Placeholder.O[0].6) ,XIC(B3[4].12) ]OTE(B3[4].12);
+				N: MOV(N7[4],C5[8].PRE);
+				N: XIC(SLOT00_Bul_1766_Placeholder.O[0].6)ONS(B3[1].10)CTU(C5[8],?,?);
+				N: XIC(B3[16].14)RES(C5[8]);
+		END_ROUTINE
+
+		ROUTINE _5_SYS_IO 
+				RC: "~$N"
+				    "INPUTS$N"
+				    "~";
+				N: [XIC(L208[0].0) OTE(B3[10].0) ,XIC(L208[0].1) OTE(B3[10].1) ,XIC(L208[1].1) OTE(B3[10].2) ];
+				N: [XIC(L208[20].0) OTE(B3[10].3) ,XIC(L208[20].1) OTE(B3[10].4) ,XIC(L208[21].1) OTE(B3[10].5) ];
+				RC: "~$N"
+				    "OUTPUTS$N"
+				    "~";
+				N: XIO(T4[9].DN)TON(T4[9],?,?);
+				N: [XIC(T4[9].DN) XIO(B3[10].15) ,XIC(B3[10].15) XIO(T4[9].DN) ]OTE(B3[10].15);
+				N: XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIC(SLOT00_Bul_1766_Placeholder.I[0].11)XIC(SLOT00_Bul_1766_Placeholder.I[0].0)XIO(B3[16].15)TON(T4[0],?,?);
+				N: XIC(T4[0].DN)OTE(SLOT00_Bul_1766_Placeholder.O[0].0);
+				N: XIC(T4[0].DN)OTE(SLOT00_Bul_1766_Placeholder.O[0].1);
+				N: XIC(SLOT00_Bul_1766_Placeholder.I[0].1)XIO(B3[23].1)OTE(SLOT00_Bul_1766_Placeholder.O[0].11);
+				N: [XIC(C5[8].DN) ,XIC(B3[23].2) ]OTE(ENETBRIDGE_1769:1:O.Data.8);
+				N: [XIC(B3[3].8) ,XIC(B3[23].3) ]OTE(ENETBRIDGE_1769:1:O.Data.9);
+				N: [XIC(B3[3].0) ,XIC(B3[3].1) ,XIC(B3[23].4) ]OTE(ENETBRIDGE_1769:1:O.Data.10);
+				N: [XIO(B3[3].8) ,XIC(B3[23].5) ]OTE(ENETBRIDGE_1769:1:O.Data.11);
+		END_ROUTINE
+
+		ROUTINE _6_SYS_FLTS 
+				N: XIC(B3[16].2)ONS(B3[1].2)OTE(B3[2].2);
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[0].1)OTL(B3[11].0);
+				N: XIC(B3[11].0)[MOV(1,N7[22]) ,EQU(N7[2],1) XIC(B3[2].2) OTU(B3[11].0) ];
+				N: [XIO(SLOT00_Bul_1766_Placeholder.I[0].11) ,XIO(SLOT00_Bul_1766_Placeholder.I[0].0) ][XIO(B3[3].8) ,XIC(T4[20].EN) ,XIC(B3[4].10) ]OTL(B3[11].2);
+				N: XIC(B3[11].2)[MOV(3,N7[22]) ,EQU(N7[2],3) XIC(B3[2].2) OTU(B3[11].2) ];
+				N: XIC(B3[10].1)XIC(T4[7].DN)OTL(B3[11].3);
+				N: XIC(B3[11].3)[MOV(4,N7[22]) ,EQU(N7[2],4) XIC(B3[2].2) OTU(B3[11].3) ];
+				N: XIC(L210[0].7)XIO(B3[10].0)[TON(T4[10],?,?) ,XIC(T4[10].DN) OTL(B3[11].4) ];
+				N: XIC(B3[11].4)[MOV(5,N7[22]) ,EQU(N7[2],5) XIC(B3[2].2) OTU(B3[11].4) ];
+				N: XIC(B3[10].4)XIC(T4[7].DN)OTL(B3[11].5);
+				N: XIC(B3[11].5)[MOV(6,N7[22]) ,EQU(N7[2],6) XIC(B3[2].2) OTU(B3[11].5) ];
+				N: XIC(L210[20].7)XIO(B3[10].3)[TON(T4[11],?,?) ,XIC(T4[11].DN) OTL(B3[11].6) ];
+				N: XIC(B3[11].6)[MOV(7,N7[22]) ,EQU(N7[2],7) XIC(B3[2].2) OTU(B3[11].6) ];
+				N: XIC(B3[0].2)XIC(T4[0].DN)XIO(B13[0].8)[TON(T4[12],?,?) ,XIC(T4[12].DN) OTL(B3[11].7) ];
+				N: XIC(B3[11].7)[MOV(8,N7[22]) ,EQU(N7[2],8) XIC(B3[2].2) OTU(B3[11].7) ];
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[0].12)XIC(T4[0].DN)XIO(B13[0].8)[TON(T4[13],?,?) ,XIC(T4[13].DN) OTL(B3[11].8) ];
+				N: XIC(B3[11].8)[MOV(9,N7[22]) ,EQU(N7[2],9) XIC(B3[2].2) OTU(B3[11].8) ];
+				N: XIO(SLOT00_Bul_1766_Placeholder.I[1].1)XIC(T4[0].DN)XIO(B13[0].8)[TON(T4[14],?,?) ,XIC(T4[14].DN) OTL(B3[11].9) ];
+				N: XIC(B3[11].9)[MOV(10,N7[22]) ,EQU(N7[2],10) XIC(B3[2].2) OTU(B3[11].9) ];
+				N: NEQ(N7[22],0)JMP(LABEL_0);
+				N: LBL(LABEL_0)MOV(N7[22],N7[2]);
+				N: XIC(S[1].15)[FLL(0,B3[11],1) ,FLL(0,B13[8],2) ,OTU(B3[14].2) ,OTU(B3[14].3) ];
+		END_ROUTINE
+
+		ROUTINE _7_STTS 
+				RC: "~$N"
+				    "TIMES$N"
+				    "~";
+				N: XIO(T4[4].DN)[TON(T4[4],?,?) ,XIC(T4[4].DN) OTE(B3[2].15) ];
+				N: XIC(B3[2].15)[XIO(B3[3].8) [CTU(C5[0],?,?) ,CTU(C5[2],?,?) ] ,[XIC(B3[3].8) XIO(B3[3].0) XIO(B3[3].1) CTU(C5[4],?,?) ,[XIC(B3[3].0) ,XIC(B3[3].1) ] CTU(C5[6],?,?) ] ];
+				N: XIC(C5[0].DN)[CTU(C5[1],?,?) ,RES(C5[0]) ];
+				N: XIC(C5[1].DN)[ADD(1.0,F8[0],F8[0]) ,RES(C5[1]) ];
+				N: GRT(F8[0],9999999.0)MOV(1.0,F8[0]);
+				N: XIC(C5[2].DN)[CTU(C5[3],?,?) ,RES(C5[2]) ];
+				N: XIC(C5[3].DN)[ADD(1.0,F8[2],F8[2]) ,RES(C5[3]) ];
+				N: GRT(F8[2],9999999.0)MOV(1.0,F8[2]);
+				N: XIC(C5[4].DN)[CTU(C5[5],?,?) ,RES(C5[4]) ];
+				N: XIC(C5[5].DN)[ADD(1.0,F8[3],F8[3]) ,RES(C5[5]) ];
+				N: GRT(F8[3],9999999.0)MOV(1.0,F8[3]);
+				N: XIC(C5[6].DN)[CTU(C5[7],?,?) ,RES(C5[6]) ];
+				N: XIC(C5[7].DN)[ADD(1.0,F8[4],F8[4]) ,RES(C5[7]) ];
+				N: GRT(F8[4],9999999.0)MOV(1.0,F8[4]);
+				RC: "~$N"
+				    "CYCLES$N"
+				    "~";
+				N: XIC(B13[3].0)ONS(B3[1].15)[ADD(1.0,F8[1],F8[1]) ,ADD(1.0,F8[5],F8[5]) ];
+				N: [GRT(F8[1],9999999.0) MOV(1.0,F8[1]) ,GRT(F8[5],9999999.0) MOV(1.0,F8[5]) ];
+		END_ROUTINE
+
+		ROUTINE _8_INIT 
+				RC: "~$N"
+				    "CYCLE$N"
+				    "~";
+				N: [XIC(B3[16].1) XIO(B3[5].0) ,XIC(T4[20].EN) ]XIO(B3[3].5)XIO(B3[6].15)XIC(B3[3].4)[TON(T4[20],?,?) ,XIC(T4[20].DN) OTE(B3[5].0) ];
+				N: XIC(B3[5].0)XIC(B3[3].14)OTE(B3[7].0);
+				N: XIC(B3[7].0)[TON(T4[30],?,?) ,XIC(T4[30].DN) OTE(B3[7].1) ];
+				N: XIC(B3[7].1)[XIC(SLOT00_Bul_1766_Placeholder.O[0].6) ,XIC(B3[7].2) ][TON(T4[31],?,?) ,XIC(T4[31].DN) OTE(B3[7].2) ];
+				N: XIC(B3[7].2)[XIO(SLOT00_Bul_1766_Placeholder.O[0].6) ,XIC(B3[7].3) ][XIO(B3[7].4) [[XIC(B3[4].0) ,EQU(F18[1],0.0) ] MOV(N7[23],PTOX[0].JF) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] MOV(N7[23],PTOX[1].JF) ] ,TON(T4[32],?,?) ,XIC(T4[32].DN) OTE(B3[7].3) ];
+				N: XIC(B3[7].3)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[7].4) ]OTE(B3[7].4);
+				N: XIC(B3[7].4)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].8) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].9) ,XIC(B3[7].5) ]OTE(B3[7].5);
+				N: XIC(B3[7].5)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[7].6) ][XIO(B3[7].7) [[XIC(B3[4].0) ,EQU(F18[1],0.0) ] MOV(N7[24],PTOX[0].JF) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] MOV(N7[24],PTOX[1].JF) ] ,TON(T4[33],?,?) ,XIC(T4[33].DN) OTE(B3[7].6) ];
+				N: XIC(B3[7].6)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[7].7) ]OTE(B3[7].7);
+				N: XIC(B3[7].7)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[0].8) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[0].9) ,XIC(B3[7].8) ]OTE(B3[7].8);
+				N: XIC(B3[7].8)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[7].9) ][XIO(B3[7].10) [[XIC(B3[4].0) ,EQU(F18[1],0.0) ] [MOV(4064,PTOX[0].OF) ,MOV(N7[27],PTOX[0].TOP) ,MOV(500,PTOX[0].ADP) ] ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] [MOV(4064,PTOX[1].OF) ,MOV(N7[28],PTOX[1].TOP) ,MOV(500,PTOX[1].ADP) ] ] ,TON(T4[34],?,?) ,XIC(T4[34].DN) OTE(B3[7].9) ];
+				N: XIC(B3[7].9)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[7].10) ]OTE(B3[7].10);
+				N: XIC(B3[7].10)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[7].11) ]OTE(B3[7].11);
+				N: XIC(B3[7].11)[[XIC(B3[4].0) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].2) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].3) ,XIC(T4[35].EN) ][TON(T4[35],?,?) ,XIC(T4[35].DN) OTE(B3[7].12) ];
+				N: [XIC(B3[5].0) XIO(B3[3].14) ,XIC(B3[7].12) ]OTE(B3[5].1);
+				N: XIC(B3[5].1)[XIO(SLOT00_Bul_1766_Placeholder.I[0].2) XIO(SLOT00_Bul_1766_Placeholder.I[0].15) XIO(SLOT00_Bul_1766_Placeholder.I[0].3) XIO(SLOT00_Bul_1766_Placeholder.I[1].0) ,XIC(B3[5].3) ][TON(T4[22],?,?) ,XIC(T4[22].DN) OTE(B3[5].3) ];
+				N: XIC(B3[5].3)[XIO(SLOT00_Bul_1766_Placeholder.I[0].10) ,[XIC(B3[5].4) ,XIC(B3[5].3) ] ]OTE(B3[5].4);
+				N: XIC(B3[5].4)[XIC(SLOT00_Bul_1766_Placeholder.I[0].10) ,XIC(B3[5].5) ,XIC(B3[5].4) ]OTE(B3[5].5);
+				N: XIC(B3[5].5)XIO(B3[5].8)[XIO(SLOT00_Bul_1766_Placeholder.I[0].13) ,XIC(B3[5].6) ][XIO(B3[5].7) MOV(N7[23],PTOX[0].JF) ,OTE(B3[5].6) ];
+				N: XIC(B3[5].6)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[5].7) ]OTE(B3[5].7);
+				N: [XIC(B3[5].7) ,XIC(B3[5].5) XIO(B3[5].6) ][XIC(SLOT00_Bul_1766_Placeholder.I[0].13) ,XIC(B3[5].8) ]OTE(B3[5].8);
+				N: XIC(B3[5].8)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[5].9) ][XIO(B3[5].10) MOV(N7[24],PTOX[0].JF) ,TON(T4[23],?,?) ,XIC(T4[23].DN) OTE(B3[5].9) ];
+				N: XIC(B3[5].9)[XIO(SLOT00_Bul_1766_Placeholder.I[1].2) ,XIC(B3[5].10) ]OTE(B3[5].10);
+				N: XIC(B3[5].10)[XIO(SLOT00_Bul_1766_Placeholder.I[0].13) ,XIC(B3[5].11) ]OTE(B3[5].11);
+				N: XIC(B3[5].5)XIO(B3[5].14)[XIO(SLOT00_Bul_1766_Placeholder.I[0].14) ,XIC(B3[5].12) ][XIO(B3[5].13) MOV(N7[23],PTOX[1].JF) ,OTE(B3[5].12) ];
+				N: XIC(B3[5].12)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[5].13) ]OTE(B3[5].13);
+				N: [XIC(B3[5].13) ,XIC(B3[5].5) XIO(B3[5].12) ][XIC(SLOT00_Bul_1766_Placeholder.I[0].14) ,XIC(B3[5].14) ]OTE(B3[5].14);
+				N: XIC(B3[5].14)[XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[5].15) ][XIO(B3[6].0) MOV(N7[24],PTOX[1].JF) ,TON(T4[24],?,?) ,XIC(T4[24].DN) OTE(B3[5].15) ];
+				N: XIC(B3[5].15)[XIO(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[6].0) ]OTE(B3[6].0);
+				N: XIC(B3[6].0)[XIO(SLOT00_Bul_1766_Placeholder.I[0].14) ,XIC(B3[6].1) ]OTE(B3[6].1);
+				N: XIC(B3[5].11)XIC(B3[6].1)[XIC(SLOT00_Bul_1766_Placeholder.I[1].2) XIC(SLOT00_Bul_1766_Placeholder.I[1].3) ,XIC(B3[5].2) ][TON(T4[21],?,?) ,XIC(T4[21].DN) OTE(B3[5].2) ];
+				N: XIC(B3[5].2)[XIC(B3[4].0) [XIC(SLOT00_Bul_1766_Placeholder.I[0].4) ,XIC(B3[0].1) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].6) ,[XIC(B3[4].1) ,EQU(F18[1],0.0) ] [XIC(SLOT00_Bul_1766_Placeholder.I[0].5) ,XIC(B3[0].1) ] XIC(SLOT00_Bul_1766_Placeholder.I[0].7) ,XIC(T4[29].EN) ][TON(T4[29],?,?) ,XIC(T4[29].DN) [OTE(B3[6].15) ,RES(T4[20]) ,RES(T4[21]) ,RES(T4[22]) ,RES(T4[23]) ,RES(T4[24]) ,RES(T4[29]) ,RES(T4[30]) ,RES(T4[31]) ,RES(T4[32]) ,RES(T4[33]) ,RES(T4[34]) ,RES(T4[35]) ,FLL(0,B3[5],3) ,OTL(B3[3].5) ,OTU(B3[4].4) ,OTU(B3[3].14) ,OTU(B3[14].3) ] ];
+				N: XIC(T4[20].EN)[FLL(0,B13[3],4) ,FLL(0,B3[20],20) ];
+		END_ROUTINE
+
+		CHILD_PROGRAMS
+		END_CHILD_PROGRAMS
+
+	END_PROGRAM
+
+	TASK MainTask (Type := CONTINUOUS,
+	               Rate := 10,
+	               Priority := 10,
+	               Watchdog := 500,
+	               DisableUpdateOutputs := No,
+	               InhibitTask := No)
+			MainProgram;
+	END_TASK
+
+	TASK _2_MAIN (Type := EVENT,
+	              Rate := 10,
+	              Priority := 15,
+	              Watchdog := 500,
+	              EventTrigger := EVENT Instruction Only,
+	              EnableTimeout := No,
+	              DisableUpdateOutputs := No,
+	              InhibitTask := No)
+			_2_MAIN;
+	END_TASK
+
+CONFIG CST(SystemTimeMasterID := 0) END_CONFIG
+
+CONFIG EthernetPort1(Label := "A1",
+	                             PortEnabled := 1) END_CONFIG
+
+CONFIG EthernetPort2(Label := "A2",
+	                             PortEnabled := 1) END_CONFIG
+
+CONFIG TimeSynchronize(Priority1 := 128,
+	                                 Priority2 := 128,
+	                                 PTPEnable := 0) END_CONFIG
+
+CONFIG WallClockTime(LocalTimeAdjustment := 0,
+	                     TimeZone := 0) END_CONFIG
+
+END_CONTROLLER
+
