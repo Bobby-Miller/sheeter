@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gfx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Gfx-SE16.xsd">
+    <displaySettings displayType="replace" position="useCurrentPosition" securityCode="*" backColor="black" titleBar="false" maximumTagUpdateRate="0.1" focusHighlightColor="black" disableFocusHighlight="true" size="specifySizeInPixels" width="800" height="600" allowMultipleRunningCopies="false" cacheAfterDisplaying="false" sizeToMainWindow="true" showLastAcquiredValue="true" TrackScreenForNavigation="true" TrackName="" allowResizing="false" whenResized="scale" beepOnPress="false" highlightWhenCursorPassesOver="false" interactiveHighlightColor="black" displayOnScreenKeyboard="false" allowButtonActionOnError="true" fieldNotSelectedTextColor="black" fieldNotSelectedFillColor="white" fieldSelectedTextColor="black" fieldSelectedFillColor="white" fieldInErrorNotSelectedTextColor="black" fieldInErrorNotSelectedFillColor="red" fieldInErrorSelectedTextColor="white" fieldInErrorSelectedFillColor="red" startupCommand="&amp;Set D\N700 7" shutdownCommand="" useGradientStyle="false" endColor="teal" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+    <text name="Text1" height="18" width="54" left="373" top="0" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="black" foreColor="#FFFF80" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="SETUP"/>
+    <line name="Line1" height="1" width="800" left="0" top="16" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="0 16 799 16 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="#0088C8" foreColor="#0088C8"/>
+    <text name="Text2" height="18" width="148" left="0" top="0" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="white" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="/*SDT*/"/>
+    <button name="Button1" height="56" width="104" left="0" top="544" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" style="beveled" bevelWidth="4" captureCursor="false" highlightOnFocus="false" tabIndex="2">
+        <command pressAction="" repeatAction="" releaseAction="Display 03_MENU" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="navy" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="MENU"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="false" patternColor="black" patternStyle="none" backColor="blue" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="MENU"/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <button name="Button2" height="56" width="104" left="696" top="544" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" style="beveled" bevelWidth="4" captureCursor="false" highlightOnFocus="false" tabIndex="1">
+        <command pressAction="" repeatAction="" releaseAction="Display 01_AUTO" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="navy" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="AUTOMATIC"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="false" patternColor="black" patternStyle="none" backColor="blue" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="AUTOMATIC"/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <group name="Group4" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+        <panel name="Panel2" height="96" width="312" left="244" top="60" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#A0A0A4" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="raisedInset" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="Text4" height="18" width="114" left="343" top="64" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="white" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="BLADE COUNT"/>
+        <group name="Group1" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel1" height="64" width="104" left="252" top="84" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#8C8C00" patternColor="white" blink="false" description="" borderColor="silver" borderStyle="raised" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <numericInput name="NumericInput1" height="31" width="79" left="264" top="108" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" fontFamily="Arial" charHeight="26" charWidth="9" bold="false" italic="false" underline="false" strikethrough="false" fieldLength="5" justification="center" enabledWhenExpressionIsTrue="true" tabIndex="4" continuouslyUpdate="true" discardInputOnFocusLost="false" defaultData="00000" decimalPlaces="0" format="decimal" overflow="showExponent" leadingCharacter="blanks" inputSecurityCode="*" displayOnScreenKeypad="false" keypadCustomCaption="" decimalPlaceType="fixed" remarkCheck="false" remarkInfo="">
+                    <connections>
+                        <connection name="Value" expression="D\N704"/>
+                        <connection name="Minimum" expression="10"/>
+                        <connection name="Maximum" expression="30000"/>
+                    </connections>
+                
+                <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                    <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                    <imageSettings imageReference="noImage"/>
+                </confirm>
+                <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+                    <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                        <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                        <imageSettings imageReference="noImage"/>
+                    </confirm>
+                    <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                    <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                </useVariable>
+            </numericInput>
+            <text name="Text3" height="18" width="67" left="271" top="88" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="SETTING"/>
+        </group>
+        <text name="Text5" height="18" width="77" left="360" top="88" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="CURRENT"/>
+        <numericDisplay name="NumericDisplay3" height="29" width="65" left="366" top="108" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="white" backStyle="solid" foreColor="black" fontFamily="Arial" charHeight="28" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" fieldLength="5" showDigitGrouping="false" decimalPlaces="0" format="floatingPoint" overflow="showExponent" leadingCharacter="blanks" decimalPlaceType="fixed">
+            <connections>
+                <connection name="Value" expression="D\C508"/>
+            </connections>
+        </numericDisplay>
+        <button name="Button3" height="64" width="104" left="444" top="84" visible="true" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" style="beveled" bevelWidth="4" captureCursor="false" highlightOnFocus="false" tabIndex="3">
+            <action type="setToOneOnPressZeroOnRelease" tag="B\B31614"/>
+            <up patternColor="black" patternStyle="none" backColor="#8C8C00" backStyle="solid" foreColor="white" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="RESET&#xA;COUNT&#xA;"/>
+                <imageSettings imageReference="noImage"/>
+            </up>
+            <down downSameAsUp="false" patternColor="black" patternStyle="none" backColor="#F0F000" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+                <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="RESET&#xA;COUNT"/>
+                <imageSettings imageReference="noImage"/>
+            </down>
+            <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+            <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+                <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                    <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                    <imageSettings imageReference="noImage"/>
+                </confirm>
+                <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            </useVariable>
+            <animations>
+                <animateVisibility expression="B\B30308" expressionTrueState="visible"/>
+            </animations>
+        </button>
+    </group>
+    <group name="Group3" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+        <panel name="Panel3" height="96" width="200" left="300" top="200" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#A0A0A4" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="raisedInset" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="Text6" height="18" width="183" left="309" top="204" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="white" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="BRAKE SCALE FACTOR"/>
+        <group name="Group2" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel4" height="64" width="104" left="348" top="224" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#8C8C00" patternColor="white" blink="false" description="" borderColor="silver" borderStyle="raised" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <numericInput name="NumericInput2" height="30" width="43" left="379" top="248" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" fontFamily="Arial" charHeight="25" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" fieldLength="3" justification="center" enabledWhenExpressionIsTrue="true" tabIndex="5" continuouslyUpdate="true" discardInputOnFocusLost="false" defaultData="000" decimalPlaces="0" format="decimal" overflow="showExponent" leadingCharacter="blanks" inputSecurityCode="*" displayOnScreenKeypad="false" keypadCustomCaption="" decimalPlaceType="fixed" remarkCheck="false" remarkInfo="">
+                    <connections>
+                        <connection name="Value" expression="D\N705"/>
+                        <connection name="Minimum" expression="1"/>
+                        <connection name="Maximum" expression="100"/>
+                    </connections>
+                
+                <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                    <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                    <imageSettings imageReference="noImage"/>
+                </confirm>
+                <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+                    <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                        <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                        <imageSettings imageReference="noImage"/>
+                    </confirm>
+                    <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                    <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                </useVariable>
+            </numericInput>
+            <text name="Text7" height="18" width="15" left="393" top="228" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="%"/>
+        </group>
+    </group>
+    <group name="Group6" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+        <panel name="Panel6" height="96" width="232" left="284" top="340" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#A0A0A4" patternColor="white" blink="false" description="" borderColor="#3F3F3F" borderStyle="raisedInset" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <text name="Text8" height="18" width="191" left="305" top="344" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="white" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="LENGTH SCALE FACTOR"/>
+        <group name="Group5" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel7" height="64" width="104" left="292" top="364" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#8C8C00" patternColor="white" blink="false" description="" borderColor="silver" borderStyle="raised" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <numericInput name="NumericInput3" height="30" width="82" left="303" top="384" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" fontFamily="Arial" charHeight="25" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" fieldLength="6" justification="center" enabledWhenExpressionIsTrue="true" tabIndex="6" continuouslyUpdate="true" discardInputOnFocusLost="false" defaultData="1.0000" decimalPlaces="4" format="floatingPoint" overflow="showExponent" leadingCharacter="blanks" inputSecurityCode="*" displayOnScreenKeypad="false" keypadCustomCaption="" decimalPlaceType="fixed" remarkCheck="false" remarkInfo="">
+                    <connections>
+                        <connection name="Value" expression="R\F822"/>
+                        <connection name="Minimum" expression="0.0001"/>
+                        <connection name="Maximum" expression="10"/>
+                    </connections>
+                
+                <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                    <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                    <imageSettings imageReference="noImage"/>
+                </confirm>
+                <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+                    <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                        <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                        <imageSettings imageReference="noImage"/>
+                    </confirm>
+                    <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                    <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                </useVariable>
+            </numericInput>
+            <text name="Text10" height="18" width="16" left="336" top="368" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="W"/>
+        </group>
+        <group name="Group7" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+            <panel name="Panel5" height="64" width="104" left="404" top="364" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#8C8C00" patternColor="white" blink="false" description="" borderColor="silver" borderStyle="raised" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+            <numericInput name="NumericInput4" height="30" width="82" left="415" top="384" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" fontFamily="Arial" charHeight="25" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" fieldLength="6" justification="center" enabledWhenExpressionIsTrue="true" tabIndex="7" continuouslyUpdate="true" discardInputOnFocusLost="false" defaultData="1.0000" decimalPlaces="4" format="floatingPoint" overflow="showExponent" leadingCharacter="blanks" inputSecurityCode="*" displayOnScreenKeypad="false" keypadCustomCaption="" decimalPlaceType="fixed" remarkCheck="false" remarkInfo="">
+                    <connections>
+                        <connection name="Value" expression="R\F823"/>
+                        <connection name="Minimum" expression="0.0001"/>
+                        <connection name="Maximum" expression="10"/>
+                    </connections>
+                
+                <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                    <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                    <imageSettings imageReference="noImage"/>
+                </confirm>
+                <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+                    <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                        <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                        <imageSettings imageReference="noImage"/>
+                    </confirm>
+                    <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                    <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+                </useVariable>
+            </numericInput>
+            <text name="Text9" height="18" width="12" left="450" top="368" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="black" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="X"/>
+        </group>
+    </group>
+    <button name="Button4" height="56" width="104" left="348" top="544" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" style="beveled" bevelWidth="4" captureCursor="false" highlightOnFocus="false" tabIndex="8">
+        <command pressAction="AppAbort SCS" repeatAction="" releaseAction="" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="gray" backStyle="solid" foreColor="white" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="SHUTDOWN&#xA;APPLICATION&#xA;"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="false" patternColor="black" patternStyle="none" backColor="silver" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="SHUTDOWN&#xA;APPLICATION"/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+        <animations>
+            <animateVisibility expression="B\B30308" expressionTrueState="visible"/>
+        </animations>
+    </button>
+    <vbaProject>
+        <vbaReferencesLink>
+            <!--All checked references on the references dialog box!-->
+            <vbaRefLink hash="b05f10e648a926ab0f491eb9734a7ad8" TypeLib_Name="VBA" Description="Visual Basic For Applications">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBWAEIAQQAsACAARABlAHMAYwByAGkAcAB0AGkAbwBu
+AD0AVgBpAHMAdQBhAGwAIABCAGEAcwBpAGMAIABGAG8AcgAgAEEAcABwAGwAaQBjAGEAdABpAG8A
+bgBzACwAIABHAFUASQBEAD0AewAwADAAMAAyADAANABFAEYALQAwADAAMAAwAC0AMAAwADAAMAAt
+AEMAMAAwADAALQAwADAAMAAwADAAMAAwADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIA
+cwBpAG8AbgA9ADQALAAgAE0AaQBuAG8AcgBWAGUAcgBzAGkAbwBuAD0AMgAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="9bf92fbe175229b5f0601c4bf4381b5f" TypeLib_Name="DisplayClient" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0ACwAIABE
+AGUAcwBjAHIAaQBwAHQAaQBvAG4APQBSAFMAVgBpAGUAdwAgAEQAaQBzAHAAbABhAHkAIABDAGwA
+aQBlAG4AdAAgAE8AYgBqAGUAYwB0ACAATQBvAGQAZQBsACwAIABHAFUASQBEAD0AewA4ADUANAA2
+ADkAMwA0ADAALQBGADEAOAA5AC0AMQAxAEQAMQAtADkAQwAxADcALQAwADAANgAwADkANwA3AEMA
+QQBBAEYAMQB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADEALAAgAE0AaQBuAG8AcgBW
+AGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="b0d387d1804d29964988314e5c534502" TypeLib_Name="stdole" Description="OLE Automation">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBzAHQAZABvAGwAZQAsACAARABlAHMAYwByAGkAcAB0
+AGkAbwBuAD0ATwBMAEUAIABBAHUAdABvAG0AYQB0AGkAbwBuACwAIABHAFUASQBEAD0AewAwADAA
+MAAyADAANAAzADAALQAwADAAMAAwAC0AMAAwADAAMAAtAEMAMAAwADAALQAwADAAMAAwADAAMAAw
+ADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADIALAAgAE0AaQBuAG8A
+cgBWAGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="4d04292f7c12576e749760ecf5ac2ea8" TypeLib_Name="DisplayClientEx" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0AEUAeAAs
+ACAARABlAHMAYwByAGkAcAB0AGkAbwBuAD0AUgBTAFYAaQBlAHcAIABEAGkAcwBwAGwAYQB5ACAA
+QwBsAGkAZQBuAHQAIABPAGIAagBlAGMAdAAgAE0AbwBkAGUAbAAsACAARwBVAEkARAA9AHsAOQBG
+ADcAMgA2ADcAQwAxAC0ANQA2ADcAQgAtADEAMQBEADMALQBBAEMAMwBCAC0AMAAwADYAMAA5ADcA
+RAA4AEMANwBFAEIAfQAsACAATQBhAGoAbwByAFYAZQByAHMAaQBvAG4APQAxACwAIABNAGkAbgBv
+AHIAVgBlAHIAcwBpAG8AbgA9ADAALAAgAA==]]>
+            </vbaRefLink>
+        </vbaReferencesLink>
+        <vbaItem>
+            <!--Item Name:ThisDisplay, Item Type:HostProjectItem-->
+            <encryptedData hash="8d11e2ea90dfed5a96a34bbe51e8b9ff">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[J05BTUU9VGhpc0Rpc3BsYXksVFlQRT0zDQpWRVJTSU9OIDEuMCBDTEFTUw0KQkVHSU4NCiAgTXVs
+dGlVc2UgPSAtMSAgJ1RydWUNCkVORA0KQXR0cmlidXRlIFZCX05hbWUgPSAiVGhpc0Rpc3BsYXki
+DQpBdHRyaWJ1dGUgVkJfR2xvYmFsTmFtZVNwYWNlID0gRmFsc2UNCkF0dHJpYnV0ZSBWQl9DcmVh
+dGFibGUgPSBGYWxzZQ0KQXR0cmlidXRlIFZCX1ByZWRlY2xhcmVkSWQgPSBUcnVlDQpBdHRyaWJ1
+dGUgVkJfRXhwb3NlZCA9IFRydWUNCg==]]>
+            </encryptedData>
+            <vbaCode>
+                <![CDATA[Private Sub Button3_Released()
+
+Dim TimeStamp As Date
+Dim cQuality As tagQualityConstants
+Dim cSubStatus As tagSubStatusConstants
+Dim cLimit As tagLimitConstants
+Dim s1 As String
+Dim file_name As String
+Dim fnum As Integer
+Dim File_Content As String
+Dim Temp_row As Variant
+Dim rows As Variant
+Dim num_cols As Long
+Dim num_rows As Long
+Dim Arreglo() As String
+Dim R As Long
+Dim C As Long
+Dim row_indx As Integer
+Dim ArrayTag(0 To 30, 0 To 10) As Tag
+Dim RecIndex As Tag
+Dim LoadStatus As Tag
+Dim PartNo As Tag
+          
+Button2.Enabled = False
+Me.CommonDialog.Filter = "CSV File (*.csv)|*.CSV|All files (*.*)|*.*"
+Me.CommonDialog.DialogTitle = "Select File"
+Me.CommonDialog.CancelError = True
+On Error GoTo errhandler
+
+Me.CommonDialog.ShowOpen
+
+otag.Value = Me.CommonDialog.FileName
+
+    otag.GetTagData vValue, TimeStamp, cQuality, cSubStatus, cLimit
+    otag.RefreshFromSource
+    file_name = otag.Value 'vValue
+    otag.Value = Right(file_name, 50)
+    fnum = FreeFile
+    Open file_name For Input As fnum
+    File_Content = Input$(LOF(fnum), #fnum)
+    Close fnum
+    
+    rows = Split(File_Content, vbCrLf)
+    num_rows = UBound(rows) - 1
+    Temp_row = Split(rows(0), ",")
+    num_cols = UBound(Temp_row)
+    ReDim Arreglo(num_rows, num_cols)
+
+    'Mem reserve for file loading in to PLC registers
+            oGroup.Add "{FileLoad\LoadedRecords}"
+            oGroup.Add "{FileLoad\LoadProgress}"
+            oGroup.Add "{FileLoad\PartNumber}"
+    
+    For row_indx = 0 To num_rows - 5
+        oGroup.Add ("{FileLoad\Material_" + Format(row_indx, "#0") + "}")
+        oGroup.Add ("{FileLoad\Stop_" + Format(row_indx, "#0") + "}")
+    Next row_indx
+    
+    'Carga del archivo a los registros del PLC
+    
+    Set RecIndex = oGroup.Item("{FileLoad\LoadedRecords}")
+    Set LoadStatus = oGroup.Item("{FileLoad\LoadProgress}")
+    Set PartNo = oGroup.Item("{FileLoad\PartNumber}")
+    
+    For row_indx = 0 To num_rows - 5
+        Set ArrayTag(row_indx, 2) = oGroup.Item("{FileLoad\Material_" + Format(row_indx, "#0") + "}")
+        Set ArrayTag(row_indx, 4) = oGroup.Item("{FileLoad\Stop_" + Format(row_indx, "#0") + "}")
+    Next row_indx
+    
+    'MsgBox "set array", vbOKOnly, "Valor"
+    
+    Temp_row = Split(rows(0), ",")
+    PartNo.Value = Temp_row(1)
+
+    For R = 5 To num_rows
+        Temp_row = Split(rows(R), ",")
+        Arreglo(R, 2) = Temp_row(2)
+        Arreglo(R, 4) = Temp_row(4)
+        
+        ArrayTag(R - 5, 2).Value = Arreglo(R, 2)
+        ArrayTag(R - 5, 4).Value = Arreglo(R, 4)
+    Next R
+    
+    'PLC mesages Number of records loaded and Status = 2 = recipe loaded successful
+   
+    RecIndex.Value = num_rows - 4
+    LoadStatus.Value = 2
+    
+    MsgBox "File Loaded", vbOKOnly, "Message"
+    
+GoTo salir
+
+errhandler:
+    If Err = cdlCancel Then
+        MsgBox "Operation canceled, No file loaded", vbOKOnly, "Message"
+    Else
+        If Err.Number <> 0 Then
+        Msg = "Error # " & Str(Err.Number) & " was generated by " & Err.Source & Chr(13) & Err.Description
+        MsgBox Msg, vbOKOnly, "Error"
+        End If
+    End If
+    
+    'If Err.Number <> 0 Then
+   ' Msg = "Error # " & Str(Err.Number) & " was generated by " & Err.Source & Chr(13) & Err.Description
+    'MsgBox Msg, vbOKOnly, "Error"
+    'End If
+
+salir:
+
+    Button3.Enabled = True
+
+End Sub
+Private Sub Button4_Released()
+
+Dim TimeStamp As Date
+Dim cQuality As tagQualityConstants
+Dim cSubStatus As tagSubStatusConstants
+Dim cLimit As tagLimitConstants
+Dim s1 As String
+Dim file_name As String
+Dim fnum As Integer
+Dim File_Content As String
+Dim Temp_row As Variant
+Dim rows As Variant
+Dim num_cols As Long
+Dim num_rows As Long
+Dim Arreglo() As String
+Dim R As Long
+Dim C As Long
+Dim row_indx As Integer
+Dim ArrayTag(0 To 30, 0 To 10) As Tag
+Dim RecIndex As Tag
+Dim LoadStatus As Tag
+Dim PartNo As Tag
+          
+Button2.Enabled = False
+Me.CommonDialog.Filter = "CSV File (*.csv)|*.CSV|All files (*.*)|*.*"
+Me.CommonDialog.DialogTitle = "Select File"
+Me.CommonDialog.CancelError = True
+On Error GoTo errhandler
+
+Me.CommonDialog.ShowOpen
+
+otag.Value = Me.CommonDialog.FileName
+
+    otag.GetTagData vValue, TimeStamp, cQuality, cSubStatus, cLimit
+    otag.RefreshFromSource
+    file_name = otag.Value 'vValue
+    otag.Value = Right(file_name, 50)
+    fnum = FreeFile
+    Open file_name For Input As fnum
+    File_Content = Input$(LOF(fnum), #fnum)
+    Close fnum
+    
+    rows = Split(File_Content, vbCrLf)
+    num_rows = UBound(rows) - 1
+    Temp_row = Split(rows(0), ",")
+    num_cols = UBound(Temp_row)
+    ReDim Arreglo(num_rows, num_cols)
+
+    'Mem reserve for file loading in to PLC registers
+            oGroup.Add "{FileLoad\LoadedRecords}"
+            oGroup.Add "{FileLoad\LoadProgress}"
+            oGroup.Add "{FileLoad\PartNumber}"
+    
+    For row_indx = 0 To num_rows - 5
+        oGroup.Add ("{FileLoad\Material_" + Format(row_indx, "#0") + "}")
+        oGroup.Add ("{FileLoad\Stop_" + Format(row_indx, "#0") + "}")
+    Next row_indx
+    
+    'Carga del archivo a los registros del PLC
+    
+    Set RecIndex = oGroup.Item("{FileLoad\LoadedRecords}")
+    Set LoadStatus = oGroup.Item("{FileLoad\LoadProgress}")
+    Set PartNo = oGroup.Item("{FileLoad\PartNumber}")
+    
+    For row_indx = 0 To num_rows - 5
+        Set ArrayTag(row_indx, 2) = oGroup.Item("{FileLoad\Material_" + Format(row_indx, "#0") + "}")
+        Set ArrayTag(row_indx, 4) = oGroup.Item("{FileLoad\Stop_" + Format(row_indx, "#0") + "}")
+    Next row_indx
+    
+    'MsgBox "set array", vbOKOnly, "Valor"
+    
+    Temp_row = Split(rows(0), ",")
+    PartNo.Value = Temp_row(1)
+
+    For R = 5 To num_rows
+        Temp_row = Split(rows(R), ",")
+        Arreglo(R, 2) = Temp_row(2)
+        Arreglo(R, 4) = Temp_row(4)
+        
+        ArrayTag(R - 5, 2).Value = Arreglo(R, 2)
+        ArrayTag(R - 5, 4).Value = Arreglo(R, 4)
+    Next R
+    
+    'PLC mesages Number of records loaded and Status = 2 = recipe loaded successful
+   
+    RecIndex.Value = num_rows - 4
+    LoadStatus.Value = 2
+    
+    MsgBox "File Loaded", vbOKOnly, "Message"
+    
+GoTo salir
+
+errhandler:
+    If Err = cdlCancel Then
+        MsgBox "Operation canceled, No file loaded", vbOKOnly, "Message"
+    Else
+        If Err.Number <> 0 Then
+        Msg = "Error # " & Str(Err.Number) & " was generated by " & Err.Source & Chr(13) & Err.Description
+        MsgBox Msg, vbOKOnly, "Error"
+        End If
+    End If
+    
+    'If Err.Number <> 0 Then
+   ' Msg = "Error # " & Str(Err.Number) & " was generated by " & Err.Source & Chr(13) & Err.Description
+    'MsgBox Msg, vbOKOnly, "Error"
+    'End If
+
+salir:
+
+    Button4.Enabled = True
+
+End Sub
+]]>
+            </vbaCode>
+        </vbaItem>
+    </vbaProject>
+</gfx>
