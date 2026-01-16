@@ -1,0 +1,639 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gfx xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Gfx-SE16.xsd">
+    <displaySettings displayType="replace" position="useCurrentPosition" securityCode="*" backColor="black" titleBar="false" maximumTagUpdateRate="0.1" focusHighlightColor="black" disableFocusHighlight="true" size="specifySizeInPixels" width="800" height="600" allowMultipleRunningCopies="false" cacheAfterDisplaying="false" sizeToMainWindow="true" showLastAcquiredValue="true" TrackScreenForNavigation="true" TrackName="" allowResizing="false" whenResized="scale" beepOnPress="false" highlightWhenCursorPassesOver="false" interactiveHighlightColor="black" displayOnScreenKeyboard="false" allowButtonActionOnError="true" fieldNotSelectedTextColor="black" fieldNotSelectedFillColor="white" fieldSelectedTextColor="black" fieldSelectedFillColor="white" fieldInErrorNotSelectedTextColor="black" fieldInErrorNotSelectedFillColor="red" fieldInErrorSelectedTextColor="white" fieldInErrorSelectedFillColor="red" startupCommand="&amp;Set HMI_SCREEN_STATUS 4" shutdownCommand="" useGradientStyle="false" endColor="teal" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+    <text name="Text4" height="18" width="60" left="370" top="0" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="black" foreColor="#FFFF80" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="RECIPE"/>
+    <line name="Line1" height="1" width="800" left="0" top="16" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" line="0 16 799 16 " backStyle="solid" lineStyle="solid" lineWidth="1" backColor="#0088C8" foreColor="#0088C8"/>
+    <text name="Text5" height="18" width="148" left="0" top="0" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="white" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="/*SDT*/"/>
+    <button name="Button2" height="64" width="104" left="596" top="20" visible="true" wallpaper="false" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" style="beveled" bevelWidth="4" captureCursor="false" highlightOnFocus="false" tabIndex="2">
+        <command pressAction="" repeatAction="" releaseAction="" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="teal" backStyle="solid" foreColor="white" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="LOAD&#xA;"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="false" patternColor="black" patternStyle="none" backColor="cyan" backStyle="solid" foreColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="LOAD"/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <button name="Button1" height="56" width="104" left="0" top="544" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" style="beveled" bevelWidth="4" captureCursor="false" highlightOnFocus="false" tabIndex="4">
+        <command pressAction="" repeatAction="" releaseAction="Display 03_MENU" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="navy" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="MENU"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="false" patternColor="black" patternStyle="none" backColor="blue" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="MENU"/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <button name="Button3" height="56" width="104" left="696" top="544" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" style="beveled" bevelWidth="4" captureCursor="false" highlightOnFocus="false" tabIndex="3">
+        <command pressAction="" repeatAction="" releaseAction="Display 01_AUTO" repeatRate="0.25"/>
+        <up patternColor="black" patternStyle="none" backColor="navy" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="AUTOMATIC"/>
+            <imageSettings imageReference="noImage"/>
+        </up>
+        <down downSameAsUp="false" patternColor="black" patternStyle="none" backColor="blue" backStyle="solid" foreColor="#FFFF80" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="AUTOMATIC"/>
+            <imageSettings imageReference="noImage"/>
+        </down>
+        <ability showDisabledState="false" expression="" enabledWhenExpressionIsTrue="true" disabledImageType="useGrayscale"/>
+        <confirm confirmAction="false" buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+            <caption fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+            <imageSettings imageReference="noImage"/>
+        </confirm>
+        <eSignature requireElectronicSignature="false" allowBlankComment="false" requireReAuthentication="false" requireCounterSignature="false" authorizedGroup="" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        <useVariable requireUseVariable="false" tagName="" confirmationValue="1" eSigValue1="2" eSigValue2="3">
+            <confirm buttonSetting="okCancel" titleBar="true" titleBarText="Confirmation" windowPosition="Centered of screen">
+                <caption fontFamily="Arial Unicode MS" fontSize="10" bold="false" italic="false" underline="false" strikethrough="false" caption="Are you sure you want to perform this action?"/>
+                <imageSettings imageReference="noImage"/>
+            </confirm>
+            <eSignature_1 allowBlankComment="false" requireReAuthentication="false" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+            <eSignature_2 allowBlankComment="false" authorizedGroup="Administrators" ShowConfirmationMessage="false" ConfirmationMessage="By completing this action, I certify that I have reviewed the changes that will be made to the system. I have approval and permission to perform this change."/>
+        </useVariable>
+    </button>
+    <group name="Group1" visible="true" wallpaper="false" toolTipText="" exposeToVba="notExposed" isReferenceObject="false">
+        <panel name="Panel1" height="560" width="376" left="212" top="20" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" patternStyle="none" backColor="#3F3F3F" patternColor="white" blink="false" description="" borderColor="#A0A0A4" borderStyle="raisedInset" borderWidth="4" borderUsesBackColor="false" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon11" height="20" width="284" left="256" top="260" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon12" height="20" width="284" left="256" top="284" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon13" height="20" width="284" left="256" top="308" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon14" height="20" width="284" left="256" top="332" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon15" height="20" width="284" left="256" top="356" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon16" height="20" width="284" left="256" top="380" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon17" height="20" width="284" left="256" top="404" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon18" height="20" width="284" left="256" top="428" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon19" height="20" width="284" left="256" top="452" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon20" height="20" width="284" left="256" top="476" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon21" height="20" width="284" left="256" top="500" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon22" height="20" width="284" left="256" top="524" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon23" height="20" width="284" left="256" top="548" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon10" height="20" width="284" left="256" top="236" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon9" height="20" width="284" left="256" top="212" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon8" height="20" width="284" left="256" top="188" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon7" height="20" width="284" left="256" top="164" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon6" height="20" width="284" left="256" top="140" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon5" height="20" width="284" left="256" top="116" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon4" height="20" width="32" left="428" top="52" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <rectangle name="Polygon3" height="20" width="244" left="336" top="28" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <stringDisplay name="StringDisplay2" height="20" width="240" left="340" top="28" visible="true" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="left" dimensionsHeight="1" dimensionsWidth="20" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="PART_NUMBER"/>
+            </connections>
+        </stringDisplay>
+        <rectangle name="Polygon1" height="20" width="284" left="256" top="92" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="solid" backColor="black" foreColor="cyan" lineStyle="solid" lineWidth="1" patternStyle="none" patternColor="black" endColor="white" gradientStop="50" gradientDirection="gradientDirectionHorizontal" gradientShadingStyle="gradientHorizontalFromRight"/>
+        <stringDisplay name="StringDisplay11" height="20" width="24" left="380" top="92" visible="true" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_1_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay14" height="20" width="96" left="440" top="92" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_1_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <text name="Text17" height="18" width="64" left="456" top="72" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="cyan" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="true" strikethrough="false" caption="LENGTH"/>
+        <text name="Text1" height="18" width="79" left="352" top="72" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="cyan" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="true" strikethrough="false" caption="MATERIAL"/>
+        <stringDisplay name="StringDisplay20" height="20" width="24" left="380" top="116" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay23" height="20" width="96" left="440" top="116" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <text name="Text8" height="18" width="169" left="260" top="52" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="cyan" wordWrap="true" sizeToFit="true" alignment="middleRight" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="NUMBER OF LAYERS: "/>
+        <stringDisplay name="StringDisplay8" height="20" width="24" left="432" top="52" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="left" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="SYS_NUMBER_OF_PLYS"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay3" height="20" width="24" left="380" top="140" visible="true" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_3_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay4" height="20" width="96" left="440" top="140" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_3_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay5" height="20" width="24" left="380" top="164" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_4_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay6" height="20" width="96" left="440" top="164" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_4_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay7" height="20" width="24" left="380" top="452" visible="true" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT5}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay9" height="20" width="96" left="440" top="452" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH5}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay10" height="20" width="24" left="380" top="476" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT6}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay12" height="20" width="96" left="440" top="476" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH6}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay13" height="20" width="24" left="380" top="500" visible="true" toolTipText="" exposeToVba="vbaControl" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT7}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay15" height="20" width="96" left="440" top="500" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH7}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay16" height="20" width="24" left="380" top="524" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT8}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay17" height="20" width="96" left="440" top="524" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH8}"/>
+            </connections>
+        </stringDisplay>
+        <text name="Text2" height="18" width="123" left="216" top="28" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="cyan" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="false" strikethrough="false" caption="PART NUMBER: "/>
+        <stringDisplay name="StringDisplay1" height="20" width="24" left="380" top="188" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_5_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay18" height="20" width="24" left="380" top="212" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_6_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay19" height="20" width="24" left="380" top="236" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_7_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay21" height="20" width="24" left="380" top="260" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_8_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay22" height="20" width="24" left="380" top="284" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_9_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay24" height="20" width="24" left="380" top="308" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_10_MAT}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay25" height="20" width="24" left="380" top="332" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT0}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay26" height="20" width="24" left="380" top="356" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT1}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay27" height="20" width="24" left="380" top="380" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT2}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay28" height="20" width="24" left="380" top="404" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT3}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay29" height="20" width="24" left="380" top="428" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT4}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay30" height="20" width="96" left="440" top="188" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_5_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay31" height="20" width="96" left="440" top="212" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_6_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay32" height="20" width="96" left="440" top="236" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_7_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay33" height="20" width="96" left="440" top="260" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_8_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay34" height="20" width="96" left="440" top="284" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_9_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay35" height="20" width="96" left="440" top="308" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_10_LENGTH}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay36" height="20" width="96" left="440" top="332" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH0}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay37" height="20" width="96" left="440" top="356" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH1}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay38" height="20" width="96" left="440" top="380" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH2}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay39" height="20" width="96" left="440" top="404" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH3}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay40" height="20" width="96" left="440" top="428" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH4}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay41" height="20" width="96" left="440" top="548" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="8" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{LAYER_2_LENGTH9}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay42" height="20" width="24" left="380" top="548" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="2" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_MAT9}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay43" height="20" width="84" left="260" top="92" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_1_ID}"/>
+            </connections>
+        </stringDisplay>
+        <text name="Text3" height="18" width="16" left="292" top="72" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backStyle="transparent" backColor="white" foreColor="cyan" wordWrap="true" sizeToFit="true" alignment="middleCenter" fontFamily="Arial" fontSize="12" bold="false" italic="false" underline="true" strikethrough="false" caption="ID"/>
+        <stringDisplay name="StringDisplay44" height="20" width="84" left="260" top="116" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay45" height="20" width="84" left="260" top="140" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_3_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay46" height="20" width="84" left="260" top="164" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_4_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay47" height="20" width="84" left="260" top="452" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID5}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay48" height="20" width="84" left="260" top="476" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID6}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay49" height="20" width="84" left="260" top="500" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID7}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay50" height="20" width="84" left="260" top="524" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID8}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay51" height="20" width="84" left="260" top="188" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_5_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay52" height="20" width="84" left="260" top="212" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_6_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay53" height="20" width="84" left="260" top="236" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_7_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay54" height="20" width="84" left="260" top="260" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_8_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay55" height="20" width="84" left="260" top="284" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_9_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay56" height="20" width="84" left="260" top="308" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_10_ID}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay57" height="20" width="84" left="260" top="332" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID0}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay58" height="20" width="84" left="260" top="356" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID1}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay59" height="20" width="84" left="260" top="380" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID2}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay60" height="20" width="84" left="260" top="404" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID3}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay61" height="20" width="84" left="260" top="428" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID4}"/>
+            </connections>
+        </stringDisplay>
+        <stringDisplay name="StringDisplay62" height="20" width="84" left="260" top="548" visible="true" toolTipText="" exposeToVba="notExposed" isReferenceObject="false" backColor="black" backStyle="transparent" foreColor="white" fontFamily="Arial" charHeight="19" charWidth="8" bold="false" italic="false" underline="false" strikethrough="false" justification="center" dimensionsHeight="1" dimensionsWidth="7" characterOffset="0">
+            <connections>
+                <connection name="Value" expression="{PLY_2_ID9}"/>
+            </connections>
+        </stringDisplay>
+    </group>
+    <vbaProject>
+        <vbaReferencesLink>
+            <!--All checked references on the references dialog box!-->
+            <vbaRefLink hash="b05f10e648a926ab0f491eb9734a7ad8" TypeLib_Name="VBA" Description="Visual Basic For Applications">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBWAEIAQQAsACAARABlAHMAYwByAGkAcAB0AGkAbwBu
+AD0AVgBpAHMAdQBhAGwAIABCAGEAcwBpAGMAIABGAG8AcgAgAEEAcABwAGwAaQBjAGEAdABpAG8A
+bgBzACwAIABHAFUASQBEAD0AewAwADAAMAAyADAANABFAEYALQAwADAAMAAwAC0AMAAwADAAMAAt
+AEMAMAAwADAALQAwADAAMAAwADAAMAAwADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIA
+cwBpAG8AbgA9ADQALAAgAE0AaQBuAG8AcgBWAGUAcgBzAGkAbwBuAD0AMgAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="9bf92fbe175229b5f0601c4bf4381b5f" TypeLib_Name="DisplayClient" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0ACwAIABE
+AGUAcwBjAHIAaQBwAHQAaQBvAG4APQBSAFMAVgBpAGUAdwAgAEQAaQBzAHAAbABhAHkAIABDAGwA
+aQBlAG4AdAAgAE8AYgBqAGUAYwB0ACAATQBvAGQAZQBsACwAIABHAFUASQBEAD0AewA4ADUANAA2
+ADkAMwA0ADAALQBGADEAOAA5AC0AMQAxAEQAMQAtADkAQwAxADcALQAwADAANgAwADkANwA3AEMA
+QQBBAEYAMQB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADEALAAgAE0AaQBuAG8AcgBW
+AGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="b0d387d1804d29964988314e5c534502" TypeLib_Name="stdole" Description="OLE Automation">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBzAHQAZABvAGwAZQAsACAARABlAHMAYwByAGkAcAB0
+AGkAbwBuAD0ATwBMAEUAIABBAHUAdABvAG0AYQB0AGkAbwBuACwAIABHAFUASQBEAD0AewAwADAA
+MAAyADAANAAzADAALQAwADAAMAAwAC0AMAAwADAAMAAtAEMAMAAwADAALQAwADAAMAAwADAAMAAw
+ADAAMAAwADQANgB9ACwAIABNAGEAagBvAHIAVgBlAHIAcwBpAG8AbgA9ADIALAAgAE0AaQBuAG8A
+cgBWAGUAcgBzAGkAbwBuAD0AMAAsACAA
+]]>
+            </vbaRefLink>
+            <vbaRefLink hash="4d04292f7c12576e749760ecf5ac2ea8" TypeLib_Name="DisplayClientEx" Description="RSView Display Client Object Model">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBEAGkAcwBwAGwAYQB5AEMAbABpAGUAbgB0AEUAeAAs
+ACAARABlAHMAYwByAGkAcAB0AGkAbwBuAD0AUgBTAFYAaQBlAHcAIABEAGkAcwBwAGwAYQB5ACAA
+QwBsAGkAZQBuAHQAIABPAGIAagBlAGMAdAAgAE0AbwBkAGUAbAAsACAARwBVAEkARAA9AHsAOQBG
+ADcAMgA2ADcAQwAxAC0ANQA2ADcAQgAtADEAMQBEADMALQBBAEMAMwBCAC0AMAAwADYAMAA5ADcA
+RAA4AEMANwBFAEIAfQAsACAATQBhAGoAbwByAFYAZQByAHMAaQBvAG4APQAxACwAIABNAGkAbgBv
+AHIAVgBlAHIAcwBpAG8AbgA9ADAALAAgAA==]]>
+            </vbaRefLink>
+            <vbaRefLink hash="8933d84dda00675007451b7a3a393956" TypeLib_Name="MSComDlg" Description="Microsoft Common Dialog Control 6.0 (SP6)">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[VAB5AHAAZQBMAGkAYgBfAE4AYQBtAGUAPQBNAFMAQwBvAG0ARABsAGcALAAgAEQAZQBzAGMAcgBp
+AHAAdABpAG8AbgA9AE0AaQBjAHIAbwBzAG8AZgB0ACAAQwBvAG0AbQBvAG4AIABEAGkAYQBsAG8A
+ZwAgAEMAbwBuAHQAcgBvAGwAIAA2AC4AMAAgACgAUwBQADYAKQAsACAARwBVAEkARAA9AHsARgA5
+ADAANAAzAEMAOAA4AC0ARgA2AEYAMgAtADEAMAAxAEEALQBBADMAQwA5AC0AMAA4ADAAMAAyAEIA
+MgBGADQAOQBGAEIAfQAsACAATQBhAGoAbwByAFYAZQByAHMAaQBvAG4APQAxACwAIABNAGkAbgBv
+AHIAVgBlAHIAcwBpAG8AbgA9ADIALAAgAA==]]>
+            </vbaRefLink>
+        </vbaReferencesLink>
+        <vbaItem>
+            <!--Item Name:ThisDisplay, Item Type:HostProjectItem-->
+            <encryptedData hash="8d11e2ea90dfed5a96a34bbe51e8b9ff">
+                <!--The following VBA code is encoded.Please do not edit or import will fail.-->
+                <![CDATA[J05BTUU9VGhpc0Rpc3BsYXksVFlQRT0zDQpWRVJTSU9OIDEuMCBDTEFTUw0KQkVHSU4NCiAgTXVs
+dGlVc2UgPSAtMSAgJ1RydWUNCkVORA0KQXR0cmlidXRlIFZCX05hbWUgPSAiVGhpc0Rpc3BsYXki
+DQpBdHRyaWJ1dGUgVkJfR2xvYmFsTmFtZVNwYWNlID0gRmFsc2UNCkF0dHJpYnV0ZSBWQl9DcmVh
+dGFibGUgPSBGYWxzZQ0KQXR0cmlidXRlIFZCX1ByZWRlY2xhcmVkSWQgPSBUcnVlDQpBdHRyaWJ1
+dGUgVkJfRXhwb3NlZCA9IFRydWUNCg==]]>
+            </encryptedData>
+            <vbaCode>
+                <![CDATA[Public WithEvents oGroup As TagGroup
+Attribute oGroup.VB_VarHelpID = -1
+Public otag  As Tag
+
+' Declare variables on screen load
+Private Sub Display_Load()
+Dim TagsInError As StringList
+Dim row_indx As Integer
+Set oGroup = Nothing
+Dim ArrayTag(0 To 30, 0 To 10) As Tag
+
+Button2.Enabled = False
+    
+    On Error GoTo errhandler
+    If oGroup Is Nothing Then
+        Set oGroup = Me.Application.CreateTagGroup(Me.AreaName, 500)
+       
+        oGroup.Add "FileLoad\FilePath"
+        Set otag = oGroup.Item("FileLoad\FilePath")
+        otag.RefreshFromSource
+        
+        oGroup.Active = True
+        'after setting tag group active, use RefreshFromSource() method before any tag reads or writes
+        oGroup.RefreshFromSource TagsInError
+    End If
+
+GoTo OpenOk
+errhandler:
+
+    LogDiagnosticsMessage "VBA Error in SetUpTagGroup(). Error:  " & Hex(Err.Number) & " - " & Err.Description, ftDiagSeverityError
+    'can add code to handle any specific errors
+    Exit Sub
+    
+OpenOk:
+        
+
+Button2.Enabled = True
+
+End Sub
+
+
+
+Private Sub Button2_Released()
+
+Dim TimeStamp As Date
+Dim cQuality As tagQualityConstants
+Dim cSubStatus As tagSubStatusConstants
+Dim cLimit As tagLimitConstants
+Dim s1 As String
+Dim file_name As String
+Dim fnum As Integer
+Dim File_Content As String
+Dim Temp_row As Variant
+Dim rows As Variant
+Dim num_cols As Long
+Dim num_rows As Long
+Dim FileArray() As String
+Dim R As Long
+Dim C As Long
+Dim row_indx As Integer
+Dim ArrayTag(0 To 30, 0 To 10) As Tag
+Dim RecIndex As Tag
+Dim LoadStatus As Tag
+Dim PartNo As Tag
+          
+Button2.Enabled = False
+Me.CommonDialog.Filter = "CSV File (*.csv)|*.CSV|All files (*.*)|*.*"
+Me.CommonDialog.DialogTitle = "Select File"
+Me.CommonDialog.CancelError = True
+On Error GoTo errhandler
+
+Me.CommonDialog.ShowOpen
+
+otag.Value = Me.CommonDialog.FileName
+
+    otag.GetTagData vValue, TimeStamp, cQuality, cSubStatus, cLimit
+    otag.RefreshFromSource
+    file_name = otag.Value 'Value
+    otag.Value = Right(file_name, 50)
+    fnum = FreeFile
+    Open file_name For Input As fnum
+    File_Content = Input$(LOF(fnum), #fnum)
+    Close fnum
+    
+    rows = Split(File_Content, vbCrLf)
+    num_rows = UBound(rows) - 1
+    Temp_row = Split(rows(0), ",")
+    num_cols = UBound(Temp_row)
+    ReDim FileArray(num_rows, num_cols)
+
+    'Mem reserve for file loading into PLC registers
+            oGroup.Add "{SYS_NUMBER_OF_PLYS}"
+            oGroup.Add "{FileLoad\LoadProgress}"
+            oGroup.Add "{PART_NUMBER}"
+    
+    For row_indx = 0 To num_rows - 5
+        oGroup.Add ("{FileLoad\PlyID_" + Format(row_indx, "#0") + "}")
+        oGroup.Add ("{FileLoad\Material_" + Format(row_indx, "#0") + "}")
+        oGroup.Add ("{FileLoad\Stop_" + Format(row_indx, "#0") + "}")
+    Next row_indx
+    
+    'Load data into PLC registers
+    
+    Set RecIndex = oGroup.Item("{SYS_NUMBER_OF_PLYS}")
+    Set LoadStatus = oGroup.Item("{FileLoad\LoadProgress}")
+    Set PartNo = oGroup.Item("{PART_NUMBER}")
+    
+    For row_indx = 0 To num_rows - 5
+        Set ArrayTag(row_indx, 0) = oGroup.Item("{FileLoad\PlyID_" + Format(row_indx, "#0") + "}")
+        Set ArrayTag(row_indx, 2) = oGroup.Item("{FileLoad\Material_" + Format(row_indx, "#0") + "}")
+        Set ArrayTag(row_indx, 4) = oGroup.Item("{FileLoad\Stop_" + Format(row_indx, "#0") + "}")
+    Next row_indx
+    
+    'MsgBox "set array", vbOKOnly, "Value"
+    
+    Temp_row = Split(rows(0), ",")
+    PartNo.Value = Temp_row(1)
+
+    For R = 5 To num_rows
+        Temp_row = Split(rows(R), ",")
+        
+        ArrayTag(R - 5, 0).Value = Temp_row(0)
+        ArrayTag(R - 5, 2).Value = Temp_row(2)
+        ArrayTag(R - 5, 4).Value = Temp_row(4)
+    Next R
+    
+    'PLC mesages Number of records loaded and Status = 2 = recipe loaded successful
+   
+    RecIndex.Value = num_rows - 4
+    LoadStatus.Value = 2
+    
+    MsgBox "File Loaded", vbOKOnly, "Message"
+    
+    Kill (file_name)
+    
+GoTo RoutineEnd
+
+errhandler:
+    If Err = cdlCancel Then
+        MsgBox "Operation canceled, No file loaded", vbOKOnly, "Message"
+    Else
+        If Err.Number <> 0 Then
+        Msg = "Error # " & Str(Err.Number) & " was generated by " & Err.Source & Chr(13) & Err.Description
+        MsgBox Msg, vbOKOnly, "Error"
+        End If
+    End If
+  
+RoutineEnd:
+
+    Button2.Enabled = True
+
+End Sub
+]]>
+            </vbaCode>
+        </vbaItem>
+    </vbaProject>
+</gfx>

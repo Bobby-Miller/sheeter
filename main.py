@@ -1,4 +1,5 @@
 import ast
+import os, re
 import csv
 from dataclasses import dataclass
 from pprint import pprint
@@ -14,7 +15,189 @@ PRODUCED_FILE = "tag_add_2.txt"
 PRODUCED_FILE = "tag_add_jan_5_2026.txt"
 REPLACEMENT_DOC = "tag_sub_jan_5_2026.L5K"
 TAG_CSV_FILE_NAME = "Tag_CSV_Jan_5_2026.csv"
-CONVERSION_FILE_NAME = "tag_conversion_jan_8_2025.csv"
+CONVERSION_FILE_NAME = "tag_conversion_jan_8_2026.csv"
+UPDATED_HMI_TAG_OUT = "hmi_tag_output_jan_12_2026.csv"
+SCREEN_FILE_LIST: list[str|Path] = [
+    current_dir / "HMI_source_files" / name for name in [
+        "01_AUTO.xml",
+        "02_STTS.xml",
+        "03_MENU.xml",
+        "04_RCP.xml",
+        "05_RUN.xml",
+        "06_STP.xml",
+        "07_STP.xml",
+        "08_MNL.xml",
+        "09_MNL.xml",
+        "10_SYS.xml",
+        "12_MTRLW.xml",
+        "14_MTRLX.xml",
+        "30_PLY.xml",
+        "50_VNDR.xml",
+    ]
+]
+
+TIMER_DONE_DICT = {
+    "T14[0].EN": "UPDATE_CUR_PLY_COUNT_TD.EN",
+    "T14[1].EN": "UPDATE_CUR_PLY_TYPE_AND_LENGTH_TD.EN",
+    "T14[10].EN": "MOVE_CUR_MAT_AND_SIDE_BACK_TD.EN",
+    "T14[11].EN": "AUTO_CHECK_IF_DONE_TD.EN",
+    "T14[12].EN": "MOVE_PRINT_AND_TABLE_TO_CUR_SIDE_TD.EN",
+    "T14[15].EN": "MOVE_CUR_SIDE_AXIS_TO_CUT_TD.EN",
+    "T14[18].EN": "STN_SERVO_DRIVE_RESET_TO.EN",
+    "T14[19].EN": "AUTO_CYCLE_COMPLETE_TD.EN",
+    "T14[2].EN": "MOVE_GRIPPER_LENGTH_TD.EN",
+    "T14[20].EN": "STN_MAT_W_MOTION_TO.EN",
+    "T14[21].EN": "STN_MAT_X_MOTION_TO.EN",
+    "T14[22].EN": "STN_SIDE_W_AXIS_MOTION_TO.EN",
+    "T14[23].EN": "STN_SIDE_X_AXIS_MOTION_TO.EN",
+    "T14[24].EN": "STN_PRINT_AXIS_MOTION_TO.EN",
+    "T14[25].EN": "STN_PRINT_SIDE_NOT_AT_W_TO.EN",
+    "T14[26].EN": "STN_PRINT_SIDE_NOT_AT_X_TO.EN",
+    "T14[27].EN": "STN_TABLE_SIDE_NOT_AT_W_TO.EN",
+    "T14[28].EN": "STN_TABLE_SIDE_NOT_AT_X_TO.EN",
+    "T14[29].EN": "STN_GRIPPER_W_NOT_OPENED_AT_PICK_TO.EN",
+    "T14[3].EN": "MOV_CUR_SIDE_AXIS_TO_PICK_AND_MAT_CLR_TD.EN",
+    "T14[30].EN": "STN_GRIPPER_W_NOT_OPENED_AT_PLACE_TO.EN",
+    "T14[31].EN": "STN_GRIPPER_X_NOT_OPENED_AT_PICK_TO.EN",
+    "T14[32].EN": "STN_GRIPPER_X_NOT_OPENED_AT_PLACE_TO.EN",
+    "T14[4].EN": "MOVE_CUR_MAT_TO_GRIP_TD.EN",
+    "T14[5].EN": "MOVE_CUR_MAT_TO_CUT_TD.EN",
+    "T14[6].EN": "AUTO_TURN_ON_SHEAR_TD.EN",
+    "T14[7].EN": "AUTO_TURN_OFF_SHEAR_TD.EN",
+    "T14[8].EN": "MOVE_CUR_SIDE_TO_PLACE_AND_MAT_CLR_TD.EN",
+    "T14[9].EN": "AUTO_CLOSE_CUR_SIDE_GRIPPER_TD.EN",
+    "T206[0].EN": "A1_READ_INPUT_ASSEMBLY_DELAY.EN",
+    "T206[10].EN": "A2_READ_INPUT_ASSEMBLY_DELAY.EN",
+    "T206[12].EN": "A2_READ_OUTPUT_ASSEMBLY_DELAY.EN",
+    "T206[2].EN": "A1_READ_OUTPUT_ASSEMBLY_DELAY.EN",
+    "T4[0].EN": "SYS_ENABLE_MAT_DRIVES_HW_TD.EN",
+    "T4[1].EN": "SYS_CYCLE_START_TD.EN",
+    "T4[10].EN": "SYS_MAT_W_DRIVE_NOT_ENABLED_TO.EN",
+    "T4[11].EN": "SYS_MAT_X_DRIVE_NOT_ENABLED_TO.EN",
+    "T4[12].EN": "SYS_PRINT_AXIS_DRIVE_ALARM_TO.EN",
+    "T4[13].EN": "SYS_SIDE_W_AXIS_DRIVE_ALARM_TO.EN",
+    "T4[14].EN": "SYS_SIDE_X_AXIS_DRIVE_ALARM_TO.EN",
+    "T4[2].EN": "SYS_UNLATCH_HMI_NO_BTTN.EN",
+    "T4[20].EN": "INIT_BEGIN_CYCLE_TIME_DELAY.EN",
+    "T4[21].EN": "INIT_MOVE_PRINT_AND_TABLE_TO_W_TD.EN",
+    "T4[22].EN": "INIT_HOME_PRINT_AXIS_TD.EN",
+    "T4[23].EN": "INIT_JOG_SIDE_W_AXIS_OFF_HOME_TD.EN",
+    "T4[24].EN": "INIT_JOG_SIDE_X_AXIS_OFF_HOME_TD.EN",
+    "T4[25].EN": "SYS_UNLATCH_HMI_YES_BUTTON.EN",
+    "T4[26].EN": "SYS_UNLATCH_HMI_RESTART_BTTN_T4_26.EN",
+    "T4[26].EN.EN": "SYS_UNLATCH_HMI_RESTART_BTTN_T4_26_EN.EN",
+    "T4[29].EN": "INIT_CYCLE_COMPLETE_TD.EN",
+    "T4[3].EN": "SYS_UNLATCH_HMI_ABORT_BTTN.EN",
+    "T4[30].EN": "INIT_TURN_ON_SHEAR_TD.EN",
+    "T4[31].EN": "INIT_TURN_OFF_SHEAR_TD.EN",
+    "T4[32].EN": "INIT_JOG_CUR_SIDE_TO_PLACE_TD.EN",
+    "T4[33].EN": "INIT_JOG_CUR_SIDE_OFF_PLACE_TD.EN",
+    "T4[34].EN": "INIT_MOVE_CUR_SIDE_TO_GRIPPER_TD.EN",
+    "T4[35].EN": "INIT_CLOSE_CUR_SIDE_GRIPPER_TD.EN",
+    "T4[36].EN": "INIT_MOVE_MAT_CLR_TD.EN",
+    "T4[37].EN": "INIT_MOVE_MAT_BACK_TD.EN",
+    "T4[4].EN": "SYS_1_SEC_TIMER.EN",
+    "T4[40].EN": "SYS_TURN_OFF_SHEAR_TD.EN",
+    "T4[41].EN": "SYS_MOVE_MAT_CLR_TD.EN",
+    "T4[42].EN": "SYS_MOVE_MAT_BACK_TD.EN",
+    "T4[47].EN": "MAN_TURN_OFF_SHEAR_TD.EN",
+    "T4[48].EN": "MAN_MOVE_MAT_CLR_TD.EN",
+    "T4[49].EN": "MAN_MOVE_MAT_BACK_TD.EN",
+    "T4[50].EN": "MAN_SIDE_W_AXIS_TO_PICK_ON_TGGL_TD.EN",
+    "T4[51].EN": "MAN_SIDE_W_AXIS_TO_CUT_ON_TGGL_TD.EN",
+    "T4[52].EN": "MAN_SIDE_W_AXIS_TO_PLACE_ON_TGGL_TD.EN",
+    "T4[53].EN": "MAN_SIDE_W_AXIS_RETRACT_ON_TGGL_TD.EN",
+    "T4[54].EN": "MAN_SIDE_X_AXIS_TO_PICK_ON_TGGL_TD.EN",
+    "T4[55].EN": "MAN_SIDE_X_AXIS_TO_CUT_ON_TGGL_TD.EN",
+    "T4[56].EN": "MAN_SIDE_X_AXIS_TO_PLACE_ON_TGGL_TD.EN",
+    "T4[57].EN": "MAN_SIDE_X_AXIS_RETRACT_ON_TGGL_TD.EN",
+    "T4[58].EN": "MAN_JOG_SIDE_W_AXIS_OFF_HOME_TD.EN",
+    "T4[59].EN": "MAN_JOG_SIDE_X_AXIS_OFF_HOME_TD.EN",
+    "T4[6].EN": "SYS_RESET_DATA_TIME_DELAY.EN",
+    "T4[7].EN": "SYS_ENABLE_MAT_W_DRIVE_SW_TD.EN",
+    "T4[8].EN": "SYS_ENABLE_MAT_X_DRIVE_SW_TD.EN",
+    "T4[9].EN": "SYS_HALF_SEC_TIMER.EN",
+    "T14[0].DN": "UPDATE_CUR_PLY_COUNT_TD.DN",
+    "T14[1].DN": "UPDATE_CUR_PLY_TYPE_AND_LENGTH_TD.DN",
+    "T14[10].DN": "MOVE_CUR_MAT_AND_SIDE_BACK_TD.DN",
+    "T14[11].DN": "AUTO_CHECK_IF_DONE_TD.DN",
+    "T14[12].DN": "MOVE_PRINT_AND_TABLE_TO_CUR_SIDE_TD.DN",
+    "T14[15].DN": "MOVE_CUR_SIDE_AXIS_TO_CUT_TD.DN",
+    "T14[18].DN": "STN_SERVO_DRIVE_RESET_TO.DN",
+    "T14[19].DN": "AUTO_CYCLE_COMPLETE_TD.DN",
+    "T14[2].DN": "MOVE_GRIPPER_LENGTH_TD.DN",
+    "T14[20].DN": "STN_MAT_W_MOTION_TO.DN",
+    "T14[21].DN": "STN_MAT_X_MOTION_TO.DN",
+    "T14[22].DN": "STN_SIDE_W_AXIS_MOTION_TO.DN",
+    "T14[23].DN": "STN_SIDE_X_AXIS_MOTION_TO.DN",
+    "T14[24].DN": "STN_PRINT_AXIS_MOTION_TO.DN",
+    "T14[25].DN": "STN_PRINT_SIDE_NOT_AT_W_TO.DN",
+    "T14[26].DN": "STN_PRINT_SIDE_NOT_AT_X_TO.DN",
+    "T14[27].DN": "STN_TABLE_SIDE_NOT_AT_W_TO.DN",
+    "T14[28].DN": "STN_TABLE_SIDE_NOT_AT_X_TO.DN",
+    "T14[29].DN": "STN_GRIPPER_W_NOT_OPENED_AT_PICK_TO.DN",
+    "T14[3].DN": "MOV_CUR_SIDE_AXIS_TO_PICK_AND_MAT_CLR_TD.DN",
+    "T14[30].DN": "STN_GRIPPER_W_NOT_OPENED_AT_PLACE_TO.DN",
+    "T14[31].DN": "STN_GRIPPER_X_NOT_OPENED_AT_PICK_TO.DN",
+    "T14[32].DN": "STN_GRIPPER_X_NOT_OPENED_AT_PLACE_TO.DN",
+    "T14[4].DN": "MOVE_CUR_MAT_TO_GRIP_TD.DN",
+    "T14[5].DN": "MOVE_CUR_MAT_TO_CUT_TD.DN",
+    "T14[6].DN": "AUTO_TURN_ON_SHEAR_TD.DN",
+    "T14[7].DN": "AUTO_TURN_OFF_SHEAR_TD.DN",
+    "T14[8].DN": "MOVE_CUR_SIDE_TO_PLACE_AND_MAT_CLR_TD.DN",
+    "T14[9].DN": "AUTO_CLOSE_CUR_SIDE_GRIPPER_TD.DN",
+    "T206[0].DN": "A1_READ_INPUT_ASSEMBLY_DELAY.DN",
+    "T206[10].DN": "A2_READ_INPUT_ASSEMBLY_DELAY.DN",
+    "T206[12].DN": "A2_READ_OUTPUT_ASSEMBLY_DELAY.DN",
+    "T206[2].DN": "A1_READ_OUTPUT_ASSEMBLY_DELAY.DN",
+    "T4[0].DN": "SYS_ENABLE_MAT_DRIVES_HW_TD.DN",
+    "T4[1].DN": "SYS_CYCLE_START_TD.DN",
+    "T4[10].DN": "SYS_MAT_W_DRIVE_NOT_ENABLED_TO.DN",
+    "T4[11].DN": "SYS_MAT_X_DRIVE_NOT_ENABLED_TO.DN",
+    "T4[12].DN": "SYS_PRINT_AXIS_DRIVE_ALARM_TO.DN",
+    "T4[13].DN": "SYS_SIDE_W_AXIS_DRIVE_ALARM_TO.DN",
+    "T4[14].DN": "SYS_SIDE_X_AXIS_DRIVE_ALARM_TO.DN",
+    "T4[2].DN": "SYS_UNLATCH_HMI_NO_BTTN.DN",
+    "T4[20].DN": "INIT_BEGIN_CYCLE_TIME_DELAY.DN",
+    "T4[21].DN": "INIT_MOVE_PRINT_AND_TABLE_TO_W_TD.DN",
+    "T4[22].DN": "INIT_HOME_PRINT_AXIS_TD.DN",
+    "T4[23].DN": "INIT_JOG_SIDE_W_AXIS_OFF_HOME_TD.DN",
+    "T4[24].DN": "INIT_JOG_SIDE_X_AXIS_OFF_HOME_TD.DN",
+    "T4[25].DN": "SYS_UNLATCH_HMI_YES_BUTTON.DN",
+    "T4[26].DN": "SYS_UNLATCH_HMI_RESTART_BTTN_T4_26.DN",
+    "T4[26].EN.DN": "SYS_UNLATCH_HMI_RESTART_BTTN_T4_26_EN.DN",
+    "T4[29].DN": "INIT_CYCLE_COMPLETE_TD.DN",
+    "T4[3].DN": "SYS_UNLATCH_HMI_ABORT_BTTN.DN",
+    "T4[30].DN": "INIT_TURN_ON_SHEAR_TD.DN",
+    "T4[31].DN": "INIT_TURN_OFF_SHEAR_TD.DN",
+    "T4[32].DN": "INIT_JOG_CUR_SIDE_TO_PLACE_TD.DN",
+    "T4[33].DN": "INIT_JOG_CUR_SIDE_OFF_PLACE_TD.DN",
+    "T4[34].DN": "INIT_MOVE_CUR_SIDE_TO_GRIPPER_TD.DN",
+    "T4[35].DN": "INIT_CLOSE_CUR_SIDE_GRIPPER_TD.DN",
+    "T4[36].DN": "INIT_MOVE_MAT_CLR_TD.DN",
+    "T4[37].DN": "INIT_MOVE_MAT_BACK_TD.DN",
+    "T4[4].DN": "SYS_1_SEC_TIMER.DN",
+    "T4[40].DN": "SYS_TURN_OFF_SHEAR_TD.DN",
+    "T4[41].DN": "SYS_MOVE_MAT_CLR_TD.DN",
+    "T4[42].DN": "SYS_MOVE_MAT_BACK_TD.DN",
+    "T4[47].DN": "MAN_TURN_OFF_SHEAR_TD.DN",
+    "T4[48].DN": "MAN_MOVE_MAT_CLR_TD.DN",
+    "T4[49].DN": "MAN_MOVE_MAT_BACK_TD.DN",
+    "T4[50].DN": "MAN_SIDE_W_AXIS_TO_PICK_ON_TGGL_TD.DN",
+    "T4[51].DN": "MAN_SIDE_W_AXIS_TO_CUT_ON_TGGL_TD.DN",
+    "T4[52].DN": "MAN_SIDE_W_AXIS_TO_PLACE_ON_TGGL_TD.DN",
+    "T4[53].DN": "MAN_SIDE_W_AXIS_RETRACT_ON_TGGL_TD.DN",
+    "T4[54].DN": "MAN_SIDE_X_AXIS_TO_PICK_ON_TGGL_TD.DN",
+    "T4[55].DN": "MAN_SIDE_X_AXIS_TO_CUT_ON_TGGL_TD.DN",
+    "T4[56].DN": "MAN_SIDE_X_AXIS_TO_PLACE_ON_TGGL_TD.DN",
+    "T4[57].DN": "MAN_SIDE_X_AXIS_RETRACT_ON_TGGL_TD.DN",
+    "T4[58].DN": "MAN_JOG_SIDE_W_AXIS_OFF_HOME_TD.DN",
+    "T4[59].DN": "MAN_JOG_SIDE_X_AXIS_OFF_HOME_TD.DN",
+    "T4[6].DN": "SYS_RESET_DATA_TIME_DELAY.DN",
+    "T4[7].DN": "SYS_ENABLE_MAT_W_DRIVE_SW_TD.DN",
+    "T4[8].DN": "SYS_ENABLE_MAT_X_DRIVE_SW_TD.DN",
+    "T4[9].DN": "SYS_HALF_SEC_TIMER.DN",
+}
 
 NUM_DICT = {
     '00': '0',
@@ -35,6 +218,29 @@ NUM_DICT = {
     '15': '15',
 }
 
+IO_DICT: dict[str, str] = {
+    '::[SCS_PLC]I:0.0/00': 'Local:1:I.Pt00.Data',
+    '::[SCS_PLC]I:0.0/01': 'Local:1:I.Pt01.Data',
+    '::[SCS_PLC]I:0.0/02': 'Local:1:I.Pt02.Data',
+    '::[SCS_PLC]I:0.0/03': 'Local:1:I.Pt03.Data',
+    '::[SCS_PLC]I:0.0/04': 'Local:1:I.Pt04.Data',
+    '::[SCS_PLC]I:0.0/05': 'Local:1:I.Pt05.Data',
+    '::[SCS_PLC]I:0.0/06': 'Local:1:I.Pt06.Data',
+    '::[SCS_PLC]I:0.0/07': 'Local:1:I.Pt07.Data',
+    '::[SCS_PLC]I:0.0/08': 'Local:1:I.Pt08.Data',
+    '::[SCS_PLC]I:0.0/09': 'Local:1:I.Pt09.Data',
+    '::[SCS_PLC]I:0.0/10': 'Local:1:I.Pt10.Data',
+    '::[SCS_PLC]I:0.0/11': 'Local:1:I.Pt11.Data',
+    '::[SCS_PLC]I:0.0/12': 'Local:1:I.Pt12.Data',
+    '::[SCS_PLC]I:0.0/13': 'Local:1:I.Pt13.Data',
+    '::[SCS_PLC]I:0.0/14': 'Local:1:I.Pt14.Data',
+    '::[SCS_PLC]I:0.0/15': 'Local:1:I.Pt15.Data',
+    '::[SCS_PLC]I:0.1/00': 'Local:2:I.Pt00.Data',
+    '::[SCS_PLC]I:0.1/01': 'Local:2:I.Pt01.Data',
+    '::[SCS_PLC]I:0.1/02': 'Local:2:I.Pt02.Data',
+    '::[SCS_PLC]I:0.1/03': 'Local:2:I.Pt03.Data',
+}
+
 CONVERSION_DICT: dict[str, str] = {
         f'ENETBRIDGE_1769:1:O.Data.{val}': f'Local:4:O.Pt{key}.Data' 
         for key, val in NUM_DICT.items()
@@ -48,6 +254,14 @@ CONVERSION_DICT: dict[str, str] = {
         f'SLOT00_Bul_1766_Placeholder.O[0].{val}': f'Local:3:O.Pt{key}.Data' 
         for key, val in NUM_DICT.items()
     }
+
+def update_timer_tags(source_file: str|Path, destination_file: str|Path, timer_dict: dict[str,str]):
+    with open(source_file, "r") as f:
+        contents = f.read()
+        for find_item, replace_item in timer_dict.items():
+            contents = contents.replace(find_item, replace_item)
+    with open(destination_file, "w") as d:
+        d.write(contents)
 
 class YNBool:
     def __new__(cls, bool_val):
@@ -406,8 +620,15 @@ def generate_io_conversion_csv(conversion_dict: dict[str,str], file_name: str):
     print("tag conversion table generated")
 
 
-def hmi_tag_name_compare(hmi_tag_file: str|Path, tag_name_dict: dict[str, dict[str,str]]):
-    df = pd.read_csv(filepath_or_buffer=hmi_tag_file, header=0, skiprows=range(1, 12))
+def hmi_tag_name_compare(
+    hmi_tag_file: str|Path, 
+    tag_name_dict: dict[str, dict[str,str]],
+    io_tag_dict: None|dict[str, str] = None,
+) -> tuple[dict[str, str], list[str]]:
+    """
+    Produce a map of HMI tags to converted PLC tags, and a list of excluded tags
+    """
+    df = pd.read_csv(filepath_or_buffer=hmi_tag_file, header=0, skiprows=range(1, 12)) # ty: ignore[no-matching-overload]
     address_dict = dict(zip(df[' Address'], df[' Tag Name']))
     updated_tag_name_dict = {}
     for base, data in tag_name_dict.items():
@@ -433,24 +654,176 @@ def hmi_tag_name_compare(hmi_tag_file: str|Path, tag_name_dict: dict[str, dict[s
             if 'C5' in tag_element or 'C15' in tag_element:
                 updated_tag_name_dict[tag_element + '.ACC'] = tag_name+'.ACC'
                 updated_tag_name_dict[tag_element + '.DN'] = tag_name+'.DN'
+            if io_tag_dict is not None:
+                updated_tag_name_dict = updated_tag_name_dict|io_tag_dict
     # return(updated_tag_name_dict.keys())
+    # return(updated_tag_name_dict)
+    return(
+        # Mapping of HMI tags to converted tag names 
+        {
+            key: val for key, val in updated_tag_name_dict.items()
+            if key in set(df[' Address'])
+        },
+        # Items in address list not found in tag name dict
+        [item for item in df[' Address'].to_list() 
+            if item not in updated_tag_name_dict.keys() and isinstance(item, str)]
+
+    )
     
     # return(set(df[' Address']))
     # Current found addresses
     # return list(set(df[' Address']) & set(updated_tag_name_dict.keys()))
     # print('B3 items in tag name dict')
     # return [item for item in updated_tag_name_dict.keys() if 'B3' in item]
-    print('Items in address list not found in tag name dict')
-    return [item for item in df[' Address'].to_list() if item not in updated_tag_name_dict.keys()]
+    # print('Items in address list not found in tag name dict')
+    # return [item for item in df[' Address'].to_list() if item not in updated_tag_name_dict.keys()]
+
+def generate_updated_tag_csv(
+    source_file_name: str|Path,
+    destination_file_name: str|Path,
+    address: str, 
+    hmi_tag_name: str, 
+    hmi_tag_map: dict[str, str],
+) -> dict[str, str]:
+    """
+    Processes a CSV file containing HMI tag mappings. Replaces values to update the tag mapping.
+    Delivers an updated dictionary
+
+    Parameters:
+    ---------
+    source_file_name : str|Path
+        Path to the input CSV file
+    destination_file_name : str|Path
+        Path to the modified output CSV file
+    address : str
+        column name where the PLC path is mapped
+    hmi_tag_name : str
+        column name where the hmi tag is mapped
+    hmi_tag_map : str
+        dictionary of original plc tags mapped to updated plc tag duplicate_names
     
+    Returns:
+    --------
+    dictionary : find-and-replace substitution for hmi tags | key - original data | value - updated tag
+    """
+    with open(source_file_name, 'r') as infile:
+        reader = csv.DictReader(infile)
+        fieldnames = reader.fieldnames
+        if fieldnames is None:
+            raise TypeError("bad return for fieldnames")
+        if address not in fieldnames:
+            raise ValueError(f"Address Column '{address}' not found in field names")
+        if hmi_tag_name not in fieldnames:
+            raise ValueError(f"HMI tag name column '{hmi_tag_name}' not found in field names")
+
+        rows: list[dict[str, str]] = []
+        hmi_tag_dict: dict[str, str] = {}
+        for row in reader:
+            original_tag = row[address]
+            if original_tag in hmi_tag_map:
+                new_tag = f"::[SCS_PLC]{hmi_tag_map[original_tag]}"
+                sub_tag = hmi_tag_map[original_tag]
+                if 'Local' in sub_tag:
+                    slot_num = sub_tag.split(':')[1]
+                    pt_num = sub_tag.split('Pt')[1].split('.')[0]
+                    sub_tag = f"Local_S{slot_num}_P{pt_num}"
+                    break_hit = True
+                hmi_tag_dict[row[hmi_tag_name]] = sub_tag
+                row[address] = new_tag
+                row[hmi_tag_name] = sub_tag
+                if '.ACC' in sub_tag or '.DN' in sub_tag:
+                    row[address] = new_tag.replace('.ACC', '').replace('.DN', '')
+                    row[hmi_tag_name] = sub_tag.replace('.ACC', '').replace('.DN', '')
+            rows.append(row)
 
 
-    return updated_tag_name_dict
+        with open(destination_file_name, 'w') as outfile:
+            writer = csv.DictWriter(outfile, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+            print(f"Output saved to: {destination_file_name}")
 
-    return dict(zip(df[' Address'], df[' Tag Name']))
+        return hmi_tag_dict
+
+def update_screen_exports(
+    screen_file_list: list[str|Path], 
+    substitution_dict: dict[str, str],
+    output_appendage: str = '_mod'
+) -> list[str]:
+    """
+    Processes FactoryTalk View screen (.gfx) files by performing multiple
+    find-and-replace operations based on a substitution dictionary.
     
-    return df.head()
-
+    For each file:
+    - Reads the content
+    - Applies all substitutions from the dictionary
+    - Saves a new file with the specified appendage added before the extension
+    
+    Parameters:
+    -----------
+    screen_file_list : List[str]
+        List of full paths to .gfx (or other text-based) screen files
+        
+    substitution_dict : Dict[str, str]
+        Dictionary of {old_string: new_string} to replace
+        Example: {"[OldPLC]": "[NewPLC]", "Local::": "[Shortcut]"}
+        
+    output_appendage : str, optional
+        String to append to the filename (before extension)
+        Default: "_mod"
+        
+    Returns:
+    --------
+    List[str]
+        List of paths to the newly created output files
+        
+    Raises:
+    -------
+    FileNotFoundError
+        If any input file doesn't exist
+    """
+    created_files = []
+    
+    for input_path in screen_file_list:
+        # Skip if file doesn't exist
+        if not os.path.isfile(input_path):
+            print(f"Warning: File not found, skipping: {input_path}")
+            continue
+            
+        # Read the original file content
+        try:
+            with open(input_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+        except Exception as e:
+            print(f"Error reading {input_path}: {e}")
+            continue
+            
+        # Apply all substitutions (in order of dictionary keys)
+        modified_content = content
+        for old, new in substitution_dict.items():
+            # Using regex with word boundaries for safer replacement
+            # (optional: remove \b if you want to match inside words)
+            modified_content = re.sub(
+                re.escape(old),
+                new,
+                modified_content
+            )
+            
+        # Create output filename
+        base, ext = os.path.splitext(input_path)
+        output_path = f"{base}{output_appendage}{ext}"
+        
+        # Write the modified content
+        try:
+            with open(output_path, 'w', encoding='utf-8') as f:
+                f.write(modified_content)
+            print(f"Created: {output_path}")
+            created_files.append(output_path)
+        except Exception as e:
+            print(f"Error writing {output_path}: {e}")
+            
+    print(f"\nProcessing complete. Created {len(created_files)} file(s).")
+    return created_files
 
 
 def main():
@@ -467,8 +840,20 @@ def main():
 
     tag_strings = generate_tag_strings(tag_name_dict, tag_description_dict, mapped_data)
     # generate_tag_csv(tag_name_dict, tag_description_dict, mapped_data, TAG_CSV_FILE_NAME)
-    print(hmi_tag_name_compare(HMI_FILE_PATH, tag_name_dict))
+    hmi_tag_map, hmi_exclusion_list = hmi_tag_name_compare(HMI_FILE_PATH, tag_name_dict, IO_DICT)
 
+    print(f'length of dict: {len(hmi_tag_map)} | Length of exclusion list: {len(hmi_exclusion_list)}')
+    hmi_substitution_dict = generate_updated_tag_csv(
+        HMI_FILE_PATH,
+        UPDATED_HMI_TAG_OUT,
+        ' Address',
+        ' Tag Name',
+        hmi_tag_map
+    )
+    update_screen_exports(
+        SCREEN_FILE_LIST, 
+        hmi_substitution_dict,
+    )
     # generate_io_conversion_csv(CONVERSION_DICT, CONVERSION_FILE_NAME)
     
     # program_update = ProgramUpdate(tag_name_dict)
@@ -480,5 +865,10 @@ def main():
     #     f.write("\n".join(tag_strings))
 
 if __name__ == "__main__":
-    main()
+    update_timer_tags(
+        'Sheeter_In_Prog_print_remove_1_15_2026.L5K', 
+        'Sheeter_timer_sub_1_15_2026_B.L5K',
+        TIMER_DONE_DICT
+    )
+    # main()
 
